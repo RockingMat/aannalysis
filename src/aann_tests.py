@@ -225,14 +225,20 @@ def main(args):
     device = args.device
     n_workers = args.n_workers
 
+    model_name = model_name.replace("../smolm/models/", "").replace(
+        "kanishka/", ""
+    ).replace("/", "_")
+
     aann_dir = args.aanns_dir.split("data")[-1].strip("/")
     pathlib.Path(args.results_dir).mkdir(parents=True, exist_ok=True)
-    pathlib.Path(f"{args.results_dir}/{aann_dir}").mkdir(parents=True, exist_ok=True)
+    pathlib.Path(f"{args.results_dir}/{aann_dir}").mkdir(
+        parents=True, exist_ok=True
+    )
 
-    results_prefix = f"{args.results_dir}/{aann_dir}/{model_name.replace('/', '_').replace('..', '')}"
+    results_prefix = f"{args.results_dir}/{aann_dir}/{model_name}"
 
     # load model
-    lm = scorer.IncrementalLMScorer(model_name, device=device)
+    lm = scorer.IncrementalLMScorer(args.model, device=device)
 
     good = utils.read_csv_dict(f"{args.aanns_dir}/aanns_good.csv")
 
@@ -281,8 +287,6 @@ def main(args):
         results[f"{modification}_region_score"] = region_scores
 
     print({k: len(v) for k, v in results.items()})
-
-    
 
     results_df = pd.DataFrame(results)
     results_df.to_csv(f"{results_prefix}.csv", index=False)
