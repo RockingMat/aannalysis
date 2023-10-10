@@ -54,3 +54,13 @@ converted_format <- combined %>%
 
 converted_format %>%
   write_csv("data/mahowald/aanns_good.csv")
+
+combined %>%
+  select(idx=id, experiment, template, adjclass, numclass, nounclass, `rating-sent`) %>%
+  write_csv("data/mahowald/aanns_meta.csv")
+
+
+# ---
+
+run_adj <- read_csv("data/aann-public/mturk_generation/runturk_adjs.csv")
+results_adj <- read_csv("data/aann-public/mturk_data/adjexp_turk.csv")

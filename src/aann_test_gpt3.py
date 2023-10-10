@@ -241,7 +241,7 @@ def main(args):
     lm = scorer.IncrementalLMScorer(args.model, device=device)
 
     good = utils.read_csv_dict(f"{args.aanns_dir}/aanns_good.csv")
-
+    
     good_scores = compute_scores(lm, good, batch_size, n_workers)
 
     results = {
@@ -283,7 +283,7 @@ def main(args):
             lm, scores, instances=good, extractor=lambda x: x
         )
 
-        results[f"{modification}_construction_score"] = corruption_scores
+        results[f"{modification}_corruption_score"] = corruption_scores
         results[f"{modification}_region_score"] = region_scores
 
     print({k: len(v) for k, v in results.items()})
