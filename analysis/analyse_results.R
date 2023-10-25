@@ -55,6 +55,14 @@ results %>%
   inner_join(aanns) %>%
   inner_join(mahowald_meta) %>%
   inner_join(human_data) %>%
+  mutate(
+    adjclass=str_remove(adjclass, "adj-"),
+    nounclass=str_remove(nounclass, "noun-"),
+    adjclass=case_when(
+      adjclass %in% c("neg", "pos") ~ "qual",
+      TRUE ~ adjclass
+    )
+  ) %>%
   group_by(model, adjclass, nounclass) %>%
   mutate(
     construction_score = minmax_scale(construction_score),
@@ -80,19 +88,13 @@ results %>%
     score = mean(construction_score)
   ) %>%
   ungroup() %>%
-  mutate(
-    adjclass=str_remove(adjclass, "adj-"),
-    nounclass=str_remove(nounclass, "noun-"),
-    adjclass=case_when(
-      adjclass %in% c("neg", "pos") ~ "qual",
-      TRUE ~ adjclass
-    )
-  ) %>%
   pivot_longer(rating:score, names_to = "rating_type", values_to = "rating") %>%
   mutate(rating_type=case_when(rating_type=="rating" ~ "human",TRUE~"model")) %>%
-  ggplot(aes(adjclass, rating, color=rating_type, fill=rating_type)) +
-  geom_col(position="dodge") + 
-  facet_grid(model~nounclass)
+  ggplot(aes(adjclass, rating, color=rating_type, fill=rating_type, shape = rating_type)) +
+  # geom_col(position="dodge") + 
+  geom_point(size = 2) +
+  facet_grid(model~nounclass) +
+  theme(legend.position = "top")
 
 
 results %>%
@@ -116,7 +118,7 @@ pencils = results %>%
   inner_join(aanns) %>%
   inner_join(mahowald_meta) %>%
   inner_join(human_data) %>%
-  filter(model == "gpt2-large", NOUN == "pencils") %>%
+  filter(model == "text-davinci-003", NOUN == "pencils") %>%
   select(construction_score, construction, ADJ, rating)
 
 cor.test(pencils$construction_score, pencils$rating)

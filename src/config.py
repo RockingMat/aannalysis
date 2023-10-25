@@ -1,5 +1,20 @@
-# CORRUPTION_TYPES = ["default_ann", "order_swap", "no_article", "no_modifier", "noun_number"]
-CORRUPTION_TYPES = ["default_ann", "order_swap", "no_article", "no_modifier", "no_numeral"]
+from editors import nnaa, anan, naan
 
-ADJ_PATTERN = r'((?=(JJR|JJS|JJ|RB|CC))(.*)(JJR|JJS|JJ))|JJR|JJS|JJ'
-NUM_PATTERN = r'(?:(?:CD|CC|TO)\s+){2,}CD|CD'
+# CORRUPTION_TYPES = ["default_ann", "order_swap", "no_article", "no_modifier", "noun_number"]
+CORRUPTION_TYPES = [
+    "default_ann",
+    "order_swap",
+    "no_article",
+    "no_modifier",
+    "no_numeral",
+]
+
+ADJ_PATTERN = r"((?=(JJR|JJS|JJ|RB|CC))(.*)(JJR|JJS|JJ))|JJR|JJS|JJ"
+NUM_PATTERN = r"(?:(?:CD|CC|TO)\s+){2,}CD|CD"
+
+CONSTRUCTION_ORDER = {
+    "aann": lambda x: x,
+    "nnaa": lambda x: nnaa(x),
+    "anan": lambda x: anan(x),
+    "naan": lambda x: naan(x),
+}
