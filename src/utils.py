@@ -14,6 +14,14 @@ def read_csv_dict(path):
             data.append(line)
     return data
 
+def read_file(path):
+    """TODO: make read all"""
+    return [i.strip() for i in open(path, encoding="utf-8").readlines() if i.strip() != ""]
+
+def read_babylm(path):
+    """TODO: make read all"""
+    return [i.strip() for i in open(path, encoding="utf-8").readlines()]
+
 
 def belongingness(tup1, tup2):
     """is tup1 contained in tup2?"""
