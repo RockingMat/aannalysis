@@ -1,4 +1,4 @@
-idx,sentence,prefixes,construction,default_nan,order_swap,no_article,no_modifier,no_numeral
+idx,sentence,prefix,construction,default_nan,order_swap,no_article,no_modifier,no_numeral
 1,The family spent an astonishing three days in London.,The family spent,three astonishing a days,three astonishing days,astonishing three a days,three astonishing days,three a days,astonishing a days
 2,The family spent an astonishing three weeks in London.,The family spent,three astonishing a weeks,three astonishing weeks,astonishing three a weeks,three astonishing weeks,three a weeks,astonishing a weeks
 3,The family spent an astonishing three months in London.,The family spent,three astonishing a months,three astonishing months,astonishing three a months,three astonishing months,three a months,astonishing a months

@@ -98,11 +98,13 @@ def left_context(sentence, construction, token_span):
             sentence[selected_span[0] : selected_span[1]],
         )
 
+def parse_from_csv(instance):
+    return AANN(instance['DT'], instance['ADJ'], instance['NUMERAL'], instance['NOUN'])
 
 def segment(instances, extractor, editor=None, only_construction=False):
     full_length, prefixes, continuations = [], [], []
     for instance in instances:
-        parsed = parse_instance(instance)
+        parsed = parse_from_csv(instance)
         if editor is not None:
             parsed = editor(parsed)
             left, construction, right = construction_pieces(

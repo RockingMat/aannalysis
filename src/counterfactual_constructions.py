@@ -37,11 +37,11 @@ def main(args):
 
     corpus = {}
 
+    print(list(glob.glob(f"{postag_dir}/*.train")))
+
     for file in glob.glob(f"{postag_dir}/*.train"):
         corpus_name = re.split(r"(/|.train)", file)[-3]
-        sents = utils.read_babylm(
-            f"../../rawdata/babylm_data/babylm_100M/{corpus}.train"
-        )
+        sents = utils.read_babylm(f"{corpus_dir}/{corpus_name}.train")
         corpus[corpus_name] = sents
 
     aann_ids = defaultdict(list)
@@ -63,23 +63,28 @@ def main(args):
 
     aann_replacements = dict(aann_replacements)
 
+    # print(corpus)
+
     replaced_corpus = []
 
     strategy = "replace"
     # strategy = "remove"
     tokens_lost = 0
+    num_replaced = 0
 
-    for k,v in tqdm(corpus.items()):
+    for k, v in tqdm(corpus.items()):
         for i, utterance in enumerate(v):
             if strategy == "replace":
                 if i in aann_replacements[k].keys():
                     replacement = aann_replacements[k][i]
-        
+
                     # utterance_tokens = count_tokens(utterance)[0]
                     # replacement_tokens = count_tokens(replacement)[0]
                     # loss = utterance_tokens - replacement_tokens
                     # tokens_lost += loss
-                    
+
+                    num_replaced += 1
+
                     replaced_corpus.append(replacement)
                 else:
                     replaced_corpus.append(utterance)
@@ -91,9 +96,13 @@ def main(args):
                 else:
                     replaced_corpus.append(utterance)
 
+    print(f"LEN: {len(replaced_corpus)}. REPLACEMENTS: {num_replaced}")
+
     # print(list(aann_replacements.items())[:10])
     full_corpus = replaced_corpus
-    with open(f"{corpus_dir}/{args.outfilename}_{args.counterfactual_type}.txt", "w") as f:
+    with open(
+        f"{corpus_dir}/{args.outfilename}_{args.counterfactual_type}.txt", "w"
+    ) as f:
         for line in full_corpus:
             f.write(f"{line}\n")
 
@@ -103,13 +112,13 @@ if __name__ == "__main__":
     parser.add_argument(
         "--corpus_dir",
         type=str,
-        default="../rawdata/babylm_data/babylm_100M/",
+        default="/home/km55359/rawdata/babylm_data/babylm_100M/",
         help="Directory of corpus to be corrupted",
     )
     parser.add_argument(
         "--postag_dir",
         type=str,
-        default="../rawdata/babylm_data/postag_100M/",
+        default="/home/km55359/rawdata/babylm_data/postags_100M/",
         help="Directory of corpus to be corrupted",
     )
     parser.add_argument(

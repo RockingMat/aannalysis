@@ -18,3 +18,9 @@ CONSTRUCTION_ORDER = {
     "anan": lambda x: anan(x),
     "naan": lambda x: naan(x),
 }
+
+ORDER_SWAP_PATTERN = {
+    "aann": "DT JJ CD NNS",
+    "naan": "CD JJ DT NNS",
+    "anan": "DT CD JJ NNS",
+}

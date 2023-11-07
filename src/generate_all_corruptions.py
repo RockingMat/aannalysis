@@ -23,9 +23,9 @@ def main(args):
 
     full, prefixes, continuations = utils.segment(good, lambda x: x)
 
-    if mode != "aann":
-        pathlib.Path(f"data/mahowald-{mode}").mkdir(parents=True, exist_ok=True)   
+    pathlib.Path(f"data/mahowald-{mode}").mkdir(parents=True, exist_ok=True)
 
+    if mode != "aann":
         order_swap_good = []
         for aann in good:
             replacement_aann = aann.copy()
@@ -33,31 +33,37 @@ def main(args):
             parsed_construction = parsed_aann.string
             corrupted_construction = config.CONSTRUCTION_ORDER[mode](
                 parsed_aann
-            ).string
+            )
+            corrupted_construction_string = corrupted_construction.string
             sentence = replacement_aann["sentence"]
             replacement_aann.update(
                 {
                     "sentence": sentence.replace(
-                        parsed_construction, corrupted_construction
+                        parsed_construction, corrupted_construction_string
                     ),
-                    "construction": corrupted_construction,
+                    "construction": corrupted_construction_string,
+                    "DT": corrupted_construction.article,
+                    "ADJ": corrupted_construction.adjective,
+                    "NUMERAL": corrupted_construction.numeral,
+                    "NOUN": corrupted_construction.noun,
+                    # "pattern": config.ORDER_SWAP_PATTERN[mode]
                 }
             )
             order_swap_good.append(replacement_aann)
 
         order_swap_good = pd.DataFrame(order_swap_good)
-        order_swap_good.to_csv(f"data/mahowald-{mode}/{mode}_good.csv")
-
-
+        order_swap_good.to_csv(
+            f"data/mahowald-{mode}/good.csv", index=False
+        )
 
     results = {
         "idx": [aann["idx"] for aann in good],
         "sentence": [aann["sentence"] for aann in good],
-        "prefixes": prefixes,
-        "aann": continuations,
+        "prefix": prefixes,
     }
 
     EDITORS = {
+        "construction": lambda x: x,
         "default_nan": editors.default_nan,
         "order_swap": editors.corrupt_order,
         "no_article": editors.corrupt_article,
@@ -92,12 +98,14 @@ def main(args):
 
     results_df = pd.DataFrame(results)
 
-    results_df.to_csv(f"data/mahowald-{mode}/{mode}_corruption.csv")
+    results_df.to_csv(
+        f"data/mahowald-{mode}/corruption.csv", index=False
+    )
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--aann_dir", type=str, default="data/mahowald/")
+    parser.add_argument("--aann_dir", type=str, default="data/mahowald-aann/")
     parser.add_argument("--mode", type=str, default="aann")
     parser.add_argument("--debug", action="store_true")
 
