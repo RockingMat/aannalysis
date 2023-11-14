@@ -1,3 +1,7 @@
+models/
+src/tmp_trainer/
+src/wandb/
+
 *.DS_Store
 
 # History files
