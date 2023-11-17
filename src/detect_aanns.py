@@ -1,17 +1,26 @@
 import csv
+import torch
 
 from minicons import supervised
 from torch.utils.data import DataLoader
 from tqdm import tqdm
+from transformers import BitsAndBytesConfig
 
-detector = supervised.SupervisedHead("kanishka/aann-detector", device="cuda:0")
+bnb_config = BitsAndBytesConfig(
+    load_in_4bit=True,
+    bnb_4bit_use_double_quant=True,
+    bnb_4bit_quant_type="nf4",
+    bnb_4bit_compute_dtype=torch.bfloat16,
+)
+
+detector = supervised.SupervisedHead(
+    "kanishka/aann-detector", quantization_config=bnb_config, device_map="cuda:0", device="auto"
+)
 
 # print(lm.logits(["the family spent a beautiful five days in austin.", "the boys spent an eventful few days in the city."], probs=False).argmax(1))
 
 sents = []
-with open(
-    "../babylm_sents.txt", "r"
-) as f:
+with open("../babylm_sents.txt", "r") as f:
     for line in f:
         # sent = line.strip()
         sents.append(line.strip())
