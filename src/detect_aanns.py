@@ -11,9 +11,21 @@ with open(
     "/home/km55359/rawdata/babylm_data/babylm_100M/sents/babylm_sents.txt", "r"
 ) as f:
     for line in f:
+        # sent = line.strip()
         sents.append(line.strip())
 
-dl = DataLoader(sents, batch_size=128, shuffle=False, num_workers=0)
+print(len(sents))
+filtered_sents = []
+dl = DataLoader(sents, batch_size=4096, shuffle=False, num_workers=0)
+for batch in tqdm(dl):
+    tokenized = detector.tokenizer(batch)
+    for i, tokens in enumerate(tokenized["input_ids"]):
+        if len(tokens) <= 512:
+            filtered_sents.append(batch[i])
+
+print("Number of sents after filtering: ", len(filtered_sents))
+
+dl = DataLoader(filtered_sents, batch_size=128, shuffle=False, num_workers=0)
 
 labels = []
 for batch in tqdm(dl):
@@ -26,6 +38,6 @@ for i, label in enumerate(labels):
 
 print("Number of AANNs found using the classifier: ", len(aanns))
 
-with open("data/babylm-aanalysis/detected_aann_sents.txt", "w") as f:
+with open("data/babylm-analysis/detected_aann_sents.txt", "w") as f:
     for aann in aanns:
         f.write(aann + "\n")
