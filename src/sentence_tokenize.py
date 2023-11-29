@@ -16,7 +16,7 @@ corpus = {}
 
 for file in glob.glob(f"{DIR}/*.train"):
     corpus_name = re.split(r"(/|.train)", file)[-3]
-    sents = utils.read_babylm(f"{DIR}/{corpus_name}.train")
+    sents = utils.read_file(f"{DIR}/{corpus_name}.train")
     corpus[corpus_name] = sents
 
 manager = Manager()

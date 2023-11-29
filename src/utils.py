@@ -1,6 +1,7 @@
 import csv
 import config
 import re
+import unicodedata
 
 from minicons import utils as mu
 from constructions import AANN
@@ -14,13 +15,16 @@ def read_csv_dict(path):
             data.append(line)
     return data
 
+def roundup(x):
+    return x if x % 1000 == 0 else x + 1000 - x % 1000
+
 def read_file(path):
     """TODO: make read all"""
-    return [i.strip() for i in open(path, encoding="utf-8").readlines() if i.strip() != ""]
+    return [unicodedata.normalize("NFKD", i.strip()) for i in open(path, encoding="utf-8").readlines() if i.strip() != ""]
 
 def read_babylm(path):
     """TODO: make read all"""
-    return [i.strip() for i in open(path, encoding="utf-8").readlines()]
+    return [unicodedata.normalize("NFKD", i.strip()) for i in open(path, encoding="utf-8").readlines()]
 
 
 def belongingness(tup1, tup2):

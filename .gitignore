@@ -1,3 +1,4 @@
+data/training_data/
 models/
 src/tmp_trainer/
 src/wandb/
