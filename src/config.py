@@ -24,3 +24,13 @@ ORDER_SWAP_PATTERN = {
     "naan": "CD JJ DT NNS",
     "anan": "DT CD JJ NNS",
 }
+
+PREPOSITIONS = ["though", "as", "asas"]
+EMBEDDINGS = ["", "they said that we knew that"]
+
+CONDITION2COLUMN = {
+    "PiPP (Filler/Gap)": "pipp_filler_gap",
+    "PP (No Filler/No Gap)": "pp_no_filler_no_gap",
+    "Filler/No Gap": "filler_no_gap",
+    "No Filler/Gap": "no_filler_gap",
+}

@@ -6,6 +6,8 @@ import unicodedata
 from minicons import utils as mu
 from constructions import AANN
 
+from nltk.tokenize import TweetTokenizer
+
 
 def read_csv_dict(path):
     data = []
@@ -15,16 +17,26 @@ def read_csv_dict(path):
             data.append(line)
     return data
 
+
 def roundup(x):
     return x if x % 1000 == 0 else x + 1000 - x % 1000
 
+
 def read_file(path):
     """TODO: make read all"""
-    return [unicodedata.normalize("NFKD", i.strip()) for i in open(path, encoding="utf-8").readlines() if i.strip() != ""]
+    return [
+        unicodedata.normalize("NFKD", i.strip())
+        for i in open(path, encoding="utf-8").readlines()
+        if i.strip() != ""
+    ]
+
 
 def read_babylm(path):
     """TODO: make read all"""
-    return [unicodedata.normalize("NFKD", i.strip()) for i in open(path, encoding="utf-8").readlines()]
+    return [
+        unicodedata.normalize("NFKD", i.strip())
+        for i in open(path, encoding="utf-8").readlines()
+    ]
 
 
 def belongingness(tup1, tup2):
@@ -85,13 +97,9 @@ def left_context(sentence, construction, token_span):
         try:
             construction_span = re.search(construction, sentence).span()
         except:
-            construction_span = re.search(
-                re.escape(construction), sentence
-            ).span()
+            construction_span = re.search(re.escape(construction), sentence).span()
         selected_span = [
-            cs
-            for cs in candidate_spans
-            if belongingness(cs, construction_span)
+            cs for cs in candidate_spans if belongingness(cs, construction_span)
         ][0]
 
     if sentence == construction == token_span:
@@ -102,8 +110,10 @@ def left_context(sentence, construction, token_span):
             sentence[selected_span[0] : selected_span[1]],
         )
 
+
 def parse_from_csv(instance):
-    return AANN(instance['DT'], instance['ADJ'], instance['NUMERAL'], instance['NOUN'])
+    return AANN(instance["DT"], instance["ADJ"], instance["NUMERAL"], instance["NOUN"])
+
 
 def segment(instances, extractor, editor=None, only_construction=False):
     full_length, prefixes, continuations = [], [], []
@@ -133,3 +143,61 @@ def segment(instances, extractor, editor=None, only_construction=False):
         continuations.append(c)
         full_length.append((p + " " + c).strip())
     return full_length, prefixes, continuations
+
+
+tokenizer = TweetTokenizer()
+
+
+def item(ex, embedding="", preposition="though"):
+    """Author: Chris Potts"""
+    assert "*" in ex
+    assert "GAP" in ex
+
+    if embedding:
+        ex = ex.replace("though", f"though {embedding}")
+
+    if preposition == "asas":
+        func = lambda x: f"as {x.group(1).lower()} as"
+        ex = re.sub(r"(\w+\*)\s+though", func, ex, re.I)
+    else:
+        ex = ex.replace("though", preposition)
+
+    toks = tokenizer.tokenize(ex)
+
+    # Get target predicate:
+    ai = toks.index("*")
+    pred = toks[ai - 1]
+    ex = ex.replace("*", "")
+
+    # Get the word after the GAP:
+    gi = toks.index("GAP")
+    t = toks[gi + 1]
+
+    # The PiPP:
+    c1 = ex.replace("GAP", "").strip()
+
+    # Regular Adverbial clause:
+    c2 = ex.replace(pred, "").replace("GAP", pred.lower()).strip()
+
+    # Fronting with no gap:
+    c3 = ex.replace("GAP", pred.lower()).strip()
+
+    # No fronting but with a gap:
+    c4 = ex.replace(pred, "").replace("GAP", "").strip()
+
+    t2 = pred.lower()
+
+    return {
+        "PiPP (Filler/Gap)": (cleanup(c1), t),
+        "PP (No Filler/No Gap)": (cleanup(c2), t2),
+        "Filler/No Gap": (cleanup(c3), t2),
+        "No Filler/Gap": (cleanup(c4), t),
+    }
+
+
+def cleanup(s):
+    """Author: Chris Potts"""
+    s = s.replace(" ,", ",").replace(" .", ".").replace("  ", " ")
+    s = s.replace("as as", "as")
+    s = s[0].upper() + s[1:]
+    return s
