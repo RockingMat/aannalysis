@@ -14,7 +14,7 @@ bnb_config = BitsAndBytesConfig(
 )
 
 detector = supervised.SupervisedHead(
-    "kanishka/aann-detector",
+    "cgpotts/pipp-finder-bert-base-cased",
     quantization_config=bnb_config,
     device_map="cuda:0",
     device="auto",
@@ -54,9 +54,9 @@ for i, label in enumerate(labels):
     if label == 1:
         aanns.append((filtered_idxes[i], filtered_sents[i]))
 
-print("Number of AANNs found using the classifier: ", len(aanns))
+print("Number of PiPPs found using the classifier: ", len(aanns))
 
-with open("data/babylm-analysis/detected_aann_sents.csv", "w") as f:
+with open("data/babylm-analysis/detected_pipps_sents.csv", "w") as f:
     writer = csv.writer(f)
     writer.writerow(["idx", "sentence"])
     writer.writerows(aanns)
