@@ -201,3 +201,16 @@ def cleanup(s):
     s = s.replace("as as", "as")
     s = s[0].upper() + s[1:]
     return s
+
+
+def write_dict_list_to_csv(dict_list, csv_file):
+    fieldnames = dict_list[0].keys()  # Assuming all dictionaries have the same keys
+
+    with open(csv_file, "w", newline="") as csvfile:
+        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+
+        # Write the header
+        writer.writeheader()
+
+        # Write the data
+        writer.writerows(dict_list)
