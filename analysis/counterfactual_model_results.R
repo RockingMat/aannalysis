@@ -12,7 +12,16 @@ aanns <- read_csv(glue("data/{dir}/aanns_good.csv"))
 human_data <- read_csv("data/mturk_ratings_20231004.csv") %>%
   inner_join(aanns) %>%
   inner_join(mahowald_meta) %>%
-  select(idx, adjclass, numclass, nounclass, sentence, rating=answer)
+  select(idx, adjclass, numclass, nounclass, sentence, rating=answer) %>%
+  mutate(
+    adjclass = str_remove(adjclass, "adj-"),
+    nounclass = str_remove(nounclass, "noun-"),
+    adjclass=case_when(
+      adjclass %in% c("neg", "pos") ~ "qual",
+      TRUE ~ adjclass
+    ),
+    adjclass = factor(adjclass, levels=c("quant", "ambig", "qual", "human", "color", "stubborn"))
+  )
 
 good_ids <- human_data %>%
   filter(rating > 7) %>%
@@ -41,6 +50,36 @@ scores <- dir_ls("results/", recurse = TRUE) %>%
     target_construction = construction
   )
 
+scores %>% count(model)
+
+scores %>%
+  # filter(idx %in% good_ids) %>%
+  filter(model == "smolm-aann", target_construction=="aann") %>%
+  inner_join(human_data) %>%
+  mutate(
+    construction_score = (construction_score - min(construction_score))/(max(construction_score) - min(construction_score))
+  ) %>%
+  group_by(adjclass, nounclass) %>%
+  summarize(
+    score = mean(construction_score)
+  ) %>%
+  ggplot(aes(adjclass, score)) +
+  geom_point() +
+  facet_wrap(~ nounclass, scales = "free_x")
+
+human_data %>%
+  mutate(
+    rating = (rating - min(rating))/(max(rating) - min(rating))
+  ) %>%
+  # filter(idx %in% good_ids) %>%
+  group_by(adjclass, nounclass) %>%
+  summarize(
+    score = mean(rating)
+  ) %>%
+  ggplot(aes(adjclass, score)) +
+  geom_point() +
+  facet_wrap(~ nounclass, scales = "free_x")
+
 results <- scores %>% 
   filter(idx %in% good_ids) %>%
   group_by(model, train_construction, target_construction) %>%
@@ -58,4 +97,10 @@ results %>%
   pivot_wider(names_from = target_construction, values_from = overall)
 
 
-
+scores %>%
+  filter(target_construction == "aann") %>%
+  inner_join(human_data) %>%
+  group_by(model) %>%
+  summarize(
+    default_acc = mean(default_nan_score > no_article_score)
+  )
