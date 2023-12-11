@@ -63,9 +63,17 @@ def main(args):
     sentences = utils.read_file(args.sentence_path)
     aanns = utils.read_csv_dict(args.aann_path)
     aanns_alldet = utils.read_csv_dict(args.aann_all_det_path)
+    if args.excess_path:
+        excess = utils.read_csv_dict(args.excess_path)
 
     print("Storing AANN ids...")
     aann_ids = [int(a["sentence_idx"]) for a in aanns]
+
+    if args.excess_path:
+        print("Storing excess ids...")
+        excess_ids = [int(e["sentence_idx"]) for e in excess]
+    else:
+        excess_ids = []
 
     print("Storing AANN all det ids...")
     aanns_alldet_ids = [int(a["sentence_idx"]) for a in aanns_alldet]
@@ -73,15 +81,15 @@ def main(args):
     corpus = []
     if args.counterfactual_type == "removal":
         print("Storing non-AANN sentences...")
-        non_aann_sentences = [
-            s for i, s in enumerate(tqdm(sentences)) if i not in aanns_alldet_ids
-        ]  # TODO: think more about this.
+        # non_aann_sentences = [
+        #     s for i, s in enumerate(tqdm(sentences)) if i not in aanns_alldet_ids
+        # ]  # TODO: think more about this.
 
         # remove AANNs from sentences, store loss in tokens using tokenizer
         # sample excess tokens from openbooks # same amount as loss in tokens.
         LOST_TOKENS = 0
         for idx, sentence in enumerate(tqdm(sentences)):
-            if idx in aann_ids:
+            if idx in aann_ids or idx in excess_ids:
                 lost_tokens = count_tokens(sentence, tokenizer)
                 LOST_TOKENS += lost_tokens[0]
             else:
@@ -96,19 +104,20 @@ def main(args):
         tokens_added = 0
 
         upper_bound = utils.roundup(LOST_TOKENS)
-        for utterance in enumerate(tqdm(non_aann_sentences[:upper_bound])):
-            if len(utterance) > 5:
-                tokens = tokenizer(utterance)["input_ids"][1:]
-                added = []
-                for t in tokens:
-                    if tokens_added <= LOST_TOKENS:
-                        added.append(t)
-                        tokens_added += 1
-                    else:
-                        break
-                string = tokenizer.decode(added).strip()
-                if string != "":
-                    excess_corpus.append(string)
+        for i, utterance in enumerate(tqdm(sentences[:upper_bound])):
+            if i not in aanns_alldet_ids:
+                if len(utterance) > 5:
+                    tokens = tokenizer(utterance)["input_ids"][1:]
+                    added = []
+                    for t in tokens:
+                        if tokens_added <= LOST_TOKENS:
+                            added.append(t)
+                            tokens_added += 1
+                        else:
+                            break
+                    string = tokenizer.decode(added).strip()
+                    if string != "":
+                        excess_corpus.append(string)
 
         print("Excess corpus length:", len(excess_corpus))
         corpus.extend(excess_corpus)
@@ -178,6 +187,11 @@ if __name__ == "__main__":
         type=str,
         help="path to file containing all AANNs (all dets) (and ids)",
         default="data/babylm-aanns/aanns_all_det_all.csv"
+    )
+    parser.add_argument(
+        "--excess_path",
+        type=str,
+        help="path to file containing other excess sentences we do not want.",
     )
 
     args = parser.parse_args()
