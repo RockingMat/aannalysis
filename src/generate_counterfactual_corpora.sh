@@ -13,3 +13,8 @@ python src/counterfactual_constructions.py \
     --output_path data/training_data/counterfactual_babylm_aann_indef_articles_with_pl_nouns_removal.txt \
     --counterfactual_type removal \
     --excess_path data/babylm-analysis/indef_articles_with_pl_nouns.csv
+
+python src/counterfactual_constructions.py \
+    --output_path data/training_data/counterfactual_babylm_aann_excess_adj_removal.txt \
+    --counterfactual_type removal \
+    --excess_path data/babylm-analysis/adjs_to_remove.csv

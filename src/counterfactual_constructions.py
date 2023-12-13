@@ -67,16 +67,26 @@ def main(args):
         excess = utils.read_csv_dict(args.excess_path)
 
     print("Storing AANN ids...")
-    aann_ids = [int(a["sentence_idx"]) for a in aanns]
+    # aann_ids = [int(a["sentence_idx"]) for a in aanns]
+    aann_ids = defaultdict(lambda : False)
+    for a in aanns:
+        aann_ids[int(a["sentence_idx"])] = True
+
 
     if args.excess_path:
         print("Storing excess ids...")
-        excess_ids = [int(e["sentence_idx"]) for e in excess]
+        # excess_ids = [int(e["sentence_idx"]) for e in excess]
+        excess_ids = defaultdict(lambda : False)
+        for a in excess:
+            excess_ids[int(a["sentence_idx"])] = True
     else:
-        excess_ids = []
+        excess_ids = defaultdict(lambda : False)
 
     print("Storing AANN all det ids...")
-    aanns_alldet_ids = [int(a["sentence_idx"]) for a in aanns_alldet]
+    # aanns_alldet_ids = [int(a["sentence_idx"]) for a in aanns_alldet]
+    aanns_alldet_ids = defaultdict(lambda : False)
+    for a in aanns_alldet:
+        aanns_alldet_ids[int(a["sentence_idx"])] = True
 
     corpus = []
     if args.counterfactual_type == "removal":
@@ -89,7 +99,8 @@ def main(args):
         # sample excess tokens from openbooks # same amount as loss in tokens.
         LOST_TOKENS = 0
         for idx, sentence in enumerate(tqdm(sentences)):
-            if idx in aann_ids or idx in excess_ids:
+            # if idx in aann_ids or idx in excess_ids:
+            if aann_ids[idx] or excess_ids[idx]:
                 lost_tokens = count_tokens(sentence, tokenizer)
                 LOST_TOKENS += lost_tokens[0]
             else:
@@ -105,7 +116,8 @@ def main(args):
 
         upper_bound = utils.roundup(LOST_TOKENS)
         for i, utterance in enumerate(tqdm(sentences[:upper_bound])):
-            if i not in aanns_alldet_ids:
+            # if i not in aanns_alldet_ids:
+            if not aanns_alldet_ids[i] and not excess_ids[i]:
                 if len(utterance) > 5:
                     tokens = tokenizer(utterance)["input_ids"][1:]
                     added = []
