@@ -88,7 +88,7 @@ non_prototypical_instances <- babylm_aanns %>%
   mutate_at(vars(construction, ADJ, NUMERAL, NOUN), .funs = str_to_lower) %>%
   anti_join(prototypical_aanns)
 
-prototypical_instances %>% 
+non_prototypical_instances %>% 
   write_csv("data/babylm-aanns/aanns_indef_all_non_prototypical.csv")
 
 babylm_aanns %>%
