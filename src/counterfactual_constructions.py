@@ -32,6 +32,7 @@ import numpy as np
 import pandas as pd
 
 from collections import defaultdict, Counter
+from datasets import load_dataset
 from minicons import scorer
 from spacy.lang.en import English
 from torch.utils.data import DataLoader
@@ -163,6 +164,24 @@ def main(args):
     with open(args.output_path, "w") as f:
         for sentence in tqdm(corpus):
             f.write(sentence + "\n")
+
+    print("Pushing to hub...")
+    
+    VAL_FILE = "../rawdata/babylm_data/babylm_dev/babylm_dev.txt"
+
+    data_files = {}
+    dataset_args = {}
+    data_files["train"] = args.output_path
+    data_files["validation"] = VAL_FILE
+    dataset_args["keep_linebreaks"] = True
+    raw_datasets = load_dataset(
+        "text",
+        data_files=data_files,
+        # token=model_args.token,
+        **dataset_args,
+    )
+
+    raw_datasets.push_to_hub(f"kanishka/{args.output_path.split('/')[-1].replace('.txt', '')}")
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
