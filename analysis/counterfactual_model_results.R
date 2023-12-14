@@ -7,7 +7,10 @@ dir = "mahowald-aann"
 mahowald_meta <- read_csv(glue("data/{dir}/aanns_meta.csv"))
 all_corruptions <- read_csv(glue("data/{dir}/aanns_corruption.csv"))
 
-aanns <- read_csv(glue("data/{dir}/aanns_good.csv"))
+unseen <- read_csv("data/mahowald-aann/mahowald-aanns-unseen_good.csv") %>%
+  pull(idx)
+
+aanns <- read_csv(glue("data/{dir}/mahowald-aanns-unseen_good.csv"))
 
 human_data <- read_csv("data/mturk_ratings_20231004.csv") %>%
   inner_join(aanns) %>%
@@ -40,11 +43,13 @@ scores <- dir_ls("results/", recurse = TRUE) %>%
     model = str_remove(model, "no_"),
     model = str_remove(model, "mahowald-(aann|naan|anan)/"),
     model = case_when(
-      str_detect(model, "smolm-1e-3") ~ "smolm-aann",
+      str_detect(model, "smolm-1e-3") ~ "smolm-aann-1e-3",
+      str_detect(model, "smolm-1e-4") ~ "smolm-aann-1e-4",
+      str_detect(model, "smolm-3e-4") ~ "smolm-aann-3e-4",
       TRUE ~ model
     ),
     # model = str_remove(model, "-\\de-\\d"),
-    train_construction = str_extract(model, "(?<=-)(.*)") %>% str_remove("(counterfactual-)") %>% str_replace("all-det-removal", "no-det-ann") %>% str_replace("infilling|removal", "none")
+    train_construction = str_extract(model, "(?<=-)(.*)") %>% str_remove("(counterfactual-)") %>% str_remove("indef-") %>% str_remove("-\\de-\\d") %>% str_replace("all-det-removal", "no-det-ann") %>% str_replace("infilling|removal", "none")
   ) %>% 
   rename(
     target_construction = construction
@@ -54,7 +59,7 @@ scores %>% count(model)
 
 scores %>%
   # filter(idx %in% good_ids) %>%
-  filter(model == "smolm-aann", target_construction=="aann") %>%
+  filter(model == "smolm-aann-1e-3", target_construction=="aann") %>%
   inner_join(human_data) %>%
   mutate(
     construction_score = (construction_score - min(construction_score))/(max(construction_score) - min(construction_score))
@@ -94,7 +99,9 @@ results <- scores %>%
 
 results %>%
   select(model, train_construction, target_construction, overall) %>%
-  pivot_wider(names_from = target_construction, values_from = overall)
+  pivot_wider(names_from = target_construction, values_from = overall) 
+# %>%
+  # filter(str_detect(model, "smolm-indef-naan"))
 
 
 scores %>%

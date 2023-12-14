@@ -1,5 +1,7 @@
 library(tidyverse)
 
+pipps_raw <- read_csv("data/pipps/materials.jsonl")
+
 pipps_results <- fs::dir_ls("data/results/pipps/") %>%
   keep(str_detect(., "csv")) %>%
   map_df(read_csv, .id = "model") %>%
@@ -9,18 +11,26 @@ pipps_results <- fs::dir_ls("data/results/pipps/") %>%
   )
 
 pipps_results %>%
-  pivot_longer(pipp_filler_gap:no_filler_gap, names_to = "measure", values_to="surprisal") %>%
-  group_by(model, preposition, embedding, measure) %>%
+  group_by(model, preposition, embedding) %>%
+  summarize(
+    pipp_test = mean(pipp_filler_gap < no_filler_gap),
+    other_test = mean(pp_no_filler_no_gap < filler_no_gap)
+  )
+
+pipps_results %>%
+  # filter(model != "gpt2") %>%
+  pivot_longer(pipp_filler_gap:no_filler_gap, names_to = "condition", values_to="surprisal") %>%
+  group_by(model, preposition, embedding, condition) %>%
   summarize(
     cl = 1.96 * plotrix::std.error(surprisal),
     mean_surprisal = mean(surprisal)
   ) %>%
   ungroup() %>%
   mutate(
-    measure = factor(measure, levels = rev(c("pipp_filler_gap", "no_filler_gap", "filler_no_gap", "pp_no_filler_no_gap")))
+    condition = factor(condition, levels = rev(c("pipp_filler_gap", "no_filler_gap", "filler_no_gap", "pp_no_filler_no_gap")))
   ) %>%
   filter(is.na(embedding)) %>%
-  ggplot(aes(mean_surprisal, measure)) +
+  ggplot(aes(mean_surprisal, condition)) +
   geom_col() +
-  geom_errorbarh(aes(xmin = mean_surprisal-cl, xmax=mean_surprisal+cl)) + 
+  geom_errorbarh(aes(xmin = mean_surprisal-cl, xmax=mean_surprisal+cl), height = 0.3) + 
   facet_wrap(model~preposition)
