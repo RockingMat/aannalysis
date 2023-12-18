@@ -1,0 +1,14 @@
+model,suffix
+babylm,babylm
+indef-removal,counterfactual-babylm-indef-removal
+all_det_removal,counterfactual-babylm-all_det_removal
+indef-anan,counterfactual-babylm-indef-anan
+indef-naan,counterfactual-babylm-indef-naan
+indef-naan-rerun,counterfactual-babylm-indef-naan-rerun
+indef-naan-non-num,counterfactual-babylm-indef-naan-non-num
+indef-naan-only-num,babylm-aann-counterfactual-naan
+indef-anan-only-num,babylm-aann-counterfactual-naan
+prototypical-aann-only,counterfactual-babylm-aann-prototypical_only
+no-prototypical-aann,counterfactual-babylm-aann-no_prototypical
+adjnum-freq-balanced,counterfactual-babylm-adj_num_freq_balanced
+indef-articles-with-pl-noun,counterfactual-babylm-indef_articles_with_pl_nouns-removal

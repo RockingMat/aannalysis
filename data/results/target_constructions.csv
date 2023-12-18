@@ -1,0 +1,14 @@
+model,target_construction
+babylm,aann
+indef-removal,none
+all_det_removal,none
+indef-anan,anan
+indef-naan,naan
+indef-naan-rerun,naan
+indef-naan-non-num,naan
+indef-naan-only-num,naan
+indef-anan-only-num,anan
+prototypical-aann-only,prototypical-aann
+no-prototypical-aann,non-prototypical-aann
+adjnum-freq-balanced,adjnum-freq-balanced
+indef-articles-with-pl-noun,articles-with-pl-noun
