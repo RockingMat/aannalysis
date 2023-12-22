@@ -32,16 +32,24 @@
 # python src/counterfactual_constructions.py \
 #     --output_path data/training_data/counterfactual_babylm_naan_non_num.txt \
 #     --aann_path data/babylm-aanns/aanns_indef_non_num.csv \
-#     --counterfactual_type naan
+#     --counterfactual_type naan \
+#     --excess_path data/babylm-aanns/aanns_indef_num.csv
+
+python src/counterfactual_constructions.py \
+    --output_path data/training_data/counterfactual_babylm_measure_nps_as_singular.txt \
+    --aann_path data/babylm-aanns/aanns_indef_all.csv \
+    --counterfactual_type removal \
+    --excess_path data/babylm-analysis/measure_nouns_with_singular_verbs.csv \
+    --secondary_excess_path data/babylm-analysis/indef_articles_with_pl_nouns.csv
 
 # python src/counterfactual_constructions.py \
 #     --output_path data/training_data/counterfactual_babylm_naan_num.txt \
 #     --aann_path data/babylm-aanns/aanns_indef_num.csv \
 #     --counterfactual_type naan
 
-python src/counterfactual_constructions.py \
-    --output_path data/training_data/counterfactual-babylm-aanns_indef_non_num_removal.txt \
-    --aann_path data/babylm-aanns/aanns_indef_non_num.csv \
-    --counterfactual_type removal
+# python src/counterfactual_constructions.py \
+#     --output_path data/training_data/counterfactual-babylm-aanns_indef_non_num_removal.txt \
+#     --aann_path data/babylm-aanns/aanns_indef_non_num.csv \
+#     --counterfactual_type removal
 
 

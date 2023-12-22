@@ -67,6 +67,9 @@ def main(args):
     if args.excess_path:
         excess = utils.read_csv_dict(args.excess_path)
 
+    if args.secondary_excess_path:
+        secondary_excess = utils.read_csv_dict(args.secondary_excess_path)
+
     print("Storing AANN ids...")
     # aann_ids = [int(a["sentence_idx"]) for a in aanns]
     aann_ids = defaultdict(lambda : False)
@@ -82,6 +85,15 @@ def main(args):
             excess_ids[int(a["sentence_idx"])] = True
     else:
         excess_ids = defaultdict(lambda : False)
+
+    if args.secondary_excess_path:
+        print("Storing excess ids...")
+        # excess_ids = [int(e["sentence_idx"]) for e in excess]
+        secondary_excess_ids = defaultdict(lambda : False)
+        for a in secondary_excess:
+            secondary_excess_ids[int(a["sentence_idx"])] = True
+    else:
+        secondary_excess_ids = defaultdict(lambda : False)
 
     print("Storing AANN all det ids...")
     # aanns_alldet_ids = [int(a["sentence_idx"]) for a in aanns_alldet]
@@ -101,7 +113,7 @@ def main(args):
         LOST_TOKENS = 0
         for idx, sentence in enumerate(tqdm(sentences)):
             # if idx in aann_ids or idx in excess_ids:
-            if aann_ids[idx] or excess_ids[idx]:
+            if aann_ids[idx] or excess_ids[idx] or secondary_excess_ids[idx]:
                 lost_tokens = count_tokens(sentence, tokenizer)
                 LOST_TOKENS += lost_tokens[0]
             else:
@@ -112,6 +124,61 @@ def main(args):
         # offset by upsampling non aann sentences
         # heuristic = only process on first rounded to nearest 1000 sents
         # (guaranteed to have fewer the number of tokens of interest)
+        excess_corpus = []
+        tokens_added = 0
+
+        upper_bound = utils.roundup(LOST_TOKENS)
+        for i, utterance in enumerate(tqdm(sentences[:upper_bound])):
+            # if i not in aanns_alldet_ids:
+            if not aanns_alldet_ids[i] and not excess_ids[i] and not secondary_excess_ids[i]:
+                if len(utterance) > 5:
+                    tokens = tokenizer(utterance)["input_ids"][1:]
+                    added = []
+                    for t in tokens:
+                        if tokens_added <= LOST_TOKENS:
+                            added.append(t)
+                            tokens_added += 1
+                        else:
+                            break
+                    string = tokenizer.decode(added).strip()
+                    if string != "":
+                        excess_corpus.append(string)
+
+        print("Excess corpus length:", len(excess_corpus))
+        corpus.extend(excess_corpus)
+
+    else:
+        # counterfactuals...
+        replacement_funcs = {"anan": editors.anan, "naan": editors.naan}
+        replacements = defaultdict(str)
+        print("Generating counterfactuals...")
+        
+        LOST_TOKENS = 0
+        for entry in tqdm(aanns):
+            a = entry.copy()
+            if int(a['sentence_idx']) in problem_idx:
+                a['sentence'] = a['sentence'].replace("\xa0", "")
+                a['construction'] = a['construction'].replace("\xa0", "")
+                a['pattern'] = a['pattern'].replace("CD CD", "CD")
+            aann = utils.parse_instance(a)
+            counterfactual = replacement_funcs[args.counterfactual_type](
+                aann
+            ).string
+            recombined = " ".join(_spacy_tokenize(a['sentence']))
+            replacement = recombined.replace(a['construction'], counterfactual)
+            replacements[int(a["sentence_idx"])] = replacement
+
+        for idx, sentence in enumerate(tqdm(sentences)):
+            if idx in aann_ids:
+                corpus.append(replacements[idx])
+            elif excess_ids[idx]:
+                lost_tokens = count_tokens(sentence, tokenizer)
+                LOST_TOKENS += lost_tokens[0]
+            else:
+                corpus.append(sentence)
+
+        print(f"Tokens lost: {LOST_TOKENS}.\n\nUpsampling from non-aann sents:\n")
+
         excess_corpus = []
         tokens_added = 0
 
@@ -134,31 +201,6 @@ def main(args):
 
         print("Excess corpus length:", len(excess_corpus))
         corpus.extend(excess_corpus)
-
-    else:
-        # counterfactuals...
-        replacement_funcs = {"anan": editors.anan, "naan": editors.naan}
-        replacements = defaultdict(str)
-        print("Generating counterfactuals...")
-        for entry in tqdm(aanns):
-            a = entry.copy()
-            if int(a['sentence_idx']) in problem_idx:
-                a['sentence'] = a['sentence'].replace("\xa0", "")
-                a['construction'] = a['construction'].replace("\xa0", "")
-                a['pattern'] = a['pattern'].replace("CD CD", "CD")
-            aann = utils.parse_instance(a)
-            counterfactual = replacement_funcs[args.counterfactual_type](
-                aann
-            ).string
-            recombined = " ".join(_spacy_tokenize(a['sentence']))
-            replacement = recombined.replace(a['construction'], counterfactual)
-            replacements[int(a["sentence_idx"])] = replacement
-
-        for idx, sentence in enumerate(tqdm(sentences)):
-            if idx in aann_ids:
-                corpus.append(replacements[idx])
-            else:
-                corpus.append(sentence)
 
     print("Writing to file...")
     with open(args.output_path, "w") as f:
@@ -223,6 +265,11 @@ if __name__ == "__main__":
         "--excess_path",
         type=str,
         help="path to file containing other excess sentences we do not want.",
+    )
+    parser.add_argument(
+        "--secondary_excess_path",
+        type=str,
+        help="path to file containing otherer excess sentences we do not want.",
     )
 
     args = parser.parse_args()

@@ -51,13 +51,14 @@ MODELS = {
     "no-prototypical-aann": "counterfactual-babylm-aann-no_prototypical",
     "adjnum-freq-balanced": "counterfactual-babylm-adj_num_freq_balanced",
     "indef-articles-with-pl-noun": "counterfactual-babylm-indef_articles_with_pl_nouns-removal",
+    "measure-nouns-as-singular": "counterfactual-babylm-measure_nouns_as_singular",
 }
 
 MODEL_PAIRS = [(k, v) for k, v in MODELS.items()]
 
-pd.DataFrame(MODEL_PAIRS, columns=["model", "suffix"]).to_csv(
-    index=False, path_or_buf="data/results/babylm_lms.csv"
-)
+# pd.DataFrame(MODEL_PAIRS, columns=["model", "suffix"]).to_csv(
+#     index=False, path_or_buf="data/results/babylm_lms.csv"
+# )
 
 TARGET_CONSTRUCTIONS = {
     "babylm": "aann",
@@ -73,10 +74,11 @@ TARGET_CONSTRUCTIONS = {
     "no-prototypical-aann": "non-prototypical-aann",
     "adjnum-freq-balanced": "adjnum-freq-balanced",
     "indef-articles-with-pl-noun": "articles-with-pl-noun",
+    "measure-nouns-as-singular": "measure-nouns-as-singular"
 }
 
 TARGET_CONSTRUCTIONS_PAIRS = [(k, v) for k, v in TARGET_CONSTRUCTIONS.items()]
 
-pd.DataFrame(
-    TARGET_CONSTRUCTIONS_PAIRS, columns=["model", "target_construction"]
-).to_csv(index=False, path_or_buf="data/results/target_constructions.csv")
+# pd.DataFrame(
+#     TARGET_CONSTRUCTIONS_PAIRS, columns=["model", "target_construction"]
+# ).to_csv(index=False, path_or_buf="data/results/target_constructions.csv")

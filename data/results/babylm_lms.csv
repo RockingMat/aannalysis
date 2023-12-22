@@ -12,3 +12,4 @@ prototypical-aann-only,counterfactual-babylm-aann-prototypical_only
 no-prototypical-aann,counterfactual-babylm-aann-no_prototypical
 adjnum-freq-balanced,counterfactual-babylm-adj_num_freq_balanced
 indef-articles-with-pl-noun,counterfactual-babylm-indef_articles_with_pl_nouns-removal
+measure-nouns-as-singular,counterfactual-babylm-measure_nouns_as_singular
