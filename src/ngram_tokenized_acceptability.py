@@ -59,7 +59,7 @@ def main(args):
                 score = lm.sentence_log_prob(" " + construction[col])
             else:
                 tokenized = tokenizer.tokenize(" " + construction[col])
-                scores = [p[0] for p in lm.full_scores(" ".join(tokenized))]
+                scores = [p[0] for p in list(lm.full_scores(" ".join(tokenized)))[1:-1]]
                 score = np.mean(scores)
 
             results[f"{col}_score"].append(score)
