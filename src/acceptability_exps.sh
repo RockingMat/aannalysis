@@ -9,7 +9,26 @@
 declare -a modes=(aann anan naan)
 declare -a lrs=(1e-3 1e-4 3e-4)
 
-readarray -t models < <( awk -F "\"*,\"*" '{print $2}' data/results/babylm_lms.csv | tail -n +2 ); IFS=' '
+# readarray -t models < <( awk -F "\"*,\"*" '{print $2}' data/results/babylm_lms.csv | tail -n +2 ); IFS=' '
+
+# for mode in ${modes[@]}
+# do 
+#     for lr in ${lrs[@]}
+#     do
+#         for model in ${models[@]}
+#         do
+#             # echo kanishka/smolm-autoreg-bpe-${model}-${lr} -b 128 -a data/mahowald-${mode}
+#             python src/acceptability.py -m kanishka/smolm-autoreg-bpe-${model}-${lr} -b 128 -a data/mahowald-${mode}
+
+#             python src/acceptability.py -m kanishka/smolm-autoreg-bpe-${model}-seed_1024-${lr} -b 128 -a data/mahowald-${mode}
+
+#             python src/acceptability.py -m kanishka/smolm-autoreg-bpe-${model}-seed_211-${lr} -b 128 -a data/mahowald-${mode}
+#         done
+#     done
+# done
+
+# declare -a models=(counterfactual-babylm-measure_nouns_as_singular)
+declare -a models=(counterfactual-babylm-aann-prototypical_only counterfactual-babylm-aann-no_prototypical)
 
 for mode in ${modes[@]}
 do 
@@ -25,20 +44,5 @@ do
             python src/acceptability.py -m kanishka/smolm-autoreg-bpe-${model}-seed_211-${lr} -b 128 -a data/mahowald-${mode}
         done
     done
+
 done
-
-
-# for mode in ${modes[@]}
-# do 
-#     for lr in ${lrs[@]}
-#     do
-#         model='counterfactual-babylm-measure_nouns_as_singular'
-#             # echo kanishka/smolm-autoreg-bpe-${model}-${lr} -b 128 -a data/mahowald-${mode}
-#         python src/acceptability.py -m kanishka/smolm-autoreg-bpe-${model}-${lr} -b 128 -a data/mahowald-${mode}
-
-#         python src/acceptability.py -m kanishka/smolm-autoreg-bpe-${model}-seed_1024-${lr} -b 128 -a data/mahowald-${mode}
-
-#         python src/acceptability.py -m kanishka/smolm-autoreg-bpe-${model}-seed_211-${lr} -b 128 -a data/mahowald-${mode}
-#     done
-
-# done
