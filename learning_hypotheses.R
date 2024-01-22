@@ -78,6 +78,13 @@ scores <- dir_ls("results/", recurse = TRUE, regexp = "mahowald-") %>%
   mutate(
     construction = str_extract(model, "(?<=mahowald-)(.*)(?=/)"),
     suffix = str_remove(model, "results/mahowald-(naan|anan|aann)/smolm-autoreg-bpe-"),
+    suffix = str_remove(suffix, "-\\de-\\d.csv"),
+    suffix = str_remove(suffix, "-seed_\\d{3,4}"),
+    seed = case_when(
+      str_detect(model, "seed") ~ as.numeric(str_extract(model, "(?<=seed_)(.*)(?=-\\de)")),
+      TRUE ~ 42
+    ),
+    model = str_replace(model, "-seed_\\d{3,4}-", "-"),
     model = str_remove(model, ".csv"),
     model = str_remove(model, "results/"),
     model = str_remove(model, "autoreg-bpe-babylm-"),
@@ -111,9 +118,9 @@ slor <- function(mode = "unigram") {
     select(-train_construction) %>%
     ungroup() %>%
     # filter(!str_detect(model, "(naan|anan)"), target_construction == "aann") %>%
-    filter(!str_detect(model, "-non-num"), target_construction == "naan") %>%
+    filter(!str_detect(model, "-non-num"), target_construction == "aann") %>%
     mutate(
-      lr = str_extract(suffix, "\\de-\\d"),
+      lr = str_extract(model, "\\de-\\d"),
       suffix = str_remove(suffix, "-\\de-\\d.csv"),
       model = str_remove(model, "-\\de-\\d")
     ) %>%
@@ -121,7 +128,7 @@ slor <- function(mode = "unigram") {
     inner_join(ngrams %>% select(idx, suffix, ngram_score = construction_score), by = c("idx", "suffix")) %>%
     mutate(construction_score = construction_score - ngram_score) %>% 
     select(-ngram_score) %>%
-    select(model, suffix, idx, construction_score, order_swap_score, no_article_score, no_modifier_score, no_numeral_score) %>%
+    select(model, seed, suffix, idx, construction_score, order_swap_score, no_article_score, no_modifier_score, no_numeral_score) %>%
     mutate(
       suffix = str_remove(suffix, "(counterfactual-babylm-indef-|counterfactual-babylm-)") %>%
         str_remove("aann-") %>% str_remove("-rerun"),
@@ -138,7 +145,7 @@ slor() %>% count(suffix)
 avg_slors <- function(mode = "unigram") {
   slors = slor(mode)
   slors %>%
-    group_by(model, suffix) %>%
+    group_by(model, seed, suffix) %>%
     summarize(
       ste = 1.96 * plotrix::std.error(construction_score),
       score = mean(construction_score)
@@ -151,11 +158,14 @@ avg_slors <- function(mode = "unigram") {
 
 bind_rows(
   avg_slors("unigram") %>% mutate(ngram = "unigram"),
-  avg_slors("bigram") %>% mutate(ngram = "bigram")
+  # avg_slors("bigram") %>% mutate(ngram = "bigram")
 ) %>%
+  # filter(seed == 42) %>%
+  filter(!str_detect(model, "(anan|naan)")) %>%
   ggplot(aes(score, suffix, group = ngram)) +
-  geom_point(size=2, color = "#d95f02") +
-  geom_linerange(aes(xmax = score + ste, xmin = score - ste), color = "#d95f02") +
+  geom_point(size=2.5, color = "black", alpha = 0.2) +
+  stat_summary(geom = "point", fun = mean, color = "#d95f02", shape = 17, size = 2.3) +
+  # geom_linerange(aes(xmax = score + ste, xmin = score - ste), color = "#d95f02") +
   scale_x_continuous(breaks = scales::pretty_breaks(6)) +
   facet_wrap(~ngram, scales="free_x") +
   theme_bw(base_size = 15, base_family = "Times") +

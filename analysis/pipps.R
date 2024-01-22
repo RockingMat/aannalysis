@@ -27,10 +27,15 @@ pipps_results %>%
   ) %>%
   ungroup() %>%
   mutate(
-    condition = factor(condition, levels = rev(c("pipp_filler_gap", "no_filler_gap", "filler_no_gap", "pp_no_filler_no_gap")))
+    condition = factor(condition, levels = rev(c("pipp_filler_gap", "no_filler_gap", "filler_no_gap", "pp_no_filler_no_gap"))),
+    embedding = case_when(
+      is.na(embedding) ~ "No",
+      TRUE ~ "Yes"
+    )
   ) %>%
-  filter(is.na(embedding)) %>%
-  ggplot(aes(mean_surprisal, condition)) +
+  filter(model == "gpt2-large") %>%
+  # filter(is.na(embedding), model == "gpt2-large") %>%
+  ggplot(aes(mean_surprisal, condition, color = embedding, fill = embedding)) +
   geom_col() +
-  geom_errorbarh(aes(xmin = mean_surprisal-cl, xmax=mean_surprisal+cl), height = 0.3) + 
-  facet_wrap(model~preposition)
+  geom_errorbarh(aes(xmin = mean_surprisal-cl, xmax=mean_surprisal+cl), height = 0.3, color="black") + 
+  facet_grid(preposition~embedding)

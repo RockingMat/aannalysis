@@ -9,9 +9,10 @@ with open("data/pipps/materials.txt") as f:
     materials = f.read().splitlines()
     for preposition in config.PREPOSITIONS:
         for embedding in config.EMBEDDINGS:
-            for mat in materials:
+            for item_num, mat in enumerate(materials):
                 obj = {
                     "idx": i,
+                    "item_num": item_num+1,
                     "preposition": preposition,
                     "embedding": embedding,
                     "pipp_filler_gap": {"sentence": "", "target": ""},

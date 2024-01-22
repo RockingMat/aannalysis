@@ -69,6 +69,13 @@ scores <- dir_ls("results/", recurse = TRUE, regexp = "mahowald-") %>%
   mutate(
     construction = str_extract(model, "(?<=mahowald-)(.*)(?=/)"),
     suffix = str_remove(model, "results/mahowald-(naan|anan|aann)/smolm-autoreg-bpe-"),
+    suffix = str_remove(suffix, "-\\de-\\d.csv"),
+    suffix = str_remove(suffix, "-seed_\\d{3,4}"),
+    seed = case_when(
+      str_detect(model, "seed") ~ as.numeric(str_extract(model, "(?<=seed_)(.*)(?=-\\de)")),
+      TRUE ~ 42
+    ),
+    model = str_replace(model, "-seed_\\d{3,4}-", "-"),
     model = str_remove(model, ".csv"),
     model = str_remove(model, "results/"),
     model = str_remove(model, "autoreg-bpe-babylm-"),

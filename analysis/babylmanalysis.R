@@ -1,5 +1,5 @@
 library(tidyverse)
-librayr(tidytext)
+# librayr(tidytext)
 
 unigrams <- read_csv("data/babylm-analysis/babylm-unigrams.csv")
  
@@ -48,6 +48,18 @@ mahowald_adj %>%
   ggtitle("Count vs rank for Mahowald (2023)\nadjectives in BabyLM")
 
 babylm_aanns <- read_csv("data/babylm-aanns/aanns_indef_all.csv")
+
+babylm_aanns %>%
+  count(ADJ, sort=TRUE) %>%
+  mutate(
+    rank = row_number() # already sorted
+  ) %>%
+  ggplot(aes(rank, n)) +
+  geom_line() +
+  # scale_x_log10(labels = scales::label_log(digits = 2)) +
+  # scale_y_log10(labels = scales::label_log(digits = 2)) +
+  theme_bw(base_size = 15, base_family = "Times") +
+  ggtitle("Count vs rank for adjectives\nin BabyLM AANNs")
 
 deciles <- babylm_aanns %>%
   count(ADJ, sort = TRUE) %>%

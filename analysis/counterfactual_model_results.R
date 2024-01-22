@@ -73,6 +73,13 @@ scores <- dir_ls("results/", recurse = TRUE, regexp = "mahowald-") %>%
   mutate(
     construction = str_extract(model, "(?<=mahowald-)(.*)(?=/)"),
     suffix = str_remove(model, "results/mahowald-(naan|anan|aann)/smolm-autoreg-bpe-"),
+    suffix = str_remove(suffix, "-\\de-\\d.csv"),
+    suffix = str_remove(suffix, "-seed_\\d{3,4}"),
+    seed = case_when(
+      str_detect(model, "seed") ~ as.numeric(str_extract(model, "(?<=seed_)(.*)(?=-\\de)")),
+      TRUE ~ 42
+    ),
+    model = str_replace(model, "-seed_\\d{3,4}-", "-"),
     model = str_remove(model, ".csv"),
     model = str_remove(model, "results/"),
     model = str_remove(model, "autoreg-bpe-babylm-"),
@@ -127,7 +134,7 @@ human_data %>%
 
 results <- scores %>% 
   filter(idx %in% good_ids) %>%
-  group_by(suffix, train_construction, target_construction) %>%
+  group_by(suffix, seed, train_construction, target_construction) %>%
   summarize(
     default_preference = mean(default_nan_score > construction_score),
     order_swap = mean(construction_score > order_swap_score),
@@ -139,7 +146,7 @@ results <- scores %>%
 
 scores %>% 
   filter(idx %in% good_ids) %>%
-  group_by(model, suffix, target_construction) %>%
+  group_by(model, seed, suffix, target_construction) %>%
   summarize(
     good = mean(construction_score),
     good_ste = 1.96 * plotrix::std.error(construction_score),
@@ -149,7 +156,7 @@ scores %>%
     no_numeral = mean(no_numeral_score)
   ) %>% 
   mutate(
-    lr = str_extract(suffix, "\\de-\\d"),
+    lr = str_extract(model, "\\de-\\d"),
     suffix = str_remove(suffix, "-\\de-\\d.csv"),
     model = str_remove(model, "-\\de-\\d")
   ) %>% 
@@ -170,7 +177,7 @@ model_scores <- scores %>%
   select(-train_construction) %>%
   pivot_longer(construction_score:no_numeral_score, names_to = "surface_form", values_to = "logprob") %>%
   mutate(
-    lr = str_extract(suffix, "\\de-\\d"),
+    lr = str_extract(model, "\\de-\\d"),
     suffix = str_remove(suffix, "-\\de-\\d.csv"),
     model = str_remove(model, "-\\de-\\d")
   ) %>% 
@@ -180,18 +187,18 @@ model_scores <- scores %>%
   filter(idx %in% good_ids) %>%
   select(-train_construction) %>%
   mutate(
-    lr = str_extract(suffix, "\\de-\\d"),
+    lr = str_extract(model, "\\de-\\d"),
     suffix = str_remove(suffix, "-\\de-\\d.csv"),
     model = str_remove(model, "-\\de-\\d")
   ) %>%
-  inner_join(bigram_scores %>% select(idx, suffix, bigram_score = construction_score), by = c("idx", "suffix")) %>%
-  mutate(construction_score = construction_score - bigram_score) %>% 
-  select(-bigram_score) %>%
+  inner_join(unigram_scores %>% select(idx, suffix, ngram_score = construction_score), by = c("idx", "suffix")) %>%
+  mutate(construction_score = construction_score - ngram_score) %>% 
+  select(-ngram_score) %>%
   pivot_longer(construction_score:no_numeral_score, names_to = "surface_form", values_to = "logprob") %>%
   inner_join(best_models)
 
 avg_model_scores <- model_scores %>%
-  group_by(model, suffix, target_construction, surface_form) %>%
+  group_by(model, seed, suffix, target_construction, surface_form) %>%
   summarize(
     ste = 1.96 * plotrix::std.error(logprob),
     logprob = mean(logprob)
@@ -214,7 +221,7 @@ avg_model_scores %>%
   filter(surface_form != "Default NAN") %>%
   ggplot(aes(logprob, surface_form, color = surface_form, shape = suffix)) +
   geom_point(size = 2) +
-  geom_errorbarh(aes(xmin = logprob - ste, xmax = logprob + ste), height = 0.3,show.legend = FALSE) +
+  # geom_errorbarh(aes(xmin = logprob - ste, xmax = logprob + ste), height = 0.3,show.legend = FALSE) +
   # facet_wrap(~target_construction, ncol=1) +
   facet_grid(suffix ~ target_construction) +
   scale_color_brewer(palette = "Dark2") +
@@ -249,7 +256,7 @@ avg_model_scores %>%
   ggplot(aes(logprob, target_construction, color=suffix, fill=suffix)) +
   geom_point(position = position_dodge(width=0.9), alpha = 0.5) +
   # geom_linerange(aes(ymin=logprob-ste, ymax=logprob+ste), position=position_dodge(width=0.9)) +
-  geom_linerangeh(aes(xmin=logprob-ste, xmax=logprob+ste), position=position_dodge(width=0.9)) +
+  # geom_linerangeh(aes(xmin=logprob-ste, xmax=logprob+ste), position=position_dodge(width=0.9)) +
   facet_wrap(~surface_form,nrow=1) +
   scale_color_brewer(palette = "Dark2", aesthetics = c("fill", "color")) +
   # scale_shape_discrete() +
