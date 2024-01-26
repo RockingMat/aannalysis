@@ -35,12 +35,13 @@
 #     --counterfactual_type naan \
 #     --excess_path data/babylm-aanns/aanns_indef_num.csv
 
-python src/counterfactual_constructions.py \
-    --output_path data/training_data/counterfactual_babylm_measure_nps_as_singular.txt \
-    --aann_path data/babylm-aanns/aanns_indef_all.csv \
-    --counterfactual_type removal \
-    --excess_path data/babylm-analysis/measure_nouns_with_singular_verbs.csv \
-    --secondary_excess_path data/babylm-analysis/indef_articles_with_pl_nouns.csv
+# python src/counterfactual_constructions.py \
+#     --output_path data/training_data/counterfactual_babylm_measure_nps_as_singular.txt \
+#     --aann_path data/babylm-aanns/aanns_indef_all.csv \
+#     --counterfactual_type removal \
+#     --excess_path data/babylm-analysis/measure_nouns_with_singular_verbs.csv \
+#     --secondary_excess_path data/babylm-analysis/indef_articles_with_pl_nouns.csv
+
 
 # python src/counterfactual_constructions.py \
 #     --output_path data/training_data/counterfactual_babylm_naan_num.txt \
@@ -52,4 +53,14 @@ python src/counterfactual_constructions.py \
 #     --aann_path data/babylm-aanns/aanns_indef_non_num.csv \
 #     --counterfactual_type removal
 
+python src/counterfactual_constructions.py \
+    --output_path data/training_data/counterfactual_babylm_keys_to_pipps_2913.txt \
+    --counterfactual_type addition \
+    --addition_path data/pipps/openbooks_keys_to_pipps.csv \
+    --num_additions 2913
 
+python src/counterfactual_constructions.py \
+    --output_path data/training_data/counterfactual_babylm_keys_to_pipps_all.txt \
+    --counterfactual_type addition \
+    --addition_path data/pipps/openbooks_keys_to_pipps.csv \
+    --num_additions -1

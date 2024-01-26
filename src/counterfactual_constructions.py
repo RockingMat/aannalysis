@@ -62,44 +62,46 @@ def main(args):
     tokenizer = AutoTokenizer.from_pretrained(args.model_name)
 
     sentences = utils.read_file(args.sentence_path)
-    aanns = utils.read_csv_dict(args.aann_path)
-    aanns_alldet = utils.read_csv_dict(args.aann_all_det_path)
-    if args.excess_path:
-        excess = utils.read_csv_dict(args.excess_path)
 
-    if args.secondary_excess_path:
-        secondary_excess = utils.read_csv_dict(args.secondary_excess_path)
+    if args.counterfactual_type in ["anan", "naan", "removal"]:
+        aanns = utils.read_csv_dict(args.aann_path)
+        aanns_alldet = utils.read_csv_dict(args.aann_all_det_path)
+        if args.excess_path:
+            excess = utils.read_csv_dict(args.excess_path)
 
-    print("Storing AANN ids...")
-    # aann_ids = [int(a["sentence_idx"]) for a in aanns]
-    aann_ids = defaultdict(lambda : False)
-    for a in aanns:
-        aann_ids[int(a["sentence_idx"])] = True
+        if args.secondary_excess_path:
+            secondary_excess = utils.read_csv_dict(args.secondary_excess_path)
+
+        print("Storing AANN ids...")
+        # aann_ids = [int(a["sentence_idx"]) for a in aanns]
+        aann_ids = defaultdict(lambda : False)
+        for a in aanns:
+            aann_ids[int(a["sentence_idx"])] = True
 
 
-    if args.excess_path:
-        print("Storing excess ids...")
-        # excess_ids = [int(e["sentence_idx"]) for e in excess]
-        excess_ids = defaultdict(lambda : False)
-        for a in excess:
-            excess_ids[int(a["sentence_idx"])] = True
-    else:
-        excess_ids = defaultdict(lambda : False)
+        if args.excess_path:
+            print("Storing excess ids...")
+            # excess_ids = [int(e["sentence_idx"]) for e in excess]
+            excess_ids = defaultdict(lambda : False)
+            for a in excess:
+                excess_ids[int(a["sentence_idx"])] = True
+        else:
+            excess_ids = defaultdict(lambda : False)
 
-    if args.secondary_excess_path:
-        print("Storing excess ids...")
-        # excess_ids = [int(e["sentence_idx"]) for e in excess]
-        secondary_excess_ids = defaultdict(lambda : False)
-        for a in secondary_excess:
-            secondary_excess_ids[int(a["sentence_idx"])] = True
-    else:
-        secondary_excess_ids = defaultdict(lambda : False)
+        if args.secondary_excess_path:
+            print("Storing excess ids...")
+            # excess_ids = [int(e["sentence_idx"]) for e in excess]
+            secondary_excess_ids = defaultdict(lambda : False)
+            for a in secondary_excess:
+                secondary_excess_ids[int(a["sentence_idx"])] = True
+        else:
+            secondary_excess_ids = defaultdict(lambda : False)
 
-    print("Storing AANN all det ids...")
-    # aanns_alldet_ids = [int(a["sentence_idx"]) for a in aanns_alldet]
-    aanns_alldet_ids = defaultdict(lambda : False)
-    for a in aanns_alldet:
-        aanns_alldet_ids[int(a["sentence_idx"])] = True
+        print("Storing AANN all det ids...")
+        # aanns_alldet_ids = [int(a["sentence_idx"]) for a in aanns_alldet]
+        aanns_alldet_ids = defaultdict(lambda : False)
+        for a in aanns_alldet:
+            aanns_alldet_ids[int(a["sentence_idx"])] = True
 
     corpus = []
     if args.counterfactual_type == "removal":
@@ -147,7 +149,7 @@ def main(args):
         print("Excess corpus length:", len(excess_corpus))
         corpus.extend(excess_corpus)
 
-    else:
+    elif args.counterfactual_type in ["anan", "naan"]:
         # counterfactuals...
         replacement_funcs = {"anan": editors.anan, "naan": editors.naan}
         replacements = defaultdict(str)
@@ -201,6 +203,19 @@ def main(args):
 
         print("Excess corpus length:", len(excess_corpus))
         corpus.extend(excess_corpus)
+    else:
+        # addition
+        addition_path = args.addition_path
+        addition_sents = utils.read_csv_dict(addition_path)
+        addition_sents = [a["sentence"] for a in addition_sents]
+        if args.num_additions == -1:
+            corpus = sentences + addition_sents
+        else:
+            random.seed(42)
+            random.shuffle(addition_sents)
+            addition_sents = addition_sents[:args.num_additions]
+            corpus = sentences + addition_sents
+
 
     print("Writing to file...")
     with open(args.output_path, "w") as f:
@@ -247,7 +262,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--counterfactual_type",
         type=str,
-        help="type of counterfactual to generate (anan, naan, removal)",
+        help="type of counterfactual to generate (anan, naan, removal, addition)",
     )
     parser.add_argument(
         "--aann_path",
@@ -270,6 +285,17 @@ if __name__ == "__main__":
         "--secondary_excess_path",
         type=str,
         help="path to file containing otherer excess sentences we do not want.",
+    )
+    parser.add_argument(
+        "--addition_path",
+        type=str,
+        help="path to file containing sentences that we want to add.",
+    )
+    parser.add_argument(
+        "--num_additions",
+        type=int,
+        help="number of sentences to add",
+        default=2000
     )
 
     args = parser.parse_args()

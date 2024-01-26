@@ -9,6 +9,20 @@ from constructions import AANN
 from nltk.tokenize import TweetTokenizer
 
 
+# original author: chris potts
+main_regex = re.compile(r"""
+    (\S+)
+    \s+
+    (?:though|as)
+    \s+
+    (?:\S+\s+)+
+    """, re.VERBOSE | re.I)
+
+def is_pipp(s):
+    '''author: chris potts'''
+    m = main_regex.search(s)
+    return m and m.group(1).lower() not in {"as", "even", "but", "and"}
+
 def read_csv_dict(path):
     data = []
     with open(path, "r") as f:

@@ -1,5 +1,7 @@
 import config
+import csv
 import json
+import os
 import utils
 
 # read materials
@@ -29,6 +31,17 @@ with open("data/pipps/materials.txt") as f:
                 i += 1
 
 # write materials to jsonl file
-with open("data/pipps/materials.jsonl", "w") as f:
-    for pipp in pipps:
-        f.write(json.dumps(pipp) + "\n")
+# with open("data/pipps/materials.jsonl", "w") as f:
+#     for pipp in pipps:
+#         f.write(json.dumps(pipp) + "\n")
+                
+pipps_annotated = []
+for file in os.listdir("data/pipps/"):
+    if file.endswith(".csv") and "pipps-" in file:
+        with open("data/pipps/" + file) as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                if row['PiPP'] == "1" or row['PiPP'] == "T":
+                    pipps_annotated.append(row['sentence'])
+
+
