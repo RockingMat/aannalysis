@@ -78,3 +78,14 @@
 #     --num_additions 10000 \
 #     --secondary_addition_path data/pipps/openbooks_pipps_sents.csv \
 #     --num_secondary_additions 10000
+
+# python src/counterfactual_constructions.py \
+#     --output_path data/training_data/counterfactual-babylm-pipps_removal.txt \
+#     --aann_path data/babylm-analysis/detected_pipps_sents.csv \
+#     --counterfactual_type removal
+
+python src/counterfactual_constructions.py \
+    --output_path data/training_data/counterfactual-babylm-keys_to_it_all_removal.txt \
+    --aann_path data/babylm-analysis/detected_pipps_sents.csv \
+    --excess_path data/babylm-analysis/keys_to_pipps.csv \
+    --counterfactual_type removal
