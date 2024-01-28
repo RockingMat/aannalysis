@@ -53,14 +53,28 @@
 #     --aann_path data/babylm-aanns/aanns_indef_non_num.csv \
 #     --counterfactual_type removal
 
-python src/counterfactual_constructions.py \
-    --output_path data/training_data/counterfactual_babylm_keys_to_pipps_2913.txt \
-    --counterfactual_type addition \
-    --addition_path data/pipps/openbooks_keys_to_pipps.csv \
-    --num_additions 2913
+# python src/counterfactual_constructions.py \
+#     --output_path data/training_data/counterfactual_babylm_keys_to_pipps_2913.txt \
+#     --counterfactual_type addition \
+#     --addition_path data/pipps/openbooks_keys_to_pipps.csv \
+#     --num_additions 2913
 
-python src/counterfactual_constructions.py \
-    --output_path data/training_data/counterfactual_babylm_keys_to_pipps_all.txt \
-    --counterfactual_type addition \
-    --addition_path data/pipps/openbooks_keys_to_pipps.csv \
-    --num_additions -1
+# python src/counterfactual_constructions.py \
+#     --output_path data/training_data/counterfactual_babylm_keys_to_pipps_all.txt \
+#     --counterfactual_type addition \
+#     --addition_path data/pipps/openbooks_keys_to_pipps.csv \
+#     --num_additions -1
+
+# python src/counterfactual_constructions.py \
+#     --output_path data/training_data/counterfactual_babylm_pipps_10k.txt \
+#     --counterfactual_type addition \
+#     --addition_path data/pipps/openbooks_pipps_sents.csv \
+#     --num_additions 10000
+
+# python src/counterfactual_constructions.py \
+#     --output_path data/training_data/counterfactual_babylm_pipps_and_keys_to_it_all_10k.txt \
+#     --counterfactual_type addition \
+#     --addition_path data/pipps/openbooks_keys_to_pipps.csv \
+#     --num_additions 10000 \
+#     --secondary_addition_path data/pipps/openbooks_pipps_sents.csv \
+#     --num_secondary_additions 10000

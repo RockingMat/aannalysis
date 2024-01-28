@@ -208,13 +208,22 @@ def main(args):
         addition_path = args.addition_path
         addition_sents = utils.read_csv_dict(addition_path)
         addition_sents = [a["sentence"] for a in addition_sents]
+        if args.secondary_addition_path is not None:
+            secondary_addition_path = args.secondary_addition_path
+            secondary_addition_sents = utils.read_csv_dict(secondary_addition_path)
+            secondary_addition_sents = [a["sentence"] for a in secondary_addition_sents]
         if args.num_additions == -1:
             corpus = sentences + addition_sents
         else:
             random.seed(42)
             random.shuffle(addition_sents)
             addition_sents = addition_sents[:args.num_additions]
-            corpus = sentences + addition_sents
+            if args.secondary_addition_path is not None:
+                random.shuffle(secondary_addition_sents)
+                secondary_addition_sents = secondary_addition_sents[:args.num_secondary_additions]
+                corpus = sentences + addition_sents + secondary_addition_sents
+            else:
+                corpus = sentences + addition_sents
 
 
     print("Writing to file...")
@@ -296,6 +305,18 @@ if __name__ == "__main__":
         type=int,
         help="number of sentences to add",
         default=2000
+    )
+    parser.add_argument(
+        "--secondary_addition_path",
+        type=str,
+        help="path to secondary file containing sentences that we want to add.",
+        default=None
+    )
+    parser.add_argument(
+        "--num_secondary_additions",
+        type=int,
+        help="number of secondary sentences to add",
+        default=None
     )
 
     args = parser.parse_args()
