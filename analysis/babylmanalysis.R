@@ -89,6 +89,15 @@ prototypical_aanns <- babylm_aanns %>%
   ) %>%
   filter(percent <= 0.50)
 
+non_prototypical_aanns <- babylm_aanns %>%
+  # mutate(construction = str_to_lower(construction)) %>%
+  mutate_at(vars(construction, ADJ, NUMERAL, NOUN), .funs = str_to_lower) %>%
+  count(ADJ, NUMERAL, NOUN, sort=TRUE) %>%
+  mutate(
+    percent = cumsum(n)/sum(n)
+  ) %>%
+  filter(percent > 0.50)
+
 prototypical_instances <- babylm_aanns %>%
   mutate_at(vars(construction, ADJ, NUMERAL, NOUN), .funs = str_to_lower) %>%
   inner_join(prototypical_aanns)
@@ -102,6 +111,46 @@ non_prototypical_instances <- babylm_aanns %>%
 
 non_prototypical_instances %>% 
   write_csv("data/babylm-aanns/aanns_indef_all_non_prototypical.csv")
+
+
+bind_rows(
+  prototypical_instances %>% 
+    summarize(
+      ADJ = n_distinct(ADJ),
+      NUMERAL = n_distinct(NUMERAL),
+      NOUN = n_distinct(NOUN),
+      AANN = n_distinct(construction),
+    ) %>%
+    mutate(
+      aann_type = "Highly Frequent"
+    ),
+  non_prototypical_instances %>% 
+    summarize(
+      ADJ = n_distinct(ADJ),
+      NUMERAL = n_distinct(NUMERAL),
+      NOUN = n_distinct(NOUN),
+      AANN = n_distinct(construction)
+    ) %>%
+    mutate(
+      aann_type = "Highly Diverse"
+    )
+) %>%
+  pivot_longer(ADJ:AANN, names_to = "category", values_to = "freq") %>%
+  mutate(
+    category = factor(category, levels = c("ADJ", "NUMERAL", "NOUN", "AANN"))
+  ) %>%
+  ggplot(aes(category, freq, color = aann_type, fill = aann_type)) +
+  geom_col(position = "dodge") +
+  scale_color_manual(aesthetics = c("color", "fill"), values=c("#7570b3", "#d95f02")) +
+  theme_bw(base_size=16, base_family = "Times") +
+  theme(
+    legend.position = "top"
+  ) +
+  labs(
+    y = "# of unique slot fillers",
+    color = "AANN Type",
+    fill = "AANN Type"
+  )
 
 babylm_aanns %>%
   count(ADJ, NUMERAL, sort = TRUE) %>%

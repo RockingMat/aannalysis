@@ -100,7 +100,7 @@ scores <- dir_ls("results/", recurse = TRUE, regexp = "mahowald-") %>%
     target_construction = construction
   )
 
-scores %>% count(model)
+# scores %>% count(model, seed)
 
 scores %>% count(suffix)
 
@@ -183,6 +183,137 @@ model_scores <- scores %>%
   ) %>% 
   inner_join(best_models)
 
+
+logprobs <- scores %>%
+  filter(idx %in% good_ids) %>%
+  select(-train_construction) %>%
+  mutate(
+    lr = str_extract(model, "\\de-\\d"),
+    suffix = str_remove(suffix, "-\\de-\\d.csv"),
+    model = str_remove(model, "-\\de-\\d")
+  ) %>% 
+  inner_join(best_models)
+
+slor_values <- logprobs %>%
+  inner_join(unigram_scores %>% select(-model) %>% rename_with(function(x) {str_c("ngram_", x)}, ends_with("score")), by = c("idx", "suffix")) %>%
+  mutate(
+    construction_score = construction_score - ngram_construction_score,
+    order_swap_score = order_swap_score - ngram_order_swap_score,
+    no_article_score = no_article_score - ngram_no_article_score,
+    no_modifier_score = no_modifier_score - ngram_no_modifier_score,
+    no_numeral_score = no_numeral_score - ngram_no_numeral_score,
+  )
+
+both = bind_rows(
+  logprobs %>% 
+    filter(model == "smolm-indef-naan-rerun", seed == 42, target_construction == "naan") %>%
+    mutate(model = "logprob-naan"),
+  slor_values %>% filter(model == "smolm-indef-naan-rerun", seed == 42, target_construction == "naan") %>%
+    mutate(model = "slor-naan")
+) %>%
+  mutate(
+    correct = construction_score > order_swap_score & 
+      construction_score > no_article_score & 
+      construction_score > no_numeral_score & 
+      construction_score > no_modifier_score
+  )
+
+both %>%
+  filter(model == "logprob-naan") %>%
+  select(model, idx, logprob_correct = correct) %>%
+  inner_join(
+    both %>%
+      filter(model == "slor-naan") %>%
+      select(model, idx, slor_correct = correct),
+    by = c("idx")
+  ) %>%
+  filter(logprob_correct != slor_correct)
+
+both %>%
+  filter(idx == 59) %>% View()
+
+slor_results <- scores %>%
+  filter(idx %in% good_ids) %>%
+  select(-train_construction) %>%
+  mutate(
+    lr = str_extract(model, "\\de-\\d"),
+    suffix = str_remove(suffix, "-\\de-\\d.csv"),
+    model = str_remove(model, "-\\de-\\d")
+  ) %>% 
+  inner_join(best_models) %>%
+  inner_join(unigram_scores %>% select(-model) %>% rename_with(function(x) {str_c("ngram_", x)}, ends_with("score")), by = c("idx", "suffix")) %>%
+  mutate(
+    construction_score = construction_score - ngram_construction_score,
+    order_swap_score = order_swap_score - ngram_order_swap_score,
+    no_article_score = no_article_score - ngram_no_article_score,
+    no_modifier_score = no_modifier_score - ngram_no_modifier_score,
+    no_numeral_score = no_numeral_score - ngram_no_numeral_score,
+  ) %>%
+  group_by(model, suffix, seed, target_construction) %>%
+  summarize(
+    accuracy = mean(
+      construction_score > order_swap_score & 
+        construction_score > no_article_score & 
+        construction_score > no_numeral_score & 
+        construction_score > no_modifier_score
+    )
+  )
+
+slor_results %>%
+  filter(model %in% c("smolm-aann", "smolm-indef-anan", "smolm-indef-naan-rerun", "smolm-indef-removal")) %>%
+  mutate(
+    train_condition = case_when(
+      model == "smolm-aann" ~ "AANN",
+      model == "smolm-indef-anan" ~ "ANAN",
+      model == "smolm-indef-naan-rerun" ~ "NAAN",
+      TRUE ~ "No AANN"
+    ),
+    train_condition = factor(
+      train_condition, 
+      levels = c("AANN", "No AANN", "ANAN", "NAAN"),
+      # labels = c(
+      #   "<span style='font-size: 11pt;'>AANN</span>",
+      #   "<span style='font-size: 11pt;'>No AANN</span>",
+      #   "<span style='font-size: 11pt;'>ANAN</span>",
+      #   "<span style='font-size: 11pt;'>NAAN</span>"
+      # )
+    ),
+    eval_condition = case_when(
+      model == "smolm-aann" ~ "aann",
+      model == "smolm-indef-anan" ~ "anan",
+      model == "smolm-indef-naan-rerun" ~ "naan",
+      TRUE ~ "aann"
+    ),
+    eval_condition = factor(
+      eval_condition,
+      levels = c("aann", "anan", "naan"), 
+      labels = c("AANN", "ANAN", "NAAN")
+    ),
+    target_construction = str_to_upper(target_construction),
+  ) %>%
+  ggplot(aes(train_condition, accuracy, color = train_condition, fill = train_condition, shape = train_condition)) +
+  geom_point(size = 3, alpha = 0.8) +
+  geom_hline(yintercept = 0.0625, linetype = "dashed") +
+  facet_wrap(~target_construction) +
+  scale_color_brewer(palette = "Dark2", aesthetics = c("color", "fill")) +
+  scale_shape_manual(values = c(21, 22, 23, 24)) +
+  scale_y_continuous(limits = c(0, 0.8)) +
+  theme_bw(base_size = 16, base_family="Times") +
+  theme(
+    legend.position = "none",
+    panel.grid = element_blank(),
+    axis.text = element_text(color = "black"),
+    axis.text.x = element_text(color = "black", size = 11)
+    # axis.text.x = element_markdown(color = "black")
+  ) +
+  labs(
+    x = "Train Condition",
+    y = "Accuracy\n(3 LM runs)"
+  )
+
+# 8.74, 2.94
+
+
 model_scores <- scores %>% 
   filter(idx %in% good_ids) %>%
   select(-train_construction) %>%
@@ -191,9 +322,16 @@ model_scores <- scores %>%
     suffix = str_remove(suffix, "-\\de-\\d.csv"),
     model = str_remove(model, "-\\de-\\d")
   ) %>%
-  inner_join(unigram_scores %>% select(idx, suffix, ngram_score = construction_score), by = c("idx", "suffix")) %>%
-  mutate(construction_score = construction_score - ngram_score) %>% 
-  select(-ngram_score) %>%
+  # inner_join(unigram_scores %>% select(idx, suffix, ngram_score = construction_score), by = c("idx", "suffix")) %>%
+  inner_join(unigram_scores %>% select(-model) %>% rename_with(function(x) {str_c("ngram_", x)}, ends_with("score")), by = c("idx", "suffix")) %>%
+  mutate(
+    construction_score = construction_score - ngram_construction_score,
+    order_swap_score = order_swap_score - ngram_order_swap_score,
+    no_article_score = no_article_score - ngram_no_article_score,
+    no_modifier_score = no_modifier_score - ngram_no_modifier_score,
+    no_numeral_score = no_numeral_score - ngram_no_numeral_score,
+  ) %>%
+  select(-starts_with("ngram")) %>%
   pivot_longer(construction_score:no_numeral_score, names_to = "surface_form", values_to = "logprob") %>%
   inner_join(best_models)
 
@@ -266,6 +404,37 @@ avg_model_scores %>%
     axis.text = element_text(color = "black")
   )
 
+avg_model_scores %>%
+  filter(model %in% c("smolm-aann", "smolm-indef-anan", "smolm-indef-naan-rerun", "smolm-indef-removal")) %>%
+  mutate(
+    train_condition = case_when(
+      model == "smolm-aann" ~ "AANN",
+      model == "smolm-indef-anan" ~ "ANAN",
+      model == "smolm-indef-naan" ~ "NAAN",
+      TRUE ~ "No AANN"
+    ),
+    eval_condition = case_when(
+      model == "smolm-aann" ~ "aann",
+      model == "smolm-indef-anan" ~ "anan",
+      model == "smolm-indef-naan" ~ "naan",
+      TRUE ~ "aann"
+    ),
+    eval_condition = factor(eval_condition, levels = c("aann", "anan", "naan"))
+  ) %>%
+  filter(target_construction == eval_condition) %>%
+  mutate(
+    # suffix = str_remove(suffix, "counterfactual-") %>% str_remove("-indef") %>% str_remove("-rerun"),
+    surface_form = str_remove(surface_form, "_score"),
+    surface_form = factor(
+      surface_form, 
+      # levels = rev(c("construction", "order_swap", "no_modifier", "no_numeral", "no_article", "default_nan")),
+      # labels = rev(c("Well-formed", "Order Swap", "No Modifier", "No Numeral", "No Article", "Default NAN"))
+      levels = c("construction", "order_swap", "no_modifier", "no_numeral", "no_article", "default_nan"),
+      labels = c("Well-formed", "Order Swap", "No Modifier", "No Numeral", "No Article", "Default NAN")
+    )
+  ) %>%
+  ggplot(aes(surface_form, logprob))
+
 model_scores %>%
   filter(model %in% c("smolm-aann", "smolm-indef-anan", "smolm-indef-naan-rerun")) %>%
   mutate(
@@ -300,6 +469,7 @@ model_scores %>%
 avg_model_scores %>% 
   ungroup() %>%
   filter(!str_detect(model, "(naan|anan)"), target_construction == "aann") %>%
+  filter(!str_detect(model, "prototypical")) %>%
   filter(surface_form == "construction_score") %>% 
   mutate(
     # logprob = logprob/log(2),
@@ -308,23 +478,66 @@ avg_model_scores %>%
     suffix = factor(
       suffix,
       levels = c("babylm", "no_prototypical", "prototypical_only", "adj_num_freq_balanced", "all_det_removal", "removal", "indef_articles_with_pl_nouns-removal", "measure_nouns_as_singular"),
-      labels = c("BabyLM", "No Prototypical\nAANNs", "Prototypical\nAANNs only", "Adj-Num Freq\nBalanced", "No DT ANN", "No AANN", "No Indef articles\nw/Pl Nouns", "No Measure Nouns\nas Singular")
+      labels = c("BabyLM", "No Prototypical\nAANNs", "Prototypical\nAANNs only", "A/An Adj-Num\nFreq Balanced", "No DT ANN", "No AANN", "No Indef articles\nw/ Measure NNS", "No Measure\nNNS as Singular")
     ),
     suffix = fct_reorder(suffix, logprob)
   ) %>%
   ggplot(aes(logprob, suffix)) +
-  geom_point(size=2, color = "#d95f02") +
-  geom_linerange(aes(xmax = logprob + ste, xmin = logprob - ste), color = "#d95f02") +
+  geom_point(aes(group = seed), size=2, color = "black", position = position_dodge(width=0.5), alpha = 0.2) +
+  geom_linerange(aes(group = seed, xmax = logprob + ste, xmin = logprob - ste), color = "black", position=position_dodge(width=0.5), alpha = 0.2) +
+  stat_summary(geom = "point", fun = mean, color = "#d95f02", shape = 17, size = 3) +
   scale_x_continuous(breaks = scales::pretty_breaks(6)) +
   theme_bw(base_size = 15, base_family = "Times") +
   theme(
-    axis.title.y = element_blank()
+    axis.title.y = element_blank(),
+    panel.grid.major.y = element_blank(),
+    panel.grid.minor.y = element_blank(),
+    panel.grid.minor.x = element_blank(),
+    panel.grid.major.x = element_blank()
     # axis.text.y = element_text(angle=15)
   ) +
   labs(
-    x = "SLOR (95% CI)"
+    x = "SLOR (95% CI; 3 LM Runs)"
   )
-  
+
+# 5.41, 4.90
+
+avg_model_scores %>% 
+  ungroup() %>%
+  filter(!str_detect(model, "(naan|anan)"), target_construction == "aann") %>%
+  # filter(!str_detect(model, "prototypical")) %>%
+  filter(surface_form == "construction_score") %>% 
+  mutate(
+    # logprob = logprob/log(2),
+    suffix = str_remove(suffix, "(counterfactual-babylm-indef-|counterfactual-babylm-)") %>%
+      str_remove("aann-"),
+    suffix = factor(
+      suffix,
+      levels = c("babylm", "no_prototypical", "prototypical_only", "adj_num_freq_balanced", "all_det_removal", "removal", "indef_articles_with_pl_nouns-removal", "measure_nouns_as_singular"),
+      labels = c("BabyLM", "No Prototypical\nAANNs", "Prototypical\nAANNs only", "A/An Adj-Num\nFreq Balanced", "No DT ANN", "No AANN", "No Indef articles\nw/ Measure NNS", "No Measure\nNNS as Singular")
+    ),
+    suffix = fct_reorder(suffix, logprob)
+  ) %>%
+  filter(suffix %in% c("BabyLM", "No AANN", "No Prototypical\nAANNs", "Prototypical\nAANNs only")) %>%
+  ggplot(aes(logprob, suffix)) +
+  geom_point(aes(group = seed), size=2, color = "black", position = position_dodge(width=0.5), alpha = 0.2) +
+  geom_linerange(aes(group = seed, xmax = logprob + ste, xmin = logprob - ste), color = "black", position=position_dodge(width=0.5), alpha = 0.2) +
+  stat_summary(geom = "point", fun = mean, color = "#d95f02", shape = 17, size = 3) +
+  scale_x_continuous(breaks = scales::pretty_breaks(6)) +
+  theme_bw(base_size = 15, base_family = "Times") +
+  theme(
+    axis.title.y = element_blank(),
+    panel.grid.major.y = element_blank(),
+    panel.grid.minor.y = element_blank(),
+    panel.grid.minor.x = element_blank(),
+    panel.grid.major.x = element_blank()
+    # axis.text.y = element_text(angle=15)
+  ) +
+  labs(
+    x = "SLOR (95% CI; 3 LM Runs)"
+  )
+
+# 5.26, 4.02
 
 results %>%
   mutate(

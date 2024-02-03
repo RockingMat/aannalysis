@@ -177,6 +177,34 @@ bind_rows(
     x = "SLOR (95% CI)"
   )
 
+bind_rows(
+  avg_slors("unigram") %>% mutate(ngram = "unigram"),
+  # avg_slors("bigram") %>% mutate(ngram = "bigram")
+) %>%
+  # filter(seed == 42) %>%
+  filter(!str_detect(model, "(anan|naan)")) %>%
+  filter(suffix %in% c("BabyLM", "No AANN", "No Indef articles\nw/Pl Nouns", "No Measure Nouns\nas Singular")) %>%
+  mutate(
+    suffix = factor(suffix, 
+                    levels = rev(c("BabyLM", "No AANN", "No Indef articles\nw/Pl Nouns", "No Measure Nouns\nas Singular")), 
+                    labels = rev(c("w/AANNs", "No AANNs", "No a few NOUNs\n& No AANNs", "No five days is\na lot & No AANNs")))
+  ) %>%
+  ggplot(aes(score, suffix, group = ngram)) +
+  geom_point(size=3, color = "black", alpha = 0.2) +
+  stat_summary(geom = "point", fun = mean, color = "#d95f02", shape = 17, size = 3) +
+  # geom_linerange(aes(xmax = score + ste, xmin = score - ste), color = "#d95f02") +
+  scale_x_continuous(breaks = scales::pretty_breaks(6)) +
+  # facet_wrap(~ngram, scales="free_x") +
+  theme_bw(base_size = 15, base_family = "Times") +
+  theme(
+    axis.title.y = element_blank(),
+    panel.grid = element_blank()
+    # axis.text.y = element_text(angle=15)
+  ) +
+  labs(
+    x = "Likelihood of AANN-containing sentence"
+  )
+
 bigram_scores %>%
   filter(idx %in% good_ids) %>%
   select(model, suffix, idx, construction_score) %>%
