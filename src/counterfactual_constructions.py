@@ -72,12 +72,17 @@ def main(args):
         if args.secondary_excess_path:
             secondary_excess = utils.read_csv_dict(args.secondary_excess_path)
 
+        if args.ignore_path:
+            ignore = utils.read_csv_dict(args.ignore_path)
+
+        if args.add_back_path:
+            add_back = utils.read_csv_dict(args.add_back_path)
+
         print("Storing AANN ids...")
         # aann_ids = [int(a["sentence_idx"]) for a in aanns]
         aann_ids = defaultdict(lambda : False)
         for a in aanns:
             aann_ids[int(a["sentence_idx"])] = True
-
 
         if args.excess_path:
             print("Storing excess ids...")
@@ -96,6 +101,25 @@ def main(args):
                 secondary_excess_ids[int(a["sentence_idx"])] = True
         else:
             secondary_excess_ids = defaultdict(lambda : False)
+
+        if args.add_back_path:
+            print("Storing add-back ids...")
+            add_back_ids = [int(a["sentence_idx"]) for a in add_back]
+            # set back add_back_ids in all id storage dicts to false
+            for a in add_back_ids:
+                aann_ids[a] = False
+                excess_ids[a] = False
+                secondary_excess_ids[a] = False
+
+        if args.ignore_path:
+            print("Storing ignore ids...")
+            ignore_ids = defaultdict(lambda : False)
+            for a in ignore:
+                ignore_ids[int(a["sentence_idx"])] = True
+        else:
+            ignore_ids = defaultdict(lambda : False)
+
+        # 
 
         print("Storing AANN all det ids...")
         # aanns_alldet_ids = [int(a["sentence_idx"]) for a in aanns_alldet]
@@ -132,7 +156,7 @@ def main(args):
         upper_bound = utils.roundup(LOST_TOKENS)
         for i, utterance in enumerate(tqdm(sentences[:upper_bound])):
             # if i not in aanns_alldet_ids:
-            if not aanns_alldet_ids[i] and not excess_ids[i] and not secondary_excess_ids[i]:
+            if not aanns_alldet_ids[i] and not excess_ids[i] and not secondary_excess_ids[i] and not ignore_ids[i]:
                 if len(utterance) > 5:
                     tokens = tokenizer(utterance)["input_ids"][1:]
                     added = []
@@ -317,6 +341,16 @@ if __name__ == "__main__":
         type=int,
         help="number of secondary sentences to add",
         default=None
+    )
+    parser.add_argument(
+        "--ignore_path",
+        type=str,
+        help="path to file containing sentences that we want to ignore.",
+    )
+    parser.add_argument(
+        "--add_back_path",
+        type=str,
+        help="path to file containing sentences that we want to add back.",
     )
 
     args = parser.parse_args()

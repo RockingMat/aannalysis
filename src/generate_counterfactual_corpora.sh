@@ -84,8 +84,36 @@
 #     --aann_path data/babylm-analysis/detected_pipps_sents.csv \
 #     --counterfactual_type removal
 
-python src/counterfactual_constructions.py \
-    --output_path data/training_data/counterfactual-babylm-pipps_and_keys_to_it_all_removal.txt \
-    --aann_path data/babylm-analysis/detected_pipps_sents.csv \
-    --excess_path data/babylm-analysis/keys_to_pipps.csv \
-    --counterfactual_type removal
+# python src/counterfactual_constructions.py \
+#     --output_path data/training_data/counterfactual-babylm-pipps_and_keys_to_it_all_removal.txt \
+#     --aann_path data/babylm-analysis/detected_pipps_sents.csv \
+#     --excess_path data/babylm-analysis/keys_to_pipps.csv \
+#     --counterfactual_type removal
+
+# python src/counterfactual_constructions.py \
+#     --output_path data/training_data/counterfactual-babylm-random_removal.txt \
+#     --aann_path data/babylm-analysis/random_removal.csv \
+#     --ignore_path data/babylm-analysis/all_hypotheses.csv \
+#     --counterfactual_type removal
+
+# python src/counterfactual_constructions.py \
+#     --output_path data/training_data/counterfactual-babylm-only_other_det_removal.txt \
+#     --aann_path data/babylm-aanns/aanns_all_det_all.csv \
+#     --counterfactual_type removal \
+#     --add_back_path data/babylm-aanns/aanns_indef_all.csv
+
+# python src/counterfactual_constructions.py \
+#     --output_path data/training_data/counterfactual-babylm-only_indef_articles_with_pl_nouns_removal.txt \
+#     --aann_path data/babylm-analysis/indef_articles_with_pl_nouns.csv \
+#     --counterfactual_type removal \
+#     --add_back_path data/babylm-aanns/aanns_indef_all.csv
+
+# python src/counterfactual_constructions.py \
+#     --output_path data/training_data/counterfactual-babylm-only_measure_nps_as_singular_removal.txt \
+#     --aann_path data/babylm-analysis/indef_articles_with_pl_nouns.csv \
+#     --excess_path data/babylm-analysis/measure_nouns_with_singular_verbs.csv \
+#     --counterfactual_type removal \
+#     --add_back_path data/babylm-aanns/aanns_indef_all.csv
+
+
+

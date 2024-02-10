@@ -31,3 +31,9 @@ python src/tokenize_and_save.py --corpus data/training_data/counterfactual_babyl
 python src/tokenize_and_save.py --corpus data/training_data/counterfactual_babylm_aann_excess_adj_removal.txt \
     --output_dir models/tokenized/ \
     --model kanishka/smolm-autoreg-bpe-counterfactual-babylm-adj_num_freq_balanced-1e-4&
+
+python src/tokenize_and_save.py \
+ --corpus data/training_data/counterfactual-babylm-random_removal.txt \
+  --output_dir models/tokenized/ \
+  --model kanishka/smolm-autoreg-bpe-counterfactual-babylm-random_removal-3e-4
+  

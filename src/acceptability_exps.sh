@@ -28,7 +28,8 @@ declare -a lrs=(1e-3 1e-4 3e-4)
 # done
 
 # declare -a models=(counterfactual-babylm-measure_nouns_as_singular)
-declare -a models=(counterfactual-babylm-aann-prototypical_only counterfactual-babylm-aann-no_prototypical)
+# declare -a models=(counterfactual-babylm-aann-prototypical_only counterfactual-babylm-aann-no_prototypical)
+declare -a models=(counterfactual-babylm-random_removal)
 
 for mode in ${modes[@]}
 do 
@@ -37,11 +38,11 @@ do
         for model in ${models[@]}
         do
             # echo kanishka/smolm-autoreg-bpe-${model}-${lr} -b 128 -a data/mahowald-${mode}
-            python src/acceptability.py -m kanishka/smolm-autoreg-bpe-${model}-${lr} -b 128 -a data/mahowald-${mode}
+            # python src/acceptability.py -m kanishka/smolm-autoreg-bpe-${model}-${lr} -b 128 -a data/mahowald-${mode}
 
             python src/acceptability.py -m kanishka/smolm-autoreg-bpe-${model}-seed_1024-${lr} -b 128 -a data/mahowald-${mode}
 
-            python src/acceptability.py -m kanishka/smolm-autoreg-bpe-${model}-seed_211-${lr} -b 128 -a data/mahowald-${mode}
+            # python src/acceptability.py -m kanishka/smolm-autoreg-bpe-${model}-seed_211-${lr} -b 128 -a data/mahowald-${mode}
         done
     done
 

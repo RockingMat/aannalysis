@@ -8,7 +8,8 @@
 # done
 
 
-readarray -t models < <( ls models/bigrams/ ); IFS=' '
+# readarray -t models < <( ls models/bigrams/ ); IFS=' '
+declare -a models=(counterfactual-babylm-random_removal.binary)
 
 for model in ${models[@]}
 do 
