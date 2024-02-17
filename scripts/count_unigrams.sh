@@ -31,3 +31,11 @@ python src/unigrams.py --corpus data/training_data/counterfactual_babylm_measure
 python src/unigrams.py --corpus data/training_data/counterfactual_babylm_aann_excess_adj_removal.txt \
     --output_dir models/unigrams/ \
     --model kanishka/smolm-autoreg-bpe-counterfactual-babylm-adj_num_freq_balanced-1e-4&
+
+python src/unigrams.py --corpus data/training_data/counterfactual-babylm-random_removal.txt --output_dir models/unigrams --model kanishka/smolm-autoreg-bpe-counterfactual-babylm-random_removal-3e-4&
+
+python src/unigrams.py --corpus data/training_data/counterfactual-babylm-only_other_det_removal.txt --output_dir models/unigrams --model kanishka/smolm-autoreg-bpe-counterfactual-babylm-only_other_det_removal-1e-3&
+
+python src/unigrams.py --corpus data/training_data/counterfactual-babylm-only_indef_articles_with_pl_nouns_removal.txt --output_dir models/unigrams --model kanishka/smolm-autoreg-bpe-counterfactual-babylm-only_indef_articles_with_pl_nouns_removal-1e-3&
+
+python src/unigrams.py --corpus data/training_data/counterfactual-babylm-only_measure_nps_as_singular_removal.txt --output_dir models/unigrams --model kanishka/smolm-autoreg-bpe-counterfactual-babylm-only_measure_nps_as_singular_removal-1e-3

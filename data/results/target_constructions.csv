@@ -13,3 +13,7 @@ no-prototypical-aann,non-prototypical-aann
 adjnum-freq-balanced,adjnum-freq-balanced
 indef-articles-with-pl-noun,articles-with-pl-noun
 measure-nouns-as-singular,measure-nouns-as-singular
+random_removal,aann
+only_other_det_removal,none
+only_measure_nps_as_singular_removal,measure-nouns-as-singular
+only_indef_articles_with_pl_nouns_removal,articles-with-pl-noun

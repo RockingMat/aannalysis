@@ -52,6 +52,10 @@ MODELS = {
     "adjnum-freq-balanced": "counterfactual-babylm-adj_num_freq_balanced",
     "indef-articles-with-pl-noun": "counterfactual-babylm-indef_articles_with_pl_nouns-removal",
     "measure-nouns-as-singular": "counterfactual-babylm-measure_nouns_as_singular",
+    "random_removal": "counterfactual-babylm-random_removal",
+    "only_other_det_removal": "counterfactual-babylm-only_other_det_removal",
+    "only_measure_nps_as_singular_removal": "counterfactual-babylm-only_measure_nps_as_singular",
+    "only_indef_articles_with_pl_nouns_removal": "counterfactual-babylm-only_indef_articles_with_pl_nouns_removal",
 }
 
 MODEL_PAIRS = [(k, v) for k, v in MODELS.items()]
@@ -74,7 +78,11 @@ TARGET_CONSTRUCTIONS = {
     "no-prototypical-aann": "non-prototypical-aann",
     "adjnum-freq-balanced": "adjnum-freq-balanced",
     "indef-articles-with-pl-noun": "articles-with-pl-noun",
-    "measure-nouns-as-singular": "measure-nouns-as-singular"
+    "measure-nouns-as-singular": "measure-nouns-as-singular",
+    "random_removal": "aann",
+    "only_other_det_removal": "none",
+    "only_measure_nps_as_singular_removal": "measure-nouns-as-singular",
+    "only_indef_articles_with_pl_nouns_removal": "articles-with-pl-noun",
 }
 
 TARGET_CONSTRUCTIONS_PAIRS = [(k, v) for k, v in TARGET_CONSTRUCTIONS.items()]
