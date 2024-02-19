@@ -1,4 +1,5 @@
 import csv
+import json
 import config
 import re
 import unicodedata
@@ -17,6 +18,12 @@ main_regex = re.compile(r"""
     \s+
     (?:\S+\s+)+
     """, re.VERBOSE | re.I)
+
+def read_jsonl(path):
+    with open(path) as f:
+        data = f.readlines()
+    data = [json.loads(line) for line in data]
+    return data
 
 def is_pipp(s):
     '''author: chris potts'''
