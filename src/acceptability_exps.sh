@@ -30,7 +30,8 @@ declare -a lrs=(1e-3 1e-4 3e-4)
 # declare -a models=(counterfactual-babylm-measure_nouns_as_singular)
 # declare -a models=(counterfactual-babylm-aann-prototypical_only counterfactual-babylm-aann-no_prototypical)
 # declare -a models=(counterfactual-babylm-random_removal)
-declare -a models=(counterfactual-babylm-only_other_det_removal counterfactual-babylm-only_indef_articles_with_pl_nouns_removal counterfactual-babylm-only_measure_nps_as_singular_removal)
+# declare -a models=(counterfactual-babylm-only_other_det_removal counterfactual-babylm-only_indef_articles_with_pl_nouns_removal counterfactual-babylm-only_measure_nps_as_singular_removal)
+declare -a models=(counterfactual-babylm-only_random_removal)
 
 for mode in ${modes[@]}
 do 

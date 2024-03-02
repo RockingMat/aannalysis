@@ -96,6 +96,13 @@
 #     --ignore_path data/babylm-analysis/all_hypotheses.csv \
 #     --counterfactual_type removal
 
+python src/counterfactual_constructions.py \
+    --output_path data/training_data/counterfactual-babylm-only_random_removal.txt \
+    --aann_path data/babylm-analysis/random_removal.csv \
+    --excess_path data/babylm-aanns/aanns_indef_all.csv \
+    --ignore_path data/babylm-analysis/all_hypotheses.csv \
+    --counterfactual_type removal 
+
 # python src/counterfactual_constructions.py \
 #     --output_path data/training_data/counterfactual-babylm-pipps-random_removal.txt \
 #     --aann_path data/babylm-analysis/random_removal_pipps.csv \
