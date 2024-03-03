@@ -39,7 +39,7 @@ def main(args):
         )
     else:
         lm = kenlm.Model(args.model)
-        tokenizer = AutoTokenizer.from_pretrained(f"kanishka/smolm-autoreg-bpe-{model_name}-1e-4")
+        tokenizer = AutoTokenizer.from_pretrained(f"kanishka/smolm-autoreg-bpe-{model_name}-1e-3")
         pathlib.Path(args.results_dir).mkdir(parents=True, exist_ok=True)
         pathlib.Path(f"{args.results_dir}/bigrams").mkdir(
             parents=True, exist_ok=True

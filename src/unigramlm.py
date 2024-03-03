@@ -9,7 +9,7 @@ class UnigramLM:
         self.counts_path = counts_path
         self.model_name = counts_path.split("/")[-1].split(".")[0]
         self.tokenizer = AutoTokenizer.from_pretrained(
-            f"kanishka/smolm-autoreg-bpe-{self.model_name}-1e-4"
+            f"kanishka/smolm-autoreg-bpe-{self.model_name}-1e-3"
         )
 
     def load_counts(self):
