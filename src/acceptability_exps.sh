@@ -31,21 +31,31 @@ declare -a lrs=(1e-3 1e-4 3e-4)
 # declare -a models=(counterfactual-babylm-aann-prototypical_only counterfactual-babylm-aann-no_prototypical)
 # declare -a models=(counterfactual-babylm-random_removal)
 # declare -a models=(counterfactual-babylm-only_other_det_removal counterfactual-babylm-only_indef_articles_with_pl_nouns_removal counterfactual-babylm-only_measure_nps_as_singular_removal)
-declare -a models=(counterfactual-babylm-only_random_removal)
+# declare -a models=(counterfactual-babylm-only_random_removal)
+declare -a models=(meta-llama/Llama-2-7b-hf)
+
+# for mode in ${modes[@]}
+# do 
+#     for lr in ${lrs[@]}
+#     do
+#         for model in ${models[@]}
+#         do
+#             # echo kanishka/smolm-autoreg-bpe-${model}-${lr} -b 128 -a data/mahowald-${mode}
+#             python src/acceptability.py -m kanishka/smolm-autoreg-bpe-${model}-${lr} -b 128 -a data/mahowald-${mode}
+
+#             python src/acceptability.py -m kanishka/smolm-autoreg-bpe-${model}-seed_1024-${lr} -b 128 -a data/mahowald-${mode}
+
+#             python src/acceptability.py -m kanishka/smolm-autoreg-bpe-${model}-seed_211-${lr} -b 128 -a data/mahowald-${mode}
+#         done
+#     done
+
+# done
 
 for mode in ${modes[@]}
 do 
-    for lr in ${lrs[@]}
+    for model in ${models[@]}
     do
-        for model in ${models[@]}
-        do
-            # echo kanishka/smolm-autoreg-bpe-${model}-${lr} -b 128 -a data/mahowald-${mode}
-            python src/acceptability.py -m kanishka/smolm-autoreg-bpe-${model}-${lr} -b 128 -a data/mahowald-${mode}
-
-            python src/acceptability.py -m kanishka/smolm-autoreg-bpe-${model}-seed_1024-${lr} -b 128 -a data/mahowald-${mode}
-
-            python src/acceptability.py -m kanishka/smolm-autoreg-bpe-${model}-seed_211-${lr} -b 128 -a data/mahowald-${mode}
-        done
+        # echo kanishka/smolm-autoreg-bpe-${model}-${lr} -b 128 -a data/mahowald-${mode}
+        python src/acceptability.py -m ${model} -b 32 -a data/mahowald-${mode}
     done
-
 done

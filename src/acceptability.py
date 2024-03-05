@@ -26,6 +26,7 @@ def compose(*functions):
     """compose functions"""
     return reduce(lambda f, g: lambda x: f(g(x)), functions, lambda x: x)
 
+
 inflector = inflect.engine()
 
 
@@ -36,9 +37,7 @@ def compute_scores(lm, data, batch_size, num_workers, modifier=None):
     dl = DataLoader(full, batch_size=batch_size, num_workers=num_workers)
 
     for batch in tqdm(dl):
-        scores.extend(
-            lm.compute_stats(lm.prepare_text(batch), return_tensors=True)
-        )
+        scores.extend(lm.compute_stats(lm.prepare_text(batch), return_tensors=True))
 
     return scores
 
@@ -47,9 +46,7 @@ def segment_and_score(lm, scores, **kwargs):
     full, prefixes, continuations = utils.segment(**kwargs)
     encoded, offset = lm.prime_text(prefixes, continuations)
     offset = [0 if o < 0 else o for o in offset]
-    mean_scores = [
-        torch.mean(score[n:]).item() for score, n in zip(scores, offset)
-    ]
+    mean_scores = [torch.mean(score[n:]).item() for score, n in zip(scores, offset)]
     return mean_scores
 
 
@@ -64,13 +61,12 @@ def main(args):
         model_name.replace("../smolm/models/", "")
         .replace("kanishka/", "")
         .replace("/", "_")
+        .replace("meta-llama/", "")
     )
 
     aann_dir = args.aann_dir.split("data")[-1].strip("/")
     pathlib.Path(args.results_dir).mkdir(parents=True, exist_ok=True)
-    pathlib.Path(f"{args.results_dir}/{aann_dir}").mkdir(
-        parents=True, exist_ok=True
-    )
+    pathlib.Path(f"{args.results_dir}/{aann_dir}").mkdir(parents=True, exist_ok=True)
 
     # load model
     lm = scorer.IncrementalLMScorer(args.model, device=device)
@@ -78,15 +74,26 @@ def main(args):
     constructions = utils.read_csv_dict(f"{args.aann_dir}/corruption.csv")
 
     results = defaultdict(list)
-    results['idx'] = [c['idx'] for c in constructions]
+    results["idx"] = [c["idx"] for c in constructions]
 
-    columns = ['construction', 'default_nan', 'order_swap', 'no_article', 'no_modifier', 'no_numeral']
+    columns = [
+        "construction",
+        "default_nan",
+        "order_swap",
+        "no_article",
+        "no_modifier",
+        "no_numeral",
+    ]
 
-    constructions_dl = DataLoader(constructions, batch_size=batch_size, num_workers=n_workers)
+    constructions_dl = DataLoader(
+        constructions, batch_size=batch_size, num_workers=n_workers
+    )
     for batch in tqdm(constructions_dl):
 
         for col in columns:
-            results[f"{col}_score"].extend(lm.conditional_score(batch['prefix'], batch[col]))
+            results[f"{col}_score"].extend(
+                lm.conditional_score(batch["prefix"], batch[col])
+            )
 
     results = dict(results)
     results = pd.DataFrame(results)
@@ -117,7 +124,7 @@ if __name__ == "__main__":
     )
     parser.add_argument(
         "--batch_size",
-        '-b',
+        "-b",
         type=int,
         default=8,
         help="batch size for scoring",
