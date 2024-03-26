@@ -1,4 +1,5 @@
 library(tidyverse)
+library(patchwork)
 # librayr(tidytext)
 
 unigrams <- read_csv("data/babylm-analysis/babylm-unigrams.csv")
@@ -27,6 +28,27 @@ unigrams %>%
     x = "Rank",
     y = "Count"
   )
+
+
+unigrams %>%
+  arrange(-count) %>%
+  mutate(
+    rank = row_number() # already sorted
+  ) %>%
+  filter(rank <= 100000)  %>%
+  ggplot(aes(rank, count)) +
+  geom_line() +
+  scale_y_log10(labels = scales::label_log(digits = 2), breaks = scales::breaks_log(base = 10, n = 7)) +
+  scale_x_log10(labels = scales::label_log(digits = 2), breaks = scales::breaks_log(base = 10, n = 6)) + 
+  theme_minimal() +
+  theme(
+    panel.grid = element_blank(),
+    axis.text = element_blank(),
+    axis.title = element_blank()
+  )
+
+ggsave("paper/figure1-zipf.svg", device = "svg", height = 3.31, width = 4.61, dpi=300)
+
   
 mahowald <- read_csv("data/mahowald-aann/mahowald-aanns-unseen_good.csv")
 
@@ -56,8 +78,8 @@ babylm_aanns %>%
   ) %>%
   ggplot(aes(rank, n)) +
   geom_line() +
-  # scale_x_log10(labels = scales::label_log(digits = 2)) +
-  # scale_y_log10(labels = scales::label_log(digits = 2)) +
+  scale_x_log10(labels = scales::label_log(digits = 2)) +
+  scale_y_log10(labels = scales::label_log(digits = 2)) +
   theme_bw(base_size = 15, base_family = "Times") +
   ggtitle("Count vs rank for adjectives\nin BabyLM AANNs")
 
@@ -113,7 +135,7 @@ non_prototypical_instances %>%
   write_csv("data/babylm-aanns/aanns_indef_all_non_prototypical.csv")
 
 
-bind_rows(
+p1 <- bind_rows(
   prototypical_instances %>% 
     summarize(
       ADJ = n_distinct(ADJ),
@@ -122,7 +144,7 @@ bind_rows(
       AANN = n_distinct(construction),
     ) %>%
     mutate(
-      aann_type = "Highly Frequent"
+      aann_type = "Low"
     ),
   non_prototypical_instances %>% 
     summarize(
@@ -132,25 +154,71 @@ bind_rows(
       AANN = n_distinct(construction)
     ) %>%
     mutate(
-      aann_type = "Highly Diverse"
+      aann_type = "High"
     )
 ) %>%
   pivot_longer(ADJ:AANN, names_to = "category", values_to = "freq") %>%
   mutate(
     category = factor(category, levels = c("ADJ", "NUMERAL", "NOUN", "AANN"))
   ) %>%
+  filter(category != "AANN") %>%
   ggplot(aes(category, freq, color = aann_type, fill = aann_type)) +
   geom_col(position = "dodge") +
-  scale_color_manual(aesthetics = c("color", "fill"), values=c("#7570b3", "#d95f02")) +
+  scale_color_manual(aesthetics = c("color", "fill"), values=c("#0174BE", "#FFB534")) +
   theme_bw(base_size=16, base_family = "Times") +
   theme(
-    legend.position = "top"
+    legend.position = "top",
+    panel.grid = element_blank(),
+    axis.text = element_text(color = "black")
   ) +
   labs(
     y = "# of unique slot fillers",
-    color = "AANN Type",
-    fill = "AANN Type"
+    color = "Variability",
+    fill = "Variability",
+    x = "Category"
   )
+
+p1
+ggsave("paper/variability_freqs.pdf", dpi = 300, height = 3.63, width = 4.0, device=cairo_pdf)
+
+p2 <- bind_rows(
+  non_prototypical_instances %>% 
+    count(ADJ, NUMERAL, NOUN) %>% 
+    ungroup() %>% 
+    summarize(freq = mean(n)) %>%
+    mutate(
+      variability = "High"
+    ),
+  prototypical_instances %>% 
+    count(ADJ, NUMERAL, NOUN) %>% 
+    ungroup() %>% 
+    summarize(freq = mean(n)) %>%
+    mutate(
+      variability = "Low"
+    )
+) %>%
+  ggplot(aes(variability, freq, color = variability, fill = variability)) +
+  geom_col() +
+  scale_color_manual(aesthetics = c("color", "fill"), values=c("#0174BE", "#FFB534")) +
+  theme_bw(base_size=16, base_family = "Times") +
+  theme(
+    legend.position = "top",
+    panel.grid = element_blank(),
+    axis.text = element_text(color = "black"),
+    # axis.title.x = element_blank()
+  ) +
+  labs(
+    y = "Frequency per instance",
+    color = "Variability",
+    fill = "Variability",
+    x = "Variability"
+  )
+
+p1 + p2 + plot_layout(guides = "collect", widths = c(2,1)) & theme(legend.position = "top")
+
+ggsave("paper/variability_freq.pdf", height = 3.70, width = 6.65, dpi = 300, device=cairo_pdf)
+
+# 6.65w, 3.70h
 
 babylm_aanns %>%
   count(ADJ, NUMERAL, sort = TRUE) %>%

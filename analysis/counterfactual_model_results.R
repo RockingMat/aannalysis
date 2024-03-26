@@ -19,7 +19,12 @@ best_models <- tribble(
   "counterfactual-babylm-indef-naan-non-num", "1e-4",
   "counterfactual-babylm-all_det_removal", "1e-3",
   "counterfactual-babylm-indef-removal", "1e-4",
-  "counterfactual-babylm-measure_nouns_as_singular", "1e-4"
+  "counterfactual-babylm-measure_nouns_as_singular", "1e-4",
+  "counterfactual-babylm-random_removal", "3e-4",
+  "counterfactual-babylm-only_other_det_removal", "1e-3",
+  "counterfactual-babylm-only_indef_articles_with_pl_nouns_removal", "1e-3",
+  "counterfactual-babylm-only_measure_nps_as_singular_removal", "1e-3",
+  "counterfactual-babylm-only_random_removal", "1e-3",
 )
 
 train_constructions <- read_csv("data/results/target_constructions.csv")
@@ -49,6 +54,14 @@ good_ids <- human_data %>%
   filter(rating > 7) %>%
   pull(idx)
 
+human_data %>%
+  filter(adjclass %in% c("quant", "qual", "stubborn", "color")) %>% 
+  inner_join(aanns) %>%
+  group_by(NUMERAL, NOUN, nounclass, adjclass) %>%
+  summarize(
+    rating = mean(rating)
+  ) %>% View()
+
 unigram_scores <- dir_ls("results/unigrams/") %>%
   keep(str_detect(., "csv")) %>%
   map_df(read_csv, .id = "model") %>%
@@ -57,6 +70,12 @@ unigram_scores <- dir_ls("results/unigrams/") %>%
     model = str_remove(model, ".csv"),
     suffix = model
   )
+
+unigram_scores <- bind_rows(
+  unigram_scores,
+  unigram_scores %>% filter(model == "babylm") %>% mutate(model = "babylm-naan", suffix="counterfactual-babylm-indef-naan-rerun"),
+  unigram_scores %>% filter(model == "babylm") %>% mutate(model = "babylm-anan", suffix="counterfactual-babylm-indef-anan"),
+)
 
 bigram_scores <- dir_ls("results/bigrams/") %>%
   keep(str_detect(., "csv")) %>%
@@ -144,6 +163,43 @@ results <- scores %>%
     overall = mean(construction_score > order_swap_score & construction_score > no_article_score & construction_score > no_modifier_score & construction_score > no_numeral_score)
   )
 
+llama_scores <- scores %>%
+  filter(idx %in% good_ids, str_detect(model, "llama")) %>%
+  filter(target_construction == "aann") %>%
+  mutate(
+    correct = construction_score > order_swap_score & 
+      construction_score > no_article_score & 
+      construction_score > no_numeral_score & 
+      construction_score > no_modifier_score
+  )
+
+# llama_scores %>%
+#   inner_join(all_corruptions) %>%
+#   select(idx, cons)
+
+llama_pairwise_scores <- llama_scores %>%
+  select(-model, -default_nan_score, -seed, -train_construction, -correct, -target_construction, -suffix) %>%
+  pivot_longer(order_swap_score:no_numeral_score, names_to = "corruption", values_to = "corruption_score") %>%
+  mutate(corruption = str_remove(corruption, "_score"))
+
+pairwise <- all_corruptions %>%
+  select(-sentence, -prefixes, -default_ann) %>%
+  pivot_longer(order_swap:no_numeral, names_to = "corruption", values_to = "corrupted_construction") %>%
+  select(idx, corruption, aann, corrupted_construction)
+
+llama_pairwise_scores %>%
+  inner_join(pairwise) %>%
+  mutate(
+    diff = construction_score - corruption_score
+  ) %>%
+  select(idx, corruption, aann, corrupted_construction, diff) %>%
+  write_csv("data/results/llama2_aanns.csv")
+
+# %>%
+  # select(idx, sentence, correct)
+
+write_csv(llama, "data/results/llama2_aanns.csv")
+
 scores %>% 
   filter(idx %in% good_ids) %>%
   group_by(model, seed, suffix, target_construction) %>%
@@ -184,8 +240,10 @@ model_scores <- scores %>%
   inner_join(best_models)
 
 
+# model_scores %>% count(suffix)
+
 logprobs <- scores %>%
-  filter(idx %in% good_ids) %>%
+  # filter(idx %in% good_ids) %>%
   select(-train_construction) %>%
   mutate(
     lr = str_extract(model, "\\de-\\d"),
@@ -198,11 +256,14 @@ slor_values <- logprobs %>%
   inner_join(unigram_scores %>% select(-model) %>% rename_with(function(x) {str_c("ngram_", x)}, ends_with("score")), by = c("idx", "suffix")) %>%
   mutate(
     construction_score = construction_score - ngram_construction_score,
+    default_nan_score = default_nan_score - ngram_default_nan_score,
     order_swap_score = order_swap_score - ngram_order_swap_score,
     no_article_score = no_article_score - ngram_no_article_score,
     no_modifier_score = no_modifier_score - ngram_no_modifier_score,
     no_numeral_score = no_numeral_score - ngram_no_numeral_score,
   )
+
+slor_values %>% count(suffix)
 
 both = bind_rows(
   logprobs %>% 
@@ -231,6 +292,27 @@ both %>%
 
 both %>%
   filter(idx == 59) %>% View()
+
+slor_values %>%
+  filter(suffix == "babylm", target_construction == "aann", seed == 1024) %>%
+  inner_join(human_data) %>%
+  # mutate(
+  #   construction_score = (construction_score - min(construction_score))/(max(construction_score) - min(construction_score))
+  # ) %>%
+  group_by(adjclass, nounclass) %>%
+  summarize(
+    ste = 1.96 * plotrix::std.error(construction_score),
+    slor = mean(construction_score)
+  ) %>%
+  ggplot(aes(adjclass, slor, color = adjclass, fill = adjclass)) +
+  geom_point(size = 3, shape = 21) +
+  scale_color_brewer(palette = "Dark2", aesthetics = c("color", "fill")) +
+  facet_wrap(~nounclass, nrow = 1, scales = "free_x") +
+  theme_bw(base_size = 15, base_family = "Times") +
+  theme(
+    legend.position = "none",
+    axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1)
+  )
 
 slor_results <- scores %>%
   filter(idx %in% good_ids) %>%
@@ -292,12 +374,54 @@ slor_results %>%
     target_construction = str_to_upper(target_construction),
   ) %>%
   ggplot(aes(train_condition, accuracy, color = train_condition, fill = train_condition, shape = train_condition)) +
-  geom_point(size = 3, alpha = 0.8) +
+  geom_point(size = 3, alpha = 0.7) +
   geom_hline(yintercept = 0.0625, linetype = "dashed") +
+  geom_hline(
+    data = results %>% 
+      filter(str_detect(suffix, "gpt2"), target_construction == "aann") %>%
+      select(-train_construction) %>%
+      mutate(target_construction = "AANN"),
+    aes(yintercept = overall),
+    linetype = "dotted",
+    color = "firebrick"
+  ) +
+  geom_hline(
+    data = results %>% 
+      filter(str_detect(suffix, "Llama"), target_construction == "aann") %>%
+      select(-train_construction) %>%
+      mutate(target_construction = "AANN"),
+    aes(yintercept = overall),
+    linetype = "dotted",
+    color = "steelblue"
+  ) +
+  # geom_text(x = "NAAN", y = 0.87, label = "LLama-2-7B", data=tibble(target_construction="AANN")) +
+  geom_text(
+    data = tibble(
+      train_condition = "NAAN",
+      accuracy = 0.9,
+      target_construction="AANN"
+    ),
+    label = "Llama-2-7B",
+    color = "steelblue",
+    family = "Times",
+    size = 3.5
+  ) +
+  geom_text(
+    data = tibble(
+      train_condition = "NAAN",
+      accuracy = 0.73,
+      target_construction="AANN"
+    ),
+    label = "GPT-2 XL",
+    color = "firebrick",
+    family = "Times",
+    size = 3.5
+  ) +
   facet_wrap(~target_construction) +
-  scale_color_brewer(palette = "Dark2", aesthetics = c("color", "fill")) +
+  # scale_color_brewer(palette = "Dark2", aesthetics = c("color", "fill"), direction = -1) +
+  scale_color_manual(values = c("#7570b3","#d95f02","#e7298a","#1b9e77"), aesthetics = c("color", "fill")) +
   scale_shape_manual(values = c(21, 22, 23, 24)) +
-  scale_y_continuous(limits = c(0, 0.8)) +
+  scale_y_continuous(limits = c(0, 1.0)) +
   theme_bw(base_size = 16, base_family="Times") +
   theme(
     legend.position = "none",
@@ -312,7 +436,76 @@ slor_results %>%
   )
 
 # 8.74, 2.94
+ggsave("paper/counterfactualaccuracies.pdf", height = 3.06, width = 9.17, dpi = 300, device=cairo_pdf)
 
+# kyle plot
+
+
+slor_results %>%
+  filter(model %in% c("smolm-aann", "smolm-indef-anan", "smolm-indef-naan-rerun", "smolm-indef-removal", "smolm-measure_nouns_as_singular", "smolm-random_removal")) %>%
+  mutate(
+    train_condition = case_when(
+      model == "smolm-aann" ~ "AANN",
+      model == "smolm-indef-anan" ~ "ANAN",
+      model == "smolm-indef-naan-rerun" ~ "NAAN",
+      model == "smolm-measure_nouns_as_singular" ~ "AANN - NNS as singular",
+      model == "smolm-random_removal" ~ "AANN - random removal",
+      TRUE ~ "No AANN"
+    ),
+    train_condition = factor(
+      train_condition, 
+      levels = c("AANN", "No AANN", "ANAN", "NAAN", "AANN - NNS as singular", "AANN - random removal"),
+      # labels = c(
+      #   "<span style='font-size: 11pt;'>AANN</span>",
+      #   "<span style='font-size: 11pt;'>No AANN</span>",
+      #   "<span style='font-size: 11pt;'>ANAN</span>",
+      #   "<span style='font-size: 11pt;'>NAAN</span>"
+      # )
+    ),
+    eval_condition = case_when(
+      model == "smolm-aann" ~ "aann",
+      model == "smolm-indef-anan" ~ "anan",
+      model == "smolm-indef-naan-rerun" ~ "naan",
+      TRUE ~ "aann"
+    ),
+    eval_condition = factor(
+      eval_condition,
+      levels = c("aann", "anan", "naan"), 
+      labels = c("AANN", "ANAN", "NAAN")
+    ),
+    target_construction = str_to_upper(target_construction),
+  ) %>%
+  filter(target_construction == eval_condition) %>%
+  mutate(
+    train = case_when(
+      train_condition == "No AANN" ~ "Remove AANNs",
+      train_condition == "ANAN" ~ "Replace AANNs\nwith ANANs",
+      train_condition == "NAAN" ~ "Replace AANNs\nwith NAANs",
+      train_condition == "AANN" ~ "AANN (as is)",
+      train_condition == "AANN - random removal" ~ "Control\n(random removal)",
+      TRUE ~ "Remove cases with\nA few days/\nfive days is a lot"
+    )
+  ) %>%
+  ggplot(aes(train, accuracy, color = train_condition, fill = train_condition, shape = train_condition)) +
+  geom_point(size = 3, alpha = 0.7) +
+  # stat_summary(geom = "point", size = 3, alpha = 0.7) +
+  geom_hline(yintercept = 0.0625, linetype = "dashed") +
+  # facet_wrap(~target_construction) +
+  scale_color_brewer(palette = "Dark2", aesthetics = c("color", "fill")) +
+  scale_shape_manual(values = c(21, 22, 23, 24, 25, 8)) +
+  scale_y_continuous(limits = c(0, 0.8)) +
+  theme_bw(base_size = 16, base_family="Times") +
+  theme(
+    legend.position = "none",
+    panel.grid = element_blank(),
+    axis.text = element_text(color = "black"),
+    axis.text.x = element_text(color = "black", size = 11)
+    # axis.text.x = element_markdown(color = "black")
+  ) +
+  labs(
+    x = "Manipulation",
+    y = "Accuracy on Construction\n(Across 3 runs)"
+  )
 
 model_scores <- scores %>% 
   filter(idx %in% good_ids) %>%
@@ -466,7 +659,14 @@ model_scores %>%
     y = "Suface Form"
   )
 
-avg_model_scores %>% 
+avg_model_scores <- model_scores %>%
+  group_by(model, suffix, target_construction, surface_form) %>%
+  summarize(
+    ste = 1.96 * plotrix::std.error(logprob),
+    logprob = mean(logprob)
+  )
+
+final_slors <- avg_model_scores %>%
   ungroup() %>%
   filter(!str_detect(model, "(naan|anan)"), target_construction == "aann") %>%
   filter(!str_detect(model, "prototypical")) %>%
@@ -477,30 +677,57 @@ avg_model_scores %>%
       str_remove("aann-"),
     suffix = factor(
       suffix,
-      levels = c("babylm", "no_prototypical", "prototypical_only", "adj_num_freq_balanced", "all_det_removal", "removal", "indef_articles_with_pl_nouns-removal", "measure_nouns_as_singular"),
-      labels = c("BabyLM", "No Prototypical\nAANNs", "Prototypical\nAANNs only", "A/An Adj-Num\nFreq Balanced", "No DT ANN", "No AANN", "No Indef articles\nw/ Measure NNS", "No Measure\nNNS as Singular")
+      levels = c("babylm", "no_prototypical", "prototypical_only", "adj_num_freq_balanced", "all_det_removal", "removal", "indef_articles_with_pl_nouns-removal", "measure_nouns_as_singular", "random_removal", "only_random_removal", "only_other_det_removal", "only_indef_articles_with_pl_nouns_removal", "only_measure_nps_as_singular_removal"),
+      labels = c("Unablated", "No Prototypical\nAANNs", "Prototypical\nAANNs only", "A/An Adj-Num\nFreq Balanced", "No DT-ANNs", "No AANNs", "No Indef articles\nw/ Measure NNS", "No Measure\nNNS as Singular", "Random\nRemoval", "Onlyrandom\nRemoval", "onlyNo DT-ANNs", "onlyNo Indef articles\nw/ Measure NNS", "onlyNo Measure\nNNS as Singular")
     ),
     suffix = fct_reorder(suffix, logprob)
+  )
+
+# final_slors %>% 
+
+bind_rows(
+  final_slors %>% filter(str_detect(suffix, "(only|Random|Unablated)")) %>% mutate(condition = "AANNs seen\nduring training", suffix = str_remove(suffix, "only")),
+  final_slors %>% filter(!str_detect(suffix, "(only|Random|Unablated)")) %>% mutate(condition = "AANNs removed\nfrom training", suffix = str_replace(suffix, "Onlyr", "R")),
+) %>%
+  mutate(
+    suffix = factor(suffix, levels = rev(c("Unablated", "No Prototypical\nAANNs", "Prototypical\nAANNs only", "No AANNs", "No DT-ANNs", "No Indef articles\nw/ Measure NNS", "No Measure\nNNS as Singular", "A/An Adj-Num\nFreq Balanced", "Random\nRemoval")))
   ) %>%
-  ggplot(aes(logprob, suffix)) +
-  geom_point(aes(group = seed), size=2, color = "black", position = position_dodge(width=0.5), alpha = 0.2) +
-  geom_linerange(aes(group = seed, xmax = logprob + ste, xmin = logprob - ste), color = "black", position=position_dodge(width=0.5), alpha = 0.2) +
-  stat_summary(geom = "point", fun = mean, color = "#d95f02", shape = 17, size = 3) +
-  scale_x_continuous(breaks = scales::pretty_breaks(6)) +
+  ggplot(aes(logprob, suffix, shape = condition, color = condition, fill = condition)) +
+  geom_vline(aes(xintercept=logprob), data = final_slors %>% filter(suffix=="Unablated"), linetype = "dotted") +
+  # ggplot(aes(logprob, suffix, shape = condition)) +
+  geom_point(size=3) +
+  # geom_point(aes(group = seed), size=2, position = position_dodge(width=0.5), alpha = 0.2) +
+  # geom_point(aes(group = seed), size=2, color = "black", fill = "black", position = position_dodge(width=0.5), alpha = 0.2) +
+  geom_linerange(aes(xmax = logprob + ste, xmin = logprob - ste)) +
+  # geom_linerange(aes(group = seed, xmax = logprob + ste, xmin = logprob - ste), color = "black", position=position_dodge(width=0.5), alpha = 0.2) +
+  # stat_summary(geom = "point", fun = mean, size = 3) +
+  # stat_summary(geom = "point", fun = mean, color = "#d95f02", fill = "#d95f02", size = 3) +
+  # stat_summary(fun.data = mean_se,  geom = "linerange") +
+  scale_shape_manual(values = c(23, 24)) +
+  scale_x_continuous(breaks = scales::pretty_breaks(6), limits = c(1.2, 2.2)) +
+  scale_color_brewer(aesthetics = c("color", "fill"), palette = "Dark2") +
   theme_bw(base_size = 15, base_family = "Times") +
   theme(
     axis.title.y = element_blank(),
     panel.grid.major.y = element_blank(),
     panel.grid.minor.y = element_blank(),
     panel.grid.minor.x = element_blank(),
-    panel.grid.major.x = element_blank()
+    panel.grid.major.x = element_blank(),
+    axis.text = element_text(color = "black"),
+    legend.position = "top"
     # axis.text.y = element_text(angle=15)
   ) +
   labs(
-    x = "SLOR (95% CI; 3 LM Runs)"
+    color = "Condition",
+    fill = "Condition",
+    shape = "Condition",
+    x = "SLOR (95% CI, 3 LM Runs)"
   )
 
 # 5.41, 4.90
+# 5.09, 4.09
+# 5.94/4.97
+ggsave("paper/hypotheses_slors.pdf", width = 5.97, height = 4.94, dpi = 300, device = cairo_pdf)
 
 avg_model_scores %>% 
   ungroup() %>%
@@ -513,16 +740,69 @@ avg_model_scores %>%
       str_remove("aann-"),
     suffix = factor(
       suffix,
-      levels = c("babylm", "no_prototypical", "prototypical_only", "adj_num_freq_balanced", "all_det_removal", "removal", "indef_articles_with_pl_nouns-removal", "measure_nouns_as_singular"),
-      labels = c("BabyLM", "No Prototypical\nAANNs", "Prototypical\nAANNs only", "A/An Adj-Num\nFreq Balanced", "No DT ANN", "No AANN", "No Indef articles\nw/ Measure NNS", "No Measure\nNNS as Singular")
+      levels = rev(c("babylm", "no_prototypical", "prototypical_only", "adj_num_freq_balanced", "all_det_removal", "removal", "indef_articles_with_pl_nouns-removal", "measure_nouns_as_singular")),
+      labels = rev(c("Unablated", "High Variability\nAANNs", "Low Variability\nAANNs", "A/An Adj-Num\nFreq Balanced", "No DT-ANNs", "No AANNs", "No Indef articles\nw/ Measure NNS", "No Measure\nNNS as Singular"))
+    ),
+    # suffix = fct_reorder(suffix, logprob)
+  ) %>%
+  filter(suffix %in% c("Unablated", "No AANNs", "Low Variability\nAANNs", "High Variability\nAANNs")) %>%
+  ggplot(aes(logprob, suffix)) +
+  # geom_point(aes(group = seed), size=2, color = "#7570b3", fill = "#7570b3", position = position_dodge(width=0.5), alpha = 0.2, shape = 21) +
+  geom_point( size=3, color = "#7570b3", fill = "#7570b3", shape = 21) +
+  geom_vline(aes(xintercept=logprob), data = final_slors %>% filter(suffix=="Unablated"), linetype = "dotted") +
+  # geom_linerange(aes(group = seed, xmax = logprob + ste, xmin = logprob - ste), color = "black", position=position_dodge(width=0.5), alpha = 0.2) +
+  geom_linerange(aes(xmax = logprob + ste, xmin = logprob - ste), color = "#7570b3") +
+  # stat_summary(geom = "point", fun = mean, color = "#7570b3", fill = "#7570b3", shape = 21, size = 3) +
+  scale_x_continuous(breaks = scales::pretty_breaks(6), limits = c(1.8, 2.3)) +
+  theme_bw(base_size = 15, base_family = "Times") +
+  theme(
+    axis.title.y = element_blank(),
+    panel.grid.major.y = element_blank(),
+    panel.grid.minor.y = element_blank(),
+    panel.grid.minor.x = element_blank(),
+    panel.grid.major.x = element_blank(),
+    axis.text = element_text(color = "black"),
+    # axis.text.y = element_text(angle=15)
+  ) +
+  labs(
+    x = "SLOR (95% CI, 3 LM Runs)"
+  )
+
+# 5.26, 4.02
+# 5.09, 2.56
+ggsave("paper/variability.pdf", height = 2.56, width = 5.09, dpi = 300, device=cairo_pdf)
+
+
+# Simplified plot for talk
+
+avg_model_scores_all <- model_scores %>%
+  group_by(model, suffix, target_construction, surface_form) %>%
+  summarize(
+    ste = 1.96 * plotrix::std.error(logprob),
+    logprob = mean(logprob)
+  )
+
+avg_model_scores_all %>%
+  ungroup() %>%
+  filter(!str_detect(model, "(naan|anan)"), target_construction == "aann") %>%
+  filter(!str_detect(model, "prototypical")) %>%
+  filter(surface_form == "construction_score") %>% 
+  mutate(
+    # logprob = logprob/log(2),
+    suffix = str_remove(suffix, "(counterfactual-babylm-indef-|counterfactual-babylm-)") %>%
+      str_remove("aann-"),
+    suffix = factor(
+      suffix,
+      levels = c("babylm", "no_prototypical", "prototypical_only", "adj_num_freq_balanced", "all_det_removal", "removal", "indef_articles_with_pl_nouns-removal", "measure_nouns_as_singular", "random_removal"),
+      labels = c("A beautiful five weeks", "No Prototypical\nAANNs", "Prototypical\nAANNs only", "A/An Adj-Num\nFreq Balanced", "No DT-ANNs", "w/o A beautiful five weeks", "No Indef articles\nw/ Measure NNS", "w/o A few days &\nten months is a lot", "Control: Random removal")
     ),
     suffix = fct_reorder(suffix, logprob)
-  ) %>%
-  filter(suffix %in% c("BabyLM", "No AANN", "No Prototypical\nAANNs", "Prototypical\nAANNs only")) %>%
+  ) %>% 
+  filter(suffix %in% c("A beautiful five weeks", "w/o A beautiful five weeks", "w/o A few days &\nten months is a lot", "Control: Random removal")) %>%
   ggplot(aes(logprob, suffix)) +
-  geom_point(aes(group = seed), size=2, color = "black", position = position_dodge(width=0.5), alpha = 0.2) +
-  geom_linerange(aes(group = seed, xmax = logprob + ste, xmin = logprob - ste), color = "black", position=position_dodge(width=0.5), alpha = 0.2) +
-  stat_summary(geom = "point", fun = mean, color = "#d95f02", shape = 17, size = 3) +
+  geom_point(size=3, color = "#d95f02", alpha = 0.8, shape = 19) +
+  geom_linerange(aes(xmax = logprob + ste, xmin = logprob - ste), color = "#d95f02") +
+  # stat_summary(geom = "point", fun = mean, color = "#d95f02", shape = 19, size = 3) +
   scale_x_continuous(breaks = scales::pretty_breaks(6)) +
   theme_bw(base_size = 15, base_family = "Times") +
   theme(
@@ -530,14 +810,15 @@ avg_model_scores %>%
     panel.grid.major.y = element_blank(),
     panel.grid.minor.y = element_blank(),
     panel.grid.minor.x = element_blank(),
-    panel.grid.major.x = element_blank()
+    panel.grid.major.x = element_blank(),
+    axis.text = element_text(color = "black"),
     # axis.text.y = element_text(angle=15)
   ) +
   labs(
-    x = "SLOR (95% CI; 3 LM Runs)"
+    # x = "SLOR (95% CI; 3 LM Runs)"
+    x = "Likelihood of AANN-containing sentences"
   )
 
-# 5.26, 4.02
 
 results %>%
   mutate(
@@ -580,3 +861,55 @@ scores %>%
   summarize(
     default_acc = mean(default_nan_score > no_article_score)
   )
+
+
+slor_values %>%
+  filter(suffix %in% c("babylm", "counterfactual-babylm-indef-removal"), target_construction == "aann") %>%
+  inner_join(human_data) %>%
+  filter(adjclass %in% c("quant", "qual", "stubborn", "color")) %>%
+  group_by(suffix, nounclass, adjclass) %>%
+  summarize(
+    ste = 1.96 * plotrix::std.error(construction_score),
+    slor = mean(construction_score)
+  ) %>%
+  ungroup() %>%
+  mutate(
+    model = factor(suffix, levels = c("babylm", "counterfactual-babylm-indef-removal"), labels = c("Unablated", "No AANN"))
+  ) %>%
+  ggplot(aes(adjclass, slor, color = model, fill = model, shape = adjclass)) +
+  geom_point(size = 2) +
+  geom_linerange(aes(ymin = slor-ste, ymax=slor+ste)) +
+  geom_line(aes(group = model)) +
+  # geom_col(position = position_dodge(0.9)) +
+  scale_color_brewer(palette = "Dark2", aesthetics = c("color", "fill")) +
+  scale_shape_manual(values = c(21, 22, 23, 24)) +
+  facet_wrap(~ nounclass, nrow = 1, scales = "free_x") +
+  theme_bw(base_size = 16, base_family = "Times") +
+  theme(
+    legend.position = "top",
+    axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1),
+    axis.title.x = element_blank()
+  )
+
+human_data %>%
+  filter(adjclass %in% c("quant", "qual", "stubborn", "color")) %>%
+  group_by(nounclass, adjclass) %>%
+  summarize(
+    ste = 1.96 * plotrix::std.error(rating),
+    rating = mean(rating)
+  ) %>%
+  ggplot(aes(adjclass, rating, color = adjclass, fill = adjclass)) +
+  # geom_point(size = 2) +
+  geom_col(position = position_dodge(0.9)) +
+  scale_color_brewer(palette = "Dark2", aesthetics = c("color", "fill")) +
+  facet_wrap(~ nounclass, nrow = 1, scales = "free_x") +
+  theme_bw(base_size = 16, base_family = "Times") +
+  theme(
+    legend.position = "top",
+    axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1),
+    axis.title.x = element_blank()
+  )
+  
+mahowald_meta
+
+

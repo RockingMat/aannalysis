@@ -1,6 +1,14 @@
 library(tidyverse)
 library(ggstance)
 
+best_lrs <- tribble(
+  ~suffix,~lr,
+  "babylm", "1e-3",
+  "pipps_removal", "1e-3",
+  "pipps_and_keys_to_it_all_removal", "1e-3",
+  "keys_to_pipps_all", "1e-3"
+)
+
 levels = rev(c("pipp_filler_gap", "no_filler_gap", "filler_no_gap", "pp_no_filler_no_gap"))
 labels = rev(c("PiPP (Filler/Gap)", "No Filler/Gap", "Filler/No Gap", "PP (No Filler/No Gap)"))
 
@@ -13,7 +21,52 @@ pipps_results <- fs::dir_ls("data/results/pipps/") %>%
   map_df(read_csv, .id = "model") %>%
   mutate(
     model = str_remove(model, "data/results/pipps/"),
-    model = str_remove(model, ".csv")
+    model = str_remove(model, ".csv"),
+    seed = case_when(
+      str_detect(model, "seed") ~ as.numeric(str_extract(model, "(?<=seed_)(.*)(?=-\\de)")),
+      TRUE ~ 42
+    ),
+    suffix = str_extract(model, "(?<=smolm-autoreg-bpe-)(.*)(?=(-\\d{1}e|seed))"),
+    suffix = str_remove(suffix, "-seed_\\d{1,4}"),
+    suffix = str_remove(suffix, "counterfactual-babylm-"),
+    lr = str_extract(model, "\\de-\\d")
+  )
+
+pipps_results %>%
+  inner_join(best_lrs) %>%
+  count(suffix, seed, lr)
+
+pipps_results %>%
+  inner_join(best_lrs) %>%
+  filter(!str_detect(suffix, "(keys_to_pipps)")) %>%
+  pivot_longer(pipp_filler_gap:no_filler_gap, names_to = "condition", values_to = "target_surprisal") %>%
+  mutate(
+    embedding = case_when(
+      is.na(embedding) ~ "Single-clause",
+      TRUE ~ "Multi-clause"
+    ),
+    embedding = factor(embedding, levels = c("Single-clause", "Multi-clause")),
+    suffix = factor(
+      suffix, 
+      levels = c("babylm", "pipps_removal", "pipps_and_keys_to_it_all_removal"),
+      labels = c("Unablated", "No PiPPs", "No PiPPs and\nNo Keys")
+    ),
+    condition = factor(condition, levels = levels, labels = labels),
+  ) %>%
+  group_by(suffix, lr, condition, preposition, embedding) %>%
+  summarize(
+    ste = 1.96 * plotrix::std.error(target_surprisal),
+    surprisal = mean(target_surprisal)
+  ) %>%
+  ggplot(aes(surprisal, suffix, group = condition, color = condition, fill = condition)) +
+  # geom_point(size = 3) +
+  geom_col(position = position_dodge(width = 0.9)) +
+  geom_linerange(aes(xmin = surprisal - ste, xmax = surprisal + ste), position = position_dodge(0.9), color = "black") +
+  scale_color_brewer(aesthetics = c("color", "fill")) +
+  facet_grid(preposition~embedding, scales = "free_x") +
+  theme_bw(base_size = 15, base_family = "Times") +
+  theme(
+    legend.position = "top"
   )
 
 pipps_long <- pipps_results %>%
