@@ -39,7 +39,7 @@ def main(args):
         )
     else:
         lm = kenlm.Model(args.model)
-        tokenizer = AutoTokenizer.from_pretrained(f"kanishka/smolm-autoreg-bpe-{model_name}-1e-3")
+        tokenizer = AutoTokenizer.from_pretrained(f"kanishka/smolm-autoreg-bpe-{model_name}-3e-4")
         pathlib.Path(args.results_dir).mkdir(parents=True, exist_ok=True)
         pathlib.Path(f"{args.results_dir}/bigrams").mkdir(
             parents=True, exist_ok=True
@@ -60,7 +60,7 @@ def main(args):
             else:
                 tokenized = tokenizer.tokenize(" " + construction[col])
                 scores = [p[0] for p in list(lm.full_scores(" ".join(tokenized)))[1:-1]]
-                score = np.mean(scores)
+                score = np.sum(scores)/len(tokenized)
 
             results[f"{col}_score"].append(score)
 
