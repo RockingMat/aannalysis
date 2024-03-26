@@ -35,5 +35,20 @@ python src/tokenize_and_save.py --corpus data/training_data/counterfactual_babyl
 python src/tokenize_and_save.py \
  --corpus data/training_data/counterfactual-babylm-random_removal.txt \
   --output_dir models/tokenized/ \
-  --model kanishka/smolm-autoreg-bpe-counterfactual-babylm-random_removal-3e-4
+  --model kanishka/smolm-autoreg-bpe-counterfactual-babylm-random_removal-3e-4&
+  
+python src/tokenize_and_save.py --corpus data/training_data/.txt --output_dir models/tokenized/ --model kanishka/smolm-autoreg-bpe-counterfactual-babylm-only_indef_articles_with_pl_nouns_removal-1e-3&
+
+python src/tokenize_and_save.py --corpus data/training_data/counterfactual-babylm-only_other_det_removal.txt --output_dir models/tokenized/ --model kanishka/smolm-autoreg-bpe-counterfactual-babylm-only_other_det_removal-1e-4&
+
+python src/tokenize_and_save.py \
+ --corpus data/training_data/counterfactual-babylm-only_random_removal.txt \
+  --output_dir models/tokenized/ \
+  --model kanishka/smolm-autoreg-bpe-counterfactual-babylm-only_random_removal-3e-4&
+
+python src/tokenize_and_save.py \
+ --corpus data/training_data/counterfactual-babylm-only_measure_nps_as_singular_removal.txt \
+  --output_dir models/tokenized/ \
+  --model kanishka/smolm-autoreg-bpe-counterfactual-babylm-only_measure_nps_as_singular_removal-1e-3
+
   
