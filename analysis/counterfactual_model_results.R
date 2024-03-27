@@ -173,6 +173,16 @@ llama_scores <- scores %>%
       construction_score > no_modifier_score
   )
 
+llama_scores %>%
+  select(idx, correct) %>%
+  inner_join(mahowald_meta) %>%
+  group_by(adjclass, nounclass) %>%
+  summarize(
+    n = n(),
+    acc = mean(correct)
+  ) %>%
+  write_csv("data/results/llama2_aanns_breakdown.csv")
+
 # llama_scores %>%
 #   inner_join(all_corruptions) %>%
 #   select(idx, cons)
@@ -666,6 +676,87 @@ avg_model_scores <- model_scores %>%
     logprob = mean(logprob)
   )
 
+bigram_slors <- bigram_scores %>%
+  inner_join(unigram_scores %>% select(-model) %>% rename_with(function(x) {str_c("ngram_", x)}, ends_with("score")), by = c("idx", "suffix")) %>%
+  mutate(
+    construction_score = construction_score - ngram_construction_score,
+    default_nan_score = default_nan_score - ngram_default_nan_score,
+    order_swap_score = order_swap_score - ngram_order_swap_score,
+    no_article_score = no_article_score - ngram_no_article_score,
+    no_modifier_score = no_modifier_score - ngram_no_modifier_score,
+    no_numeral_score = no_numeral_score - ngram_no_numeral_score,
+  ) %>%
+  filter(idx %in% good_ids) %>%
+  select(-starts_with("ngram")) %>%
+  pivot_longer(construction_score:no_numeral_score, names_to = "surface_form", values_to = "logprob")
+
+avg_bigram_slors <- bigram_slors %>%
+  group_by(model, suffix, surface_form) %>%
+  summarize(
+    ste = 1.96 * plotrix::std.error(logprob),
+    logprob = mean(logprob)
+  )
+
+final_bigram_slors <- avg_bigram_slors %>%
+  filter(!str_detect(model, "prototypical")) %>%
+  filter(surface_form == "construction_score") %>% 
+  mutate(
+    # logprob = logprob/log(2),
+    suffix = str_remove(suffix, "(counterfactual-babylm-indef-|counterfactual-babylm-)") %>%
+      str_remove("aann-"),
+    suffix = factor(
+      suffix,
+      levels = c("babylm", "no_prototypical", "prototypical_only", "adj_num_freq_balanced", "all_det_removal", "removal", "indef_articles_with_pl_nouns-removal", "measure_nouns_as_singular", "random_removal", "only_random_removal", "only_other_det_removal", "only_indef_articles_with_pl_nouns_removal", "only_measure_nps_as_singular_removal"),
+      labels = c("Unablated", "No Prototypical\nAANNs", "Prototypical\nAANNs only", "A/An Adj-Num\nFreq Balanced", "No DT-ANNs", "No AANNs", "No A few/couple/\ndozen/etc. NNS", "No Measure\nNNS as Singular", "Random\nRemoval", "Onlyrandom\nRemoval", "onlyNo DT-ANNs", "onlyNo A few/couple/\ndozen/etc. NNS", "onlyNo Measure\nNNS as Singular")
+    ),
+    suffix = fct_reorder(suffix, logprob)
+  )
+
+
+paired_bigram_slors <- bind_rows(
+  final_bigram_slors %>% filter(str_detect(suffix, "(only|Random|Unablated)")) %>% mutate(condition = "AANNs seen\nduring training", suffix = str_remove(suffix, "only")),
+  final_bigram_slors %>% filter(!str_detect(suffix, "(only|Random|Unablated)")) %>% mutate(condition = "AANNs removed\nfrom training", suffix = str_replace(suffix, "Onlyr", "R")),
+) %>%
+  mutate(
+    suffix = factor(suffix, levels = rev(c("Unablated", "No Prototypical\nAANNs", "Prototypical\nAANNs only", "No AANNs", "No DT-ANNs", "No A few/couple/\ndozen/etc. NNS", "No Measure\nNNS as Singular", "A/An Adj-Num\nFreq Balanced", "Random\nRemoval")))
+  )
+
+paired_bigram_slors %>%
+  ggplot(aes(logprob, suffix, shape = condition, color = condition, fill = condition)) +
+  geom_vline(aes(xintercept=logprob), data = final_bigram_slors %>% filter(suffix=="Unablated"), linetype = "dotted") +
+  # ggplot(aes(logprob, suffix, shape = condition)) +
+  geom_point(size=3) +
+  # geom_point(aes(group = seed), size=2, position = position_dodge(width=0.5), alpha = 0.2) +
+  # geom_point(aes(group = seed), size=2, color = "black", fill = "black", position = position_dodge(width=0.5), alpha = 0.2) +
+  geom_linerange(aes(xmax = logprob + ste, xmin = logprob - ste)) +
+  # geom_linerange(aes(group = seed, xmax = logprob + ste, xmin = logprob - ste), color = "black", position=position_dodge(width=0.5), alpha = 0.2) +
+  # stat_summary(geom = "point", fun = mean, size = 3) +
+  # stat_summary(geom = "point", fun = mean, color = "#d95f02", fill = "#d95f02", size = 3) +
+  # stat_summary(fun.data = mean_se,  geom = "linerange") +
+  scale_shape_manual(values = c(23, 24)) +
+  scale_x_continuous(breaks = scales::pretty_breaks(6)) +
+  scale_color_brewer(aesthetics = c("color", "fill"), palette = "Dark2") +
+  theme_bw(base_size = 15, base_family = "Times") +
+  theme(
+    axis.title.y = element_blank(),
+    panel.grid.major.y = element_blank(),
+    panel.grid.minor.y = element_blank(),
+    panel.grid.minor.x = element_blank(),
+    panel.grid.major.x = element_blank(),
+    axis.text = element_text(color = "black"),
+    legend.position = "top"
+    # axis.text.y = element_text(angle=15)
+  ) +
+  labs(
+    color = "Condition",
+    fill = "Condition",
+    shape = "Condition",
+    x = "SLOR (95% CI)"
+  )
+
+ggsave("paper/bigram_slors.pdf", width = 5.97, height = 4.94, dpi = 300, device = cairo_pdf)
+
+
 final_slors <- avg_model_scores %>%
   ungroup() %>%
   filter(!str_detect(model, "(naan|anan)"), target_construction == "aann") %>%
@@ -678,20 +769,22 @@ final_slors <- avg_model_scores %>%
     suffix = factor(
       suffix,
       levels = c("babylm", "no_prototypical", "prototypical_only", "adj_num_freq_balanced", "all_det_removal", "removal", "indef_articles_with_pl_nouns-removal", "measure_nouns_as_singular", "random_removal", "only_random_removal", "only_other_det_removal", "only_indef_articles_with_pl_nouns_removal", "only_measure_nps_as_singular_removal"),
-      labels = c("Unablated", "No Prototypical\nAANNs", "Prototypical\nAANNs only", "A/An Adj-Num\nFreq Balanced", "No DT-ANNs", "No AANNs", "No Indef articles\nw/ Measure NNS", "No Measure\nNNS as Singular", "Random\nRemoval", "Onlyrandom\nRemoval", "onlyNo DT-ANNs", "onlyNo Indef articles\nw/ Measure NNS", "onlyNo Measure\nNNS as Singular")
+      labels = c("Unablated", "No Prototypical\nAANNs", "Prototypical\nAANNs only", "A/An Adj-Num\nFreq Balanced", "No DT-ANNs", "No AANNs", "No A few/couple/\ndozen/etc. NNS", "No Measure\nNNS as Singular", "Random\nRemoval", "Onlyrandom\nRemoval", "onlyNo DT-ANNs", "onlyNo A few/couple/\ndozen/etc. NNS", "onlyNo Measure\nNNS as Singular")
     ),
     suffix = fct_reorder(suffix, logprob)
   )
 
 # final_slors %>% 
 
-bind_rows(
+paired_final_slors <- bind_rows(
   final_slors %>% filter(str_detect(suffix, "(only|Random|Unablated)")) %>% mutate(condition = "AANNs seen\nduring training", suffix = str_remove(suffix, "only")),
   final_slors %>% filter(!str_detect(suffix, "(only|Random|Unablated)")) %>% mutate(condition = "AANNs removed\nfrom training", suffix = str_replace(suffix, "Onlyr", "R")),
 ) %>%
   mutate(
-    suffix = factor(suffix, levels = rev(c("Unablated", "No Prototypical\nAANNs", "Prototypical\nAANNs only", "No AANNs", "No DT-ANNs", "No Indef articles\nw/ Measure NNS", "No Measure\nNNS as Singular", "A/An Adj-Num\nFreq Balanced", "Random\nRemoval")))
-  ) %>%
+    suffix = factor(suffix, levels = rev(c("Unablated", "No Prototypical\nAANNs", "Prototypical\nAANNs only", "No AANNs", "No DT-ANNs", "No A few/couple/\ndozen/etc. NNS", "No Measure\nNNS as Singular", "A/An Adj-Num\nFreq Balanced", "Random\nRemoval")))
+  )
+
+paired_final_slors %>%
   ggplot(aes(logprob, suffix, shape = condition, color = condition, fill = condition)) +
   geom_vline(aes(xintercept=logprob), data = final_slors %>% filter(suffix=="Unablated"), linetype = "dotted") +
   # ggplot(aes(logprob, suffix, shape = condition)) +
@@ -728,6 +821,48 @@ bind_rows(
 # 5.09, 4.09
 # 5.94/4.97
 ggsave("paper/hypotheses_slors.pdf", width = 5.97, height = 4.94, dpi = 300, device = cairo_pdf)
+
+bind_rows(
+  paired_bigram_slors %>% mutate(LM = "Bigram LM"),
+  paired_final_slors %>% mutate(LM = "OPT LM")
+) %>%
+  mutate(condition = str_replace(condition, "\n", " ")) %>%
+  ggplot(aes(logprob, suffix, shape = condition, color = condition, fill = condition)) +
+  geom_vline(aes(xintercept=logprob), data = final_slors %>% filter(suffix=="Unablated") %>% mutate(LM="OPT LM"), linetype = "dotted") +
+  geom_vline(aes(xintercept=logprob), data = final_bigram_slors %>% filter(suffix=="Unablated") %>% mutate(LM="Bigram LM"), linetype = "dotted") +
+  # ggplot(aes(logprob, suffix, shape = condition)) +
+  geom_point(size=3) +
+  # geom_point(aes(group = seed), size=2, position = position_dodge(width=0.5), alpha = 0.2) +
+  # geom_point(aes(group = seed), size=2, color = "black", fill = "black", position = position_dodge(width=0.5), alpha = 0.2) +
+  geom_linerange(aes(xmax = logprob + ste, xmin = logprob - ste)) +
+  # geom_linerange(aes(group = seed, xmax = logprob + ste, xmin = logprob - ste), color = "black", position=position_dodge(width=0.5), alpha = 0.2) +
+  # stat_summary(geom = "point", fun = mean, size = 3) +
+  # stat_summary(geom = "point", fun = mean, color = "#d95f02", fill = "#d95f02", size = 3) +
+  # stat_summary(fun.data = mean_se,  geom = "linerange") +
+  facet_wrap(~ LM, scales = "free_x") +
+  scale_shape_manual(values = c(23, 24)) +
+  scale_x_continuous(breaks = scales::pretty_breaks(6)) +
+  scale_color_brewer(aesthetics = c("color", "fill"), palette = "Dark2") +
+  theme_bw(base_size = 15, base_family = "Times") +
+  theme(
+    axis.title.y = element_blank(),
+    panel.grid.major.y = element_blank(),
+    panel.grid.minor.y = element_blank(),
+    panel.grid.minor.x = element_blank(),
+    panel.grid.major.x = element_blank(),
+    axis.text = element_text(color = "black"),
+    legend.position = "top"
+    # axis.text.y = element_text(angle=15)
+  ) +
+  labs(
+    color = "Condition",
+    fill = "Condition",
+    shape = "Condition",
+    x = "SLOR (95% CI, 3 OPT LM runs)"
+  )
+
+ggsave("paper/bigram_vs_opt_lm_slors.pdf", width = 8.52, height = 4.47, dpi = 300, device=cairo_pdf)
+
 
 avg_model_scores %>% 
   ungroup() %>%
