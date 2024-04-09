@@ -2,6 +2,7 @@ library(tidyverse)
 library(glue)
 library(fs)
 library(ggstance)
+library(patchwork)
 
 dir = "mahowald-aann"
 
@@ -82,6 +83,15 @@ bigram_scores <- dir_ls("results/bigrams/") %>%
   map_df(read_csv, .id = "model") %>%
   mutate(
     model = str_remove(model, "results/bigrams/"),
+    model = str_remove(model, ".csv"),
+    suffix = model
+  )
+
+fourgram_scores <- dir_ls("results/fourgrams/") %>%
+  keep(str_detect(., "csv")) %>%
+  map_df(read_csv, .id = "model") %>%
+  mutate(
+    model = str_remove(model, "results/fourgrams/"),
     model = str_remove(model, ".csv"),
     suffix = model
   )
@@ -379,11 +389,12 @@ slor_results %>%
     eval_condition = factor(
       eval_condition,
       levels = c("aann", "anan", "naan"), 
-      labels = c("AANN", "ANAN", "NAAN")
+      labels = c("Test = AANN", " Test = ANAN", "Test = NAAN")
     ),
     target_construction = str_to_upper(target_construction),
   ) %>%
   ggplot(aes(train_condition, accuracy, color = train_condition, fill = train_condition, shape = train_condition)) +
+  geom_hline(yintercept=0, linetype = "dotdash", color = "gray") +
   geom_point(size = 3, alpha = 0.7) +
   geom_hline(yintercept = 0.0625, linetype = "dashed") +
   geom_hline(
@@ -427,6 +438,56 @@ slor_results %>%
     family = "Times",
     size = 3.5
   ) +
+  geom_curve(
+    xend = 3.1, yend = 0.14, 
+    x = 2.7, y = 0.001, 
+    curvature = -0.3, 
+    arrow = arrow(length = unit(2, "mm")), 
+    data = tibble(train_condition="AANN", target_construction="AANN"),
+    color = "grey"
+  ) +
+  geom_text(
+    data = tibble(
+      train_condition = "AANN",
+      accuracy = 0.14,
+      target_construction="AANN"
+    ),
+    x = 3.8,
+    label = "2 & 4-gram",
+    color = "darkgrey",
+    family = "Times",
+    size = 4
+  ) +
+  geom_curve(
+    xend = 1.6, yend = 0.14, 
+    x = 2, y = 0.063, 
+    curvature = 0.3, 
+    arrow = arrow(length = unit(2, "mm")), 
+    data = tibble(train_condition="AANN", target_construction="AANN"),
+    color = "black"
+  ) +
+  geom_text(
+    data = tibble(
+      train_condition = "AANN",
+      accuracy = 0.14,
+      target_construction="AANN"
+    ),
+    x = 1.1,
+    label = "Chance",
+    color = "black",
+    family = "Times",
+    size = 4
+  ) +
+  # annotation_label = annotate(
+  #   geom = "label",
+  #   x = 7.53, y = 0.35,
+  #   label = str_wrap("Chance Performance", width = 25),
+  #   hjust = "left",
+  #   family = "Times",
+  #   fontface = "italic",
+  #   lineheight = 1,
+  #   size = 5
+  # )
   facet_wrap(~target_construction) +
   # scale_color_brewer(palette = "Dark2", aesthetics = c("color", "fill"), direction = -1) +
   scale_color_manual(values = c("#7570b3","#d95f02","#e7298a","#1b9e77"), aesthetics = c("color", "fill")) +
@@ -690,6 +751,20 @@ bigram_slors <- bigram_scores %>%
   select(-starts_with("ngram")) %>%
   pivot_longer(construction_score:no_numeral_score, names_to = "surface_form", values_to = "logprob")
 
+fourgram_slors <- fourgram_scores %>%
+  inner_join(unigram_scores %>% select(-model) %>% rename_with(function(x) {str_c("ngram_", x)}, ends_with("score")), by = c("idx", "suffix")) %>%
+  mutate(
+    construction_score = construction_score - ngram_construction_score,
+    default_nan_score = default_nan_score - ngram_default_nan_score,
+    order_swap_score = order_swap_score - ngram_order_swap_score,
+    no_article_score = no_article_score - ngram_no_article_score,
+    no_modifier_score = no_modifier_score - ngram_no_modifier_score,
+    no_numeral_score = no_numeral_score - ngram_no_numeral_score,
+  ) %>%
+  filter(idx %in% good_ids) %>%
+  select(-starts_with("ngram")) %>%
+  pivot_longer(construction_score:no_numeral_score, names_to = "surface_form", values_to = "logprob")
+
 avg_bigram_slors <- bigram_slors %>%
   group_by(model, suffix, surface_form) %>%
   summarize(
@@ -697,7 +772,29 @@ avg_bigram_slors <- bigram_slors %>%
     logprob = mean(logprob)
   )
 
+avg_fourgram_slors <- fourgram_slors %>%
+  group_by(model, suffix, surface_form) %>%
+  summarize(
+    ste = 1.96 * plotrix::std.error(logprob),
+    logprob = mean(logprob)
+  )
+
 final_bigram_slors <- avg_bigram_slors %>%
+  filter(!str_detect(model, "prototypical")) %>%
+  filter(surface_form == "construction_score") %>% 
+  mutate(
+    # logprob = logprob/log(2),
+    suffix = str_remove(suffix, "(counterfactual-babylm-indef-|counterfactual-babylm-)") %>%
+      str_remove("aann-"),
+    suffix = factor(
+      suffix,
+      levels = c("babylm", "no_prototypical", "prototypical_only", "adj_num_freq_balanced", "all_det_removal", "removal", "indef_articles_with_pl_nouns-removal", "measure_nouns_as_singular", "random_removal", "only_random_removal", "only_other_det_removal", "only_indef_articles_with_pl_nouns_removal", "only_measure_nps_as_singular_removal"),
+      labels = c("Unablated", "No Prototypical\nAANNs", "Prototypical\nAANNs only", "A/An Adj-Num\nFreq Balanced", "No DT-ANNs", "No AANNs", "No A few/couple/\ndozen/etc. NNS", "No Measure\nNNS as Singular", "Random\nRemoval", "Onlyrandom\nRemoval", "onlyNo DT-ANNs", "onlyNo A few/couple/\ndozen/etc. NNS", "onlyNo Measure\nNNS as Singular")
+    ),
+    suffix = fct_reorder(suffix, logprob)
+  )
+
+final_fourgram_slors <- avg_fourgram_slors %>%
   filter(!str_detect(model, "prototypical")) %>%
   filter(surface_form == "construction_score") %>% 
   mutate(
@@ -721,6 +818,14 @@ paired_bigram_slors <- bind_rows(
     suffix = factor(suffix, levels = rev(c("Unablated", "No Prototypical\nAANNs", "Prototypical\nAANNs only", "No AANNs", "No DT-ANNs", "No A few/couple/\ndozen/etc. NNS", "No Measure\nNNS as Singular", "A/An Adj-Num\nFreq Balanced", "Random\nRemoval")))
   )
 
+paired_fourgram_slors <- bind_rows(
+  final_fourgram_slors %>% filter(str_detect(suffix, "(only|Random|Unablated)")) %>% mutate(condition = "AANNs seen\nduring training", suffix = str_remove(suffix, "only")),
+  final_fourgram_slors %>% filter(!str_detect(suffix, "(only|Random|Unablated)")) %>% mutate(condition = "AANNs removed\nfrom training", suffix = str_replace(suffix, "Onlyr", "R")),
+) %>%
+  mutate(
+    suffix = factor(suffix, levels = rev(c("Unablated", "No Prototypical\nAANNs", "Prototypical\nAANNs only", "No AANNs", "No DT-ANNs", "No A few/couple/\ndozen/etc. NNS", "No Measure\nNNS as Singular", "A/An Adj-Num\nFreq Balanced", "Random\nRemoval")))
+  )
+
 paired_bigram_slors %>%
   ggplot(aes(logprob, suffix, shape = condition, color = condition, fill = condition)) +
   geom_vline(aes(xintercept=logprob), data = final_bigram_slors %>% filter(suffix=="Unablated"), linetype = "dotted") +
@@ -734,7 +839,7 @@ paired_bigram_slors %>%
   # stat_summary(geom = "point", fun = mean, color = "#d95f02", fill = "#d95f02", size = 3) +
   # stat_summary(fun.data = mean_se,  geom = "linerange") +
   scale_shape_manual(values = c(23, 24)) +
-  scale_x_continuous(breaks = scales::pretty_breaks(6)) +
+  scale_x_continuous(breaks = scales::pretty_breaks(6), limits = c(5.2, 6.2)) +
   scale_color_brewer(aesthetics = c("color", "fill"), palette = "Dark2") +
   theme_bw(base_size = 15, base_family = "Times") +
   theme(
@@ -756,6 +861,37 @@ paired_bigram_slors %>%
 
 ggsave("paper/bigram_slors.pdf", width = 5.97, height = 4.94, dpi = 300, device = cairo_pdf)
 
+final_fourgram_plot <- paired_fourgram_slors %>%
+  mutate(condition = str_replace(condition, "\n", " "), LM = "4-gram baselines") %>%
+  ggplot(aes(logprob, suffix, shape = condition, color = condition, fill = condition)) +
+  geom_vline(aes(xintercept=logprob), data = final_fourgram_slors %>% filter(suffix=="Unablated"), linetype = "dotted") +
+  geom_point(size=3) +
+  geom_linerange(aes(xmax = logprob + ste, xmin = logprob - ste)) +
+  facet_wrap(~LM) +
+  scale_shape_manual(values = c(23, 24)) +
+  scale_x_continuous(breaks = scales::pretty_breaks(6), limits = c(5.4, 6.4)) +
+  scale_color_brewer(aesthetics = c("color", "fill"), palette = "Dark2") +
+  theme_bw(base_size = 15, base_family = "Times") +
+  theme(
+    axis.title.y = element_blank(),
+    axis.text.y = element_blank(),
+    axis.ticks.y = element_blank(),
+    panel.grid.major.y = element_blank(),
+    panel.grid.minor.y = element_blank(),
+    panel.grid.minor.x = element_blank(),
+    panel.grid.major.x = element_blank(),
+    axis.text = element_text(color = "black"),
+    legend.position = "top"
+    # axis.text.y = element_text(angle=15)
+  ) +
+  labs(
+    color = "Condition",
+    fill = "Condition",
+    shape = "Condition",
+    x = "SLOR (95% CI)"
+  )
+
+final_fourgram_plot
 
 final_slors <- avg_model_scores %>%
   ungroup() %>%
@@ -784,7 +920,8 @@ paired_final_slors <- bind_rows(
     suffix = factor(suffix, levels = rev(c("Unablated", "No Prototypical\nAANNs", "Prototypical\nAANNs only", "No AANNs", "No DT-ANNs", "No A few/couple/\ndozen/etc. NNS", "No Measure\nNNS as Singular", "A/An Adj-Num\nFreq Balanced", "Random\nRemoval")))
   )
 
-paired_final_slors %>%
+final_slors_plot <- paired_final_slors %>%
+  mutate(condition = str_replace(condition, "\n", " "), LM = "Our LMs") %>%
   ggplot(aes(logprob, suffix, shape = condition, color = condition, fill = condition)) +
   geom_vline(aes(xintercept=logprob), data = final_slors %>% filter(suffix=="Unablated"), linetype = "dotted") +
   # ggplot(aes(logprob, suffix, shape = condition)) +
@@ -796,6 +933,7 @@ paired_final_slors %>%
   # stat_summary(geom = "point", fun = mean, size = 3) +
   # stat_summary(geom = "point", fun = mean, color = "#d95f02", fill = "#d95f02", size = 3) +
   # stat_summary(fun.data = mean_se,  geom = "linerange") +
+  facet_wrap(~LM) +
   scale_shape_manual(values = c(23, 24)) +
   scale_x_continuous(breaks = scales::pretty_breaks(6), limits = c(1.2, 2.2)) +
   scale_color_brewer(aesthetics = c("color", "fill"), palette = "Dark2") +
@@ -817,10 +955,19 @@ paired_final_slors %>%
     x = "SLOR (95% CI, 3 LM Runs)"
   )
 
+
+
 # 5.41, 4.90
 # 5.09, 4.09
 # 5.94/4.97
-ggsave("paper/hypotheses_slors.pdf", width = 5.97, height = 4.94, dpi = 300, device = cairo_pdf)
+ggsave("paper/hypotheses_slors.pdf", final_slors_plot, width = 5.97, height = 4.94, dpi = 300, device = cairo_pdf)
+
+
+combined <- final_slors_plot + final_fourgram_plot & theme(legend.position = "top") 
+combined + plot_layout(guides="collect")
+
+ggsave("paper/ourlms_vs_fourgrams_stretched.pdf", width = 8.73, height = 5.58, dpi = 300, device = cairo_pdf)
+ggsave("paper/ourlms_vs_fourgrams.pdf", width = 10.86, height = 5.04, dpi = 300, device = cairo_pdf)
 
 bind_rows(
   paired_bigram_slors %>% mutate(LM = "Bigram LM"),
@@ -999,7 +1146,7 @@ scores %>%
 
 
 slor_values %>%
-  filter(suffix %in% c("babylm", "counterfactual-babylm-indef-removal"), target_construction == "aann") %>%
+  filter(suffix %in% c("babylm", "counterfactual-babylm-indef-removal", "counterfactual-babylm-adj_num_freq_balanced"), target_construction == "aann") %>%
   inner_join(human_data) %>%
   filter(adjclass %in% c("quant", "qual", "stubborn", "color")) %>%
   group_by(suffix, nounclass, adjclass) %>%
@@ -1009,7 +1156,7 @@ slor_values %>%
   ) %>%
   ungroup() %>%
   mutate(
-    model = factor(suffix, levels = c("babylm", "counterfactual-babylm-indef-removal"), labels = c("Unablated", "No AANN"))
+    model = factor(suffix, levels = c("babylm", "counterfactual-babylm-indef-removal", "counterfactual-babylm-adj_num_freq_balanced"), labels = c("Unablated", "No AANN", "Adj-Num"))
   ) %>%
   ggplot(aes(adjclass, slor, color = model, fill = model, shape = adjclass)) +
   geom_point(size = 2) +
@@ -1017,14 +1164,21 @@ slor_values %>%
   geom_line(aes(group = model)) +
   # geom_col(position = position_dodge(0.9)) +
   scale_color_brewer(palette = "Dark2", aesthetics = c("color", "fill")) +
-  scale_shape_manual(values = c(21, 22, 23, 24)) +
+  scale_shape_manual(values = c(21, 22, 23, 24), guide="none") +
   facet_wrap(~ nounclass, nrow = 1, scales = "free_x") +
   theme_bw(base_size = 16, base_family = "Times") +
   theme(
     legend.position = "top",
     axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1),
     axis.title.x = element_blank()
+  ) +
+  labs(
+    y = "SLOR (95% CI)",
+    color = "Model",
+    fill = "Model"
   )
+
+ggsave("paper/good-bad-adj-noun.pdf", width = 11.64, height=4, dpi=300, device=cairo_pdf)
 
 human_data %>%
   filter(adjclass %in% c("quant", "qual", "stubborn", "color")) %>%
@@ -1046,5 +1200,169 @@ human_data %>%
   )
   
 mahowald_meta
+
+slor_values %>%
+  filter(suffix %in% c("babylm", "counterfactual-babylm-indef-removal", "counterfactual-babylm-adj_num_freq_balanced", "counterfactual-babylm-random_removal"), target_construction == "aann") %>%
+  inner_join(human_data) %>%
+  mutate(
+    acceptability = case_when(
+      rating > 7 ~ "good",
+      rating <= 7 ~ "bad"
+    )
+  ) %>%
+  group_by(model, acceptability) %>%
+  summarize(
+    ste = 1.96 * plotrix::std.error(construction_score),
+    slor = mean(construction_score)
+  )
+
+
+## tweet thread:
+
+slor_results %>%
+  filter(model %in% c("smolm-aann", "smolm-indef-removal")) %>%
+  mutate(
+    train_condition = case_when(
+      model == "smolm-aann" ~ "AANN",
+      model == "smolm-indef-anan" ~ "ANAN",
+      model == "smolm-indef-naan-rerun" ~ "NAAN",
+      TRUE ~ "No AANN"
+    ),
+    train_condition = factor(
+      train_condition, 
+      levels = c("AANN", "No AANN", "ANAN", "NAAN"),
+      # labels = c(
+      #   "<span style='font-size: 11pt;'>AANN</span>",
+      #   "<span style='font-size: 11pt;'>No AANN</span>",
+      #   "<span style='font-size: 11pt;'>ANAN</span>",
+      #   "<span style='font-size: 11pt;'>NAAN</span>"
+      # )
+    ),
+    eval_condition = case_when(
+      model == "smolm-aann" ~ "aann",
+      model == "smolm-indef-anan" ~ "anan",
+      model == "smolm-indef-naan-rerun" ~ "naan",
+      TRUE ~ "aann"
+    ),
+    eval_condition = factor(
+      eval_condition,
+      levels = c("aann", "anan", "naan"), 
+      labels = c("Test = AANN", " Test = ANAN", "Test = NAAN")
+    ),
+    target_construction = str_to_upper(target_construction),
+  ) %>%
+  filter(target_construction == "AANN") %>%
+  ggplot(aes(train_condition, accuracy, color = train_condition, fill = train_condition, shape = train_condition)) +
+  geom_hline(yintercept=0, linetype = "dotdash", color = "gray") +
+  geom_point(size = 3, alpha = 0.7) +
+  geom_hline(yintercept = 0.0625, linetype = "dashed") +
+  geom_hline(
+    data = results %>% 
+      filter(str_detect(suffix, "gpt2"), target_construction == "aann") %>%
+      select(-train_construction) %>%
+      mutate(target_construction = "AANN"),
+    aes(yintercept = overall),
+    linetype = "dotted",
+    color = "firebrick"
+  ) +
+  geom_hline(
+    data = results %>% 
+      filter(str_detect(suffix, "Llama"), target_construction == "aann") %>%
+      select(-train_construction) %>%
+      mutate(target_construction = "AANN"),
+    aes(yintercept = overall),
+    linetype = "dotted",
+    color = "steelblue"
+  ) +
+  # geom_text(x = "NAAN", y = 0.87, label = "LLama-2-7B", data=tibble(target_construction="AANN")) +
+  geom_text(
+    data = tibble(
+      train_condition = "No AANN",
+      accuracy = 0.9,
+      target_construction="AANN"
+    ),
+    label = "Llama-2-7B",
+    color = "steelblue",
+    family = "Times",
+    size = 3.5
+  ) +
+  geom_text(
+    data = tibble(
+      train_condition = "No AANN",
+      accuracy = 0.73,
+      target_construction="AANN"
+    ),
+    label = "GPT-2 XL",
+    color = "firebrick",
+    family = "Times",
+    size = 3.5
+  ) +
+  geom_curve(
+    xend = 1.9, yend = 0.14, 
+    x = 1.5, y = 0.001, 
+    curvature = -0.3, 
+    arrow = arrow(length = unit(2, "mm")), 
+    data = tibble(train_condition="AANN", target_construction="AANN"),
+    color = "grey"
+  ) +
+  geom_text(
+    data = tibble(
+      train_condition = "AANN",
+      accuracy = 0.14,
+      target_construction="AANN"
+    ),
+    x = 2.2,
+    label = "2 & 4-gram",
+    color = "darkgrey",
+    family = "Times",
+    size = 4
+  ) +
+  geom_curve(
+    xend = 0.87, yend = 0.14, 
+    x = 1.1, y = 0.063, 
+    curvature = 0.3, 
+    arrow = arrow(length = unit(2, "mm")), 
+    data = tibble(train_condition="AANN", target_construction="AANN"),
+    color = "black"
+  ) +
+  geom_text(
+    data = tibble(
+      train_condition = "AANN",
+      accuracy = 0.14,
+      target_construction="AANN"
+    ),
+    x = 0.7,
+    label = "Chance",
+    color = "black",
+    family = "Times",
+    size = 4
+  ) +
+  # annotation_label = annotate(
+  #   geom = "label",
+  #   x = 7.53, y = 0.35,
+  #   label = str_wrap("Chance Performance", width = 25),
+  #   hjust = "left",
+  #   family = "Times",
+  #   fontface = "italic",
+  #   lineheight = 1,
+  #   size = 5
+  # )
+  facet_wrap(~target_construction) +
+  # scale_color_brewer(palette = "Dark2", aesthetics = c("color", "fill"), direction = -1) +
+  scale_color_manual(values = c("#7570b3","#d95f02","#e7298a","#1b9e77"), aesthetics = c("color", "fill")) +
+  scale_shape_manual(values = c(21, 22, 23, 24)) +
+  scale_y_continuous(limits = c(0, 1.0)) +
+  theme_bw(base_size = 16, base_family="Times") +
+  theme(
+    legend.position = "none",
+    panel.grid = element_blank(),
+    axis.text = element_text(color = "black"),
+    axis.text.x = element_text(color = "black", size = 11)
+    # axis.text.x = element_markdown(color = "black")
+  ) +
+  labs(
+    x = "Train Condition",
+    y = "Accuracy\n(3 LM runs)"
+  )
 
 
