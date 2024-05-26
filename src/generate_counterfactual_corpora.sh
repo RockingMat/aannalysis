@@ -96,12 +96,12 @@
 #     --ignore_path data/babylm-analysis/all_hypotheses.csv \
 #     --counterfactual_type removal
 
-python src/counterfactual_constructions.py \
-    --output_path data/training_data/counterfactual-babylm-only_random_removal.txt \
-    --aann_path data/babylm-analysis/random_removal.csv \
-    --excess_path data/babylm-aanns/aanns_indef_all.csv \
-    --ignore_path data/babylm-analysis/all_hypotheses.csv \
-    --counterfactual_type removal 
+# python src/counterfactual_constructions.py \
+#     --output_path data/training_data/counterfactual-babylm-only_random_removal.txt \
+#     --aann_path data/babylm-analysis/random_removal.csv \
+#     --excess_path data/babylm-aanns/aanns_indef_all.csv \
+#     --ignore_path data/babylm-analysis/all_hypotheses.csv \
+#     --counterfactual_type removal 
 
 # python src/counterfactual_constructions.py \
 #     --output_path data/training_data/counterfactual-babylm-pipps-random_removal.txt \
@@ -128,6 +128,16 @@ python src/counterfactual_constructions.py \
 #     --excess_path data/babylm-analysis/measure_nouns_with_singular_verbs.csv \
 #     --counterfactual_type removal \
 #     --add_back_path data/babylm-aanns/aanns_indef_all.csv
+
+# python src/counterfactual_constructions.py \
+#     --output_path data/training_data/counterfactual-babylm-old_union_new_regex_aanns_removal.txt \
+#     --aann_path data/babylm-analysis/old_union_new_regex_aanns.csv \
+#     --counterfactual_type removal 
+
+# python src/counterfactual_constructions.py \
+#     --output_path data/training_data/counterfactual-babylm-new_regex_aanns_removal.txt \
+#     --aann_path data/babylm-analysis/new_regex_aanns.csv \
+#     --counterfactual_type removal 
 
 
 
