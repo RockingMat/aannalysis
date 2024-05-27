@@ -12,7 +12,7 @@ def default_nan(aann):
 
 
 def corrupt_order(aann):
-    if aann.article in ["a", "an"]:
+    if aann.article.lower() in ["a", "an"]:
         article = inflector.a(aann.numeral.split(" ")[0]).split(" ")[0]
     else:
         article = aann.article
@@ -24,7 +24,7 @@ def corrupt_article(aann):
 
 
 def corrupt_modifier(aann):
-    if aann.article in ["a", "an"]:
+    if aann.article.lower() in ["a", "an"]:
         article = inflector.a(aann.numeral.split(" ")[0]).split(" ")[0]
     else:
         article = aann.article
@@ -51,8 +51,11 @@ def nnaa(aann):
 
 def naan(aann):
     """reverses the AANN order"""
-    if aann.article in ["a", "an"]:
-        article = inflector.a(aann.noun.split(" ")[0]).split(" ")[0]
+    if aann.article.lower() in ["a", "an"]:
+        try:
+            article = inflector.a(aann.noun.split(" ")[0]).split(" ")[0]
+        except:
+            article = aann.article
     else:
         article = aann.article
     return AANN(aann.numeral, aann.adjective, article, aann.noun)
@@ -60,10 +63,13 @@ def naan(aann):
 
 def anan(aann):
     """converts AANN --> ANAN"""
-    if aann.article in ["a", "an"]:
-        article = inflector.a(
-            f"{aann.numeral} {aann.adjective}".strip().split(" ")[0]
-        ).split(" ")[0]
+    if aann.article.lower() in ["a", "an"]:
+        try:
+            article = inflector.a(
+                f"{aann.numeral} {aann.adjective}".strip().split(" ")[0]
+            ).split(" ")[0]
+        except:
+            article = aann.article
     else:
         article = aann.article
     return AANN(article, aann.numeral, aann.adjective, aann.noun)

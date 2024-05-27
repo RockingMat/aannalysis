@@ -34,7 +34,10 @@ declare -a lrs=(1e-3)
 # declare -a models=(counterfactual-babylm-only_other_det_removal counterfactual-babylm-only_indef_articles_with_pl_nouns_removal counterfactual-babylm-only_measure_nps_as_singular_removal)
 # declare -a models=(counterfactual-babylm-only_random_removal)
 # declare -a models=(meta-llama/Llama-2-7b-hf)
-declare -a models=(counterfactual-babylm-old_union_new_regex_aanns_removal counterfactual-babylm-new_regex_aanns_removal)
+# declare -a models=(counterfactual-babylm-old_union_new_regex_aanns_removal counterfactual-babylm-new_regex_aanns_removal)
+
+declare -a models=(counterfactual_babylm_naans_new counterfactual_babylm_300_naans_new counterfactual_babylm_300_anans_new)
+# declare -a models=(counterfactual_babylm_naans_new-1e-3 counterfactual_babylm_300_naans_new-1e-3 counterfactual_babylm_300_anans_new-1e-3 counterfactual_babylm_anans_new-1e-3)
 
 for mode in ${modes[@]}
 do 
@@ -43,7 +46,7 @@ do
         for model in ${models[@]}
         do
             # echo kanishka/smolm-autoreg-bpe-${model}-${lr} -b 128 -a data/mahowald-${mode}
-            python src/acceptability.py -m kanishka/smolm-autoreg-bpe-${model}-${lr} -b 128 -a data/mahowald-${mode} --device cuda:2
+            python src/acceptability.py -m kanishka/smolm-autoreg-bpe-${model}-${lr} -b 128 -a data/mahowald-${mode} --device cuda:1
 
             # python src/acceptability.py -m kanishka/smolm-autoreg-bpe-${model}-seed_1024-${lr} -b 128 -a data/mahowald-${mode}
 
