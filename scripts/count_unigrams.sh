@@ -46,10 +46,10 @@
 
 # python src/unigrams.py --corpus data/training_data/counterfactual-babylm-new_regex_aanns_removal.txt --output_dir models/unigrams --model kanishka/smolm-autoreg-bpe-counterfactual-babylm-new_regex_aanns_removal-1e-3
 
-python src/unigrams.py --corpus data/training_data/counterfactual_babylm_naans_new.txt --output_dir models/unigrams --model kanishka/smolm-autoreg-bpe-counterfactual_babylm_naans_new-1e-3
+# python src/unigrams.py --corpus data/training_data/counterfactual_babylm_naans_new.txt --output_dir models/unigrams --model kanishka/smolm-autoreg-bpe-counterfactual_babylm_naans_new-1e-3
 
-python src/unigrams.py --corpus data/training_data/counterfactual_babylm_300_naans_new.txt --output_dir models/unigrams --model kanishka/smolm-autoreg-bpe-counterfactual_babylm_300_naans_new-1e-3
+# python src/unigrams.py --corpus data/training_data/counterfactual_babylm_300_naans_new.txt --output_dir models/unigrams --model kanishka/smolm-autoreg-bpe-counterfactual_babylm_300_naans_new-1e-3
 
-python src/unigrams.py --corpus data/training_data/counterfactual_babylm_300_anans_new.txt --output_dir models/unigrams --model kanishka/smolm-autoreg-bpe-counterfactual_babylm_300_anans_new-1e-3
+# python src/unigrams.py --corpus data/training_data/counterfactual_babylm_300_anans_new.txt --output_dir models/unigrams --model kanishka/smolm-autoreg-bpe-counterfactual_babylm_300_anans_new-1e-3
 
 python src/unigrams.py --corpus data/training_data/counterfactual_babylm_anans_new.txt --output_dir models/unigrams --model kanishka/smolm-autoreg-bpe-counterfactual_babylm_anans_new-1e-3
