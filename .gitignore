@@ -2,6 +2,7 @@ data/training_data/
 models/
 src/tmp_trainer/
 src/wandb/
+data/example_data/
 
 *.DS_Store
 
