@@ -69,7 +69,9 @@ mahowald_adj %>%
   theme_bw(base_size = 15, base_family = "Times") +
   ggtitle("Count vs rank for Mahowald (2023)\nadjectives in BabyLM")
 
-babylm_aanns <- read_csv("data/babylm-aanns/aanns_indef_all.csv")
+# babylm_aanns <- read_csv("data/babylm-aanns/aanns_indef_all.csv")
+babylm_aanns <- read_csv("data/babylm-aanns/aanns_new_decomposed.csv") %>%
+  rename(construction = sentence)
 
 babylm_aanns %>%
   count(ADJ, sort=TRUE) %>%
@@ -100,39 +102,135 @@ babylm_aanns %>%
   filter(percent <= 0.50) %>% View()
   count(NUMERAL, sort=TRUE)
   
+  
 # prototypical ids
   
-prototypical_aanns <- babylm_aanns %>%
-  # mutate(construction = str_to_lower(construction)) %>%
-  mutate_at(vars(construction, ADJ, NUMERAL, NOUN), .funs = str_to_lower) %>%
+lowercased_babylm_aanns <- babylm_aanns %>%
+  mutate_at(vars(construction, ADJ, NUMERAL, NOUN), .funs = str_to_lower)
+  
+low_variability_aanns <- lowercased_babylm_aanns %>%
   count(ADJ, NUMERAL, NOUN, sort=TRUE) %>%
   mutate(
     percent = cumsum(n)/sum(n)
   ) %>%
   filter(percent <= 0.50)
 
-non_prototypical_aanns <- babylm_aanns %>%
-  # mutate(construction = str_to_lower(construction)) %>%
-  mutate_at(vars(construction, ADJ, NUMERAL, NOUN), .funs = str_to_lower) %>%
+high_variability_aanns <- lowercased_babylm_aanns %>%
   count(ADJ, NUMERAL, NOUN, sort=TRUE) %>%
   mutate(
     percent = cumsum(n)/sum(n)
   ) %>%
   filter(percent > 0.50)
 
-prototypical_instances <- babylm_aanns %>%
-  mutate_at(vars(construction, ADJ, NUMERAL, NOUN), .funs = str_to_lower) %>%
+low_variability_instances <- lowercased_babylm_aanns %>%
   inner_join(prototypical_aanns)
 
-prototypical_instances %>% 
-  write_csv("data/babylm-aanns/aanns_indef_all_prototypical.csv")
+low_variability_instances %>% 
+  # write_csv("data/babylm-aanns/aanns_indef_all_prototypical_new.csv")
+  write_csv("data/babylm-aanns/aanns_low_variability_all.csv")
 
-non_prototypical_instances <- babylm_aanns %>%
-  mutate_at(vars(construction, ADJ, NUMERAL, NOUN), .funs = str_to_lower) %>%
-  anti_join(prototypical_aanns)
+high_variability_instances <- lowercased_babylm_aanns %>%
+  inner_join(high_variability_aanns)
 
-non_prototypical_instances %>% 
-  write_csv("data/babylm-aanns/aanns_indef_all_non_prototypical.csv")
+high_variability_instances %>% 
+  write_csv("data/babylm-aanns/aanns_high_variability_all.csv")
+
+
+## diversity in terms of adjective
+
+adj_low_variability <- lowercased_babylm_aanns %>%
+  count(ADJ,sort=TRUE) %>%
+  mutate(
+    percent = cumsum(n)/sum(n)
+  ) %>%
+  filter(percent <= 0.50)
+
+adj_high_variability <- lowercased_babylm_aanns %>%
+  count(ADJ,sort=TRUE) %>%
+  mutate(
+    percent = cumsum(n)/sum(n)
+  ) %>%
+  filter(percent > 0.50)
+
+numeral_low_variability <- lowercased_babylm_aanns %>%
+  count(NUMERAL,sort=TRUE) %>%
+  mutate(
+    percent = cumsum(n)/sum(n)
+  ) %>%
+  filter(percent <= 0.50)
+
+numeral_high_variability <- lowercased_babylm_aanns %>%
+  count(NUMERAL,sort=TRUE) %>%
+  mutate(
+    percent = cumsum(n)/sum(n)
+  ) %>%
+  filter(percent > 0.50)
+
+
+noun_low_variability <- lowercased_babylm_aanns %>%
+  count(NOUN,sort=TRUE) %>%
+  mutate(
+    percent = cumsum(n)/sum(n)
+  ) %>%
+  filter(percent <= 0.50)
+
+noun_high_variability <- lowercased_babylm_aanns %>%
+  count(NOUN,sort=TRUE) %>%
+  mutate(
+    percent = cumsum(n)/sum(n)
+  ) %>%
+  filter(percent > 0.50)
+
+
+###----
+
+adj_high_variability_instances <- lowercased_babylm_aanns %>%
+  inner_join(adj_high_variability)
+
+adj_low_variability_instances <- lowercased_babylm_aanns %>%
+  inner_join(adj_low_variability)
+
+numeral_high_variability_instances <- lowercased_babylm_aanns %>%
+  inner_join(numeral_high_variability)
+
+numeral_low_variability_instances <- lowercased_babylm_aanns %>%
+  inner_join(numeral_low_variability)
+
+noun_high_variability_instances <- lowercased_babylm_aanns %>%
+  inner_join(noun_high_variability)
+
+noun_low_variability_instances <- lowercased_babylm_aanns %>%
+  inner_join(noun_low_variability)
+
+adj_high_variability_instances %>%
+  arrange(-n) %>%
+  head(min(nrow(adj_high_variability_instances), nrow(adj_low_variability_instances))) %>%
+  write_csv("data/babylm-aanns/aanns_high_variability_adj.csv")
+
+adj_low_variability_instances %>%
+  arrange(-n) %>%
+  head(min(nrow(adj_high_variability_instances), nrow(adj_low_variability_instances))) %>%
+  write_csv("data/babylm-aanns/aanns_low_variability_adj.csv")
+
+numeral_high_variability_instances %>%
+  arrange(-n) %>%
+  head(min(nrow(numeral_high_variability_instances), nrow(numeral_low_variability_instances))) %>%
+  write_csv("data/babylm-aanns/aanns_high_variability_numeral.csv")
+
+numeral_low_variability_instances %>%
+  arrange(-n) %>%
+  head(min(nrow(numeral_high_variability_instances), nrow(numeral_low_variability_instances))) %>%
+  write_csv("data/babylm-aanns/aanns_low_variability_numeral.csv")
+
+noun_high_variability_instances %>%
+  arrange(-n) %>%
+  head(min(nrow(noun_high_variability_instances), nrow(noun_low_variability_instances))) %>%
+  write_csv("data/babylm-aanns/aanns_high_variability_noun.csv")
+
+noun_low_variability_instances %>%
+  arrange(-n) %>%
+  head(min(nrow(noun_high_variability_instances), nrow(noun_low_variability_instances))) %>%
+  write_csv("data/babylm-aanns/aanns_low_variability_noun.csv")
 
 
 p1 <- bind_rows(
@@ -309,3 +407,7 @@ bind_rows(
   mutate(
     sim = exp(-2*distance)
   ) %>% View()
+
+
+
+

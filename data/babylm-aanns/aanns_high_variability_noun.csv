@@ -1,0 +1,1222 @@
+idx,construction,pos,DT,ADJ,NUMERAL,NOUN,n,percent
+40111,a club - record 109 games,ARTICLE NN HYPH RECORD CD NNS,a,club - record,109,games,15,0.5110294117647058
+209357,a mere 360 metres,ARTICLE JJ CD NNS,a,mere,360,metres,15,0.5171568627450981
+209550,a mere 360 metres,ARTICLE JJ CD NNS,a,mere,360,metres,15,0.5171568627450981
+229447,a full 15 games,ARTICLE JJ CD NNS,a,full,15,games,15,0.5110294117647058
+229503,a distant 30 games,ARTICLE JJ CD NNS,a,distant,30,games,15,0.5110294117647058
+643629,an international 60 metres,ARTICLE JJ CD NNS,an,international,60,metres,15,0.5171568627450981
+815055,a possible 45 games,ARTICLE JJ CD NNS,a,possible,45,games,15,0.5110294117647058
+834155,a good thirty dollars,ARTICLE JJ CD NNS,a,good,thirty,dollars,15,0.5049019607843137
+1104143,a career - best 20 games,ARTICLE NN HYPH JJ CD NNS,a,career - best,20,games,15,0.5110294117647058
+1104938,a further 15 games,ARTICLE JJ CD NNS,a,further,15,games,15,0.5110294117647058
+1209325,"a record 78–76 , 30 games","ARTICLE RECORD CD , CD NNS",a,record,"78–76 , 30",games,15,0.5110294117647058
+1270300,a deep trench 3×5 metres,ARTICLE JJ NN CD NNS,A,deep trench,3×5,metres,15,0.5171568627450981
+1270302,a single room 8×3 metres,ARTICLE JJ NN CD NNS,a,single room,8×3,metres,15,0.5171568627450981
+1421006,a half - billion dollars,ARTICLE JJ HYPH CD NNS,a,half -,billion,dollars,15,0.5049019607843137
+1507894,a reported 14 million dollars,ARTICLE JJ CD CD NNS,a,reported,14 million,dollars,15,0.5049019607843137
+1515269,an additional 11 games,ARTICLE JJ CD NNS,an,additional,11,games,15,0.5110294117647058
+1785856,a lowly 35 metres,ARTICLE JJ CD NNS,a,lowly,35,metres,15,0.5171568627450981
+1792370,a final eight games,ARTICLE JJ CD NNS,a,final,eight,games,15,0.5110294117647058
+1814607,an extra 8 games,ARTICLE JJ CD NNS,an,extra,8,games,15,0.5110294117647058
+1919369,a massive structure 18 metres,ARTICLE JJ NN CD NNS,a,massive structure,18,metres,15,0.5171568627450981
+1985835,a further 600 metres,ARTICLE JJ CD NNS,a,further,600,metres,15,0.5171568627450981
+2097036,a record 195 games,ARTICLE RECORD CD NNS,a,record,195,games,15,0.5110294117647058
+2183896,a combined 11 games,ARTICLE VBN CD NNS,a,combined,11,games,15,0.5110294117647058
+2195533,a career - high 17 games,ARTICLE NN HYPH JJ CD NNS,a,career - high,17,games,15,0.5110294117647058
+2199339,a possible 78 games,ARTICLE JJ CD NNS,a,possible,78,games,15,0.5110294117647058
+2283575,an extra ten dollars,ARTICLE JJ CD NNS,an,extra,ten,dollars,15,0.5049019607843137
+2391857,a straight five dollars,ARTICLE JJ CD NNS,a,straight,five,dollars,15,0.5049019607843137
+2430329,a career - high 92 games,ARTICLE NN HYPH JJ CD NNS,a,career - high,92,games,15,0.5110294117647058
+2905044,"a bricked wall 0,5 metres",ARTICLE JJ NN CD NNS,a,bricked wall,"0,5",metres,15,0.5171568627450981
+3444957,an extra four hundred million dollars,ARTICLE JJ CD CD CD NNS,an,extra,four hundred million,dollars,15,0.5049019607843137
+3603939,a mere 8 dollars,ARTICLE JJ CD NNS,a,mere,8,dollars,15,0.5049019607843137
+5353047,an extra one hundred thousand dollars,ARTICLE JJ CD CD CD NNS,an,extra,one hundred thousand,dollars,15,0.5049019607843137
+5784224,a significant problem 15 to 30 billion dollars,ARTICLE JJ NN CD TO CD CD NNS,a,significant problem,15 to 30 billion,dollars,15,0.5049019607843137
+6058274,a mere seven hundred million dollars,ARTICLE JJ CD CD CD NNS,a,mere,seven hundred million,dollars,15,0.5049019607843137
+6312579,a further so many hundred metres,ARTICLE JJ RB FEW CD NNS,a,further so,many hundred,metres,15,0.5171568627450981
+6312874,a nice steady fifty five metres,ARTICLE JJ JJ CD CD NNS,a,nice steady,fifty five,metres,15,0.5171568627450981
+6313071,a steady three metres,ARTICLE JJ CD NNS,a,steady,three,metres,15,0.5171568627450981
+6313430,a fixed three metres,ARTICLE VBN CD NNS,a,fixed,three,metres,15,0.5171568627450981
+6988794,a good many million dollars,ARTICLE JJ FEW CD NNS,a,good,many million,dollars,15,0.5049019607843137
+7033723,a measly five hundred dollars,ARTICLE JJ CD CD NNS,A,measly,five hundred,dollars,15,0.5049019607843137
+7037248,a extry five dollars,ARTICLE JJ CD NNS,a,extry,five,dollars,15,0.5049019607843137
+8649118,an even quarter million dollars,ARTICLE JJ NN CD NNS,an,even quarter,million,dollars,15,0.5049019607843137
+9672063,a half - million dollars,ARTICLE JJ HYPH CD NNS,a,half -,million,dollars,15,0.5049019607843137
+11404197,a whopping 30 metres,ARTICLE JJ CD NNS,a,whopping,30,metres,15,0.5171568627450981
+11524682,a massive 30 metres,ARTICLE JJ CD NNS,a,massive,30,metres,15,0.5171568627450981
+269338,"an estimated 110,000 tons",ARTICLE VBN CD NNS,an,estimated,"110,000",tons,13,0.5224673202614379
+581321,"a further 46,750 tons",ARTICLE JJ CD NNS,a,further,"46,750",tons,13,0.5224673202614379
+725296,a mammoth four tons,ARTICLE JJ CD NNS,a,mammoth,four,tons,13,0.5224673202614379
+1422770,"an estimated 5,350 tons",ARTICLE VBN CD NNS,an,estimated,"5,350",tons,13,0.5224673202614379
+2309503,an estimated 70 billion tons,ARTICLE VBN CD CD NNS,an,estimated,70 billion,tons,13,0.5224673202614379
+3329320,an estimated 42 billion tons,ARTICLE VBN CD CD NNS,an,estimated,42 billion,tons,13,0.5224673202614379
+3845881,an estimated 10 to 30 tons,ARTICLE VBN CD TO CD NNS,an,estimated,10 to 30,tons,13,0.5224673202614379
+4310665,a whopping six hundred and seventy tons,ARTICLE JJ CD CD CC CD NNS,a,whopping,six hundred and seventy,tons,13,0.5224673202614379
+4318965,an estimated 23 tons,ARTICLE VBN CD NNS,an,estimated,23,tons,13,0.5224673202614379
+5403656,an additional 10 tons,ARTICLE JJ CD NNS,an,additional,10,tons,13,0.5224673202614379
+5465828,an estimated 15 tons,ARTICLE VBN CD NNS,an,estimated,15,tons,13,0.5224673202614379
+8975365,a second dredge 150 tons,ARTICLE JJ NN CD NNS,a,second dredge,150,tons,13,0.5224673202614379
+8975992,a second dredge 150 tons,ARTICLE JJ NN CD NNS,a,second dredge,150,tons,13,0.5224673202614379
+28788,a great many friends,ARTICLE JJ FEW NNS,a,great,many,friends,8,0.5290032679738562
+91528,a new site 65 meters,ARTICLE JJ NN CD NNS,a,new site,65,meters,8,0.5322712418300654
+136989,a full four stars,ARTICLE JJ CD NNS,a,full,four,stars,8,0.5388071895424836
+218494,a great many friends,ARTICLE JJ FEW NNS,a,great,many,friends,8,0.5290032679738562
+329442,a great many other people,ARTICLE JJ FEW JJ NNS,a,great,many,other people,8,0.5355392156862745
+368422,an estimated 1600 students,ARTICLE VBN CD NNS,an,estimated,1600,students,8,0.5420751633986928
+457169,a great many friends,ARTICLE JJ FEW NNS,a,great,many,friends,8,0.5290032679738562
+690769,a recumbent half - moon and two stars,ARTICLE JJ JJ HYPH NN CC CD NNS,a,recumbent half - moon and,two,stars,8,0.5388071895424836
+719411,a great many other people,ARTICLE JJ FEW JJ NNS,a,great,many,other people,8,0.5355392156862745
+723243,a good many other people,ARTICLE JJ FEW JJ NNS,a,good,many,other people,8,0.5355392156862745
+772627,a perfect five stars,ARTICLE JJ CD NNS,a,perfect,five,stars,8,0.5388071895424836
+772629,a perfect five stars,ARTICLE JJ CD NNS,a,perfect,five,stars,8,0.5388071895424836
+772742,a perfect five stars,ARTICLE JJ CD NNS,a,perfect,five,stars,8,0.5388071895424836
+801306,a great many other people,ARTICLE JJ FEW JJ NNS,a,great,many,other people,8,0.5355392156862745
+927899,a great many friends,ARTICLE JJ FEW NNS,a,great,many,friends,8,0.5290032679738562
+968836,a career - high seven tackles,ARTICLE NN HYPH JJ CD NNS,a,career - high,seven,tackles,8,0.5453431372549019
+1057381,a new 150 meters,ARTICLE JJ CD NNS,a,new,150,meters,8,0.5322712418300654
+1180786,a possible four stars,ARTICLE JJ CD NNS,a,possible,four,stars,8,0.5388071895424836
+1250299,a career - high 44 tackles,ARTICLE NN HYPH JJ CD NNS,a,career - high,44,tackles,8,0.5453431372549019
+1297362,a great many friends,ARTICLE JJ FEW NNS,a,great,many,friends,8,0.5290032679738562
+1508563,a career - high 46 tackles,ARTICLE NN HYPH JJ CD NNS,a,career - high,46,tackles,8,0.5453431372549019
+1624687,a school - record 46 tackles,ARTICLE NN HYPH RECORD CD NNS,a,school - record,46,tackles,8,0.5453431372549019
+2184575,a career - high 51 tackles,ARTICLE NN HYPH JJ CD NNS,a,career - high,51,tackles,8,0.5453431372549019
+2407523,a thick square minaret 10–15 meters,ARTICLE JJ JJ NN CD NNS,a,thick square minaret,10–15,meters,8,0.5322712418300654
+2481243,an unseen five students,ARTICLE JJ CD NNS,an,unseen,five,students,8,0.5420751633986928
+2490261,a great many friends,ARTICLE JJ FEW NNS,a,great,many,friends,8,0.5290032679738562
+2594236,a great many friends,ARTICLE JJ FEW NNS,a,great,many,friends,8,0.5290032679738562
+2645640,a great many other people,ARTICLE JJ FEW JJ NNS,a,great,many,other people,8,0.5355392156862745
+2664578,"an estimated 26,000 students",ARTICLE VBN CD NNS,an,estimated,"26,000",students,8,0.5420751633986928
+2664668,"an estimated 2,250 students",ARTICLE VBN CD NNS,an,estimated,"2,250",students,8,0.5420751633986928
+2664684,"an estimated 34,000 students",ARTICLE VBN CD NNS,an,estimated,"34,000",students,8,0.5420751633986928
+2664698,an estimated 850 students,ARTICLE VBN CD NNS,an,estimated,850,students,8,0.5420751633986928
+2762857,a career - best 22 tackles,ARTICLE NN HYPH JJ CD NNS,a,career - best,22,tackles,8,0.5453431372549019
+2762897,a career - high 25 tackles,ARTICLE NN HYPH JJ CD NNS,a,career - high,25,tackles,8,0.5453431372549019
+2919092,a national total 160 students,ARTICLE JJ NN CD NNS,a,national total,160,students,8,0.5420751633986928
+3056142,a great many other people,ARTICLE JJ FEW JJ NNS,a,great,many,other people,8,0.5355392156862745
+3069414,a great many other people,ARTICLE JJ FEW JJ NNS,a,great,many,other people,8,0.5355392156862745
+3120668,a great many other people,ARTICLE JJ FEW JJ NNS,a,great,many,other people,8,0.5355392156862745
+3572688,an extra two bucks,ARTICLE JJ CD NNS,an,extra,two,bucks,8,0.5257352941176471
+4174812,a natural swimming pool 1.500 meters,ARTICLE JJ NN NN CD NNS,a,natural swimming pool,1.500,meters,8,0.5322712418300654
+4994326,a large hill 585 meters,ARTICLE JJ NN CD NNS,a,large hill,585,meters,8,0.5322712418300654
+5214040,an impressive 32 meters,ARTICLE JJ CD NNS,an,impressive,32,meters,8,0.5322712418300654
+5268676,"an estimated 31,000 students",ARTICLE VBN CD NNS,an,estimated,"31,000",students,8,0.5420751633986928
+5340998,a small stick nest several meters,ARTICLE JJ NN NN FEW NNS,a,small stick nest,several,meters,8,0.5322712418300654
+5352618,a team - high nine tackles,ARTICLE NN HYPH JJ CD NNS,a,team - high,nine,tackles,8,0.5453431372549019
+5432242,a rare zero - stars,ARTICLE JJ CD HYPH NNS,a,rare,zero -,stars,8,0.5388071895424836
+7352906,a lousy 300 bucks,ARTICLE JJ CD NNS,A,lousy,300,bucks,8,0.5257352941176471
+7872210,a great many friends,ARTICLE JJ FEW NNS,a,great,many,friends,8,0.5290032679738562
+9570300,a very somber five stars,ARTICLE RB JJ CD NNS,a,very somber,five,stars,8,0.5388071895424836
+9944171,an extra 20 bucks,ARTICLE JJ CD NNS,an,extra,20,bucks,8,0.5257352941176471
+10872829,a lousy 10 bucks,ARTICLE JJ CD NNS,a,lousy,10,bucks,8,0.5257352941176471
+10943054,"a measly 1,000 bucks",ARTICLE JJ CD NNS,A,measly,"1,000",bucks,8,0.5257352941176471
+11069688,a measly few bucks,ARTICLE JJ FEW NNS,a,measly,few,bucks,8,0.5257352941176471
+11207144,an extra ten bucks,ARTICLE JJ CD NNS,an,extra,ten,bucks,8,0.5257352941176471
+11436497,a lousy five bucks,ARTICLE JJ CD NNS,a,lousy,five,bucks,8,0.5257352941176471
+11594666,a forbidding 400 meters,ARTICLE JJ CD NNS,a,forbidding,400,meters,8,0.5322712418300654
+63518,a great many others,ARTICLE JJ FEW NNS,a,great,many,others,7,0.5625
+71366,a great many officers,ARTICLE JJ FEW NNS,A,great,many,officers,7,0.559640522875817
+114635,a great many others,ARTICLE JJ FEW NNS,a,great,many,others,7,0.5625
+143563,a great many officers,ARTICLE JJ FEW NNS,A,great,many,officers,7,0.559640522875817
+259194,a young soldier and two women,ARTICLE JJ NN CC CD NNS,a,young soldier and,two,women,7,0.568218954248366
+327972,an additional 124 officers,ARTICLE JJ CD NNS,an,additional,124,officers,7,0.559640522875817
+328094,a further 124 officers,ARTICLE JJ CD NNS,a,further,124,officers,7,0.559640522875817
+387630,a real estate developer and several others,ARTICLE JJ NN NN CC FEW NNS,a,real estate developer and,several,others,7,0.5625
+713081,an additional 18 episodes,ARTICLE JJ CD NNS,an,additional,18,episodes,7,0.553921568627451
+773978,a total 98 episodes,ARTICLE JJ CD NNS,a,total,98,episodes,7,0.553921568627451
+780327,a great many species,ARTICLE JJ FEW NNS,a,great,many,species,7,0.565359477124183
+782018,a great many species,ARTICLE JJ FEW NNS,a,great,many,species,7,0.565359477124183
+790887,a good many women,ARTICLE JJ FEW NNS,A,good,many,women,7,0.568218954248366
+792088,a good many boys,ARTICLE JJ FEW NNS,a,good,many,boys,7,0.548202614379085
+853395,a season - high 12 combined tackles,ARTICLE NN HYPH JJ CD VBN NNS,a,season - high,12,combined tackles,7,0.551062091503268
+853601,a great many women,ARTICLE JJ FEW NNS,a,great,many,women,7,0.568218954248366
+894084,a season - high ten combined tackles,ARTICLE NN HYPH JJ CD VBN NNS,a,season - high,ten,combined tackles,7,0.551062091503268
+924936,a great many species,ARTICLE JJ FEW NNS,a,great,many,species,7,0.565359477124183
+937870,a total 51 episodes,ARTICLE JJ CD NNS,a,total,51,episodes,7,0.553921568627451
+1018828,a half - dozen boys,ARTICLE JJ HYPH FEW NNS,a,half -,dozen,boys,7,0.548202614379085
+1072891,an additional four officers,ARTICLE JJ CD NNS,an,additional,four,officers,7,0.559640522875817
+1085629,a season - high seven combined tackles,ARTICLE NN HYPH JJ CD VBN NNS,a,season - high,seven,combined tackles,7,0.551062091503268
+1085641,a season - high seven combined tackles,ARTICLE NN HYPH JJ CD VBN NNS,a,season - high,seven,combined tackles,7,0.551062091503268
+1085659,a season - high three combined tackles,ARTICLE NN HYPH JJ CD VBN NNS,a,season - high,three,combined tackles,7,0.551062091503268
+1085660,a season - high four combined tackles,ARTICLE NN HYPH JJ CD VBN NNS,a,season - high,four,combined tackles,7,0.551062091503268
+1085676,a career - high nine combined tackles,ARTICLE NN HYPH JJ CD VBN NNS,a,career - high,nine,combined tackles,7,0.551062091503268
+1196176,a further 36 hectares,ARTICLE JJR CD NNS,a,further,36,hectares,7,0.556781045751634
+1679525,a regular 26 episodes,ARTICLE JJ CD NNS,a,regular,26,episodes,7,0.553921568627451
+2158024,a popular 22 episodes,ARTICLE JJ CD NNS,a,popular,22,episodes,7,0.553921568627451
+2498100,a great many species,ARTICLE JJ FEW NNS,a,great,many,species,7,0.565359477124183
+2539798,a mere seven episodes,ARTICLE JJ CD NNS,a,mere,seven,episodes,7,0.553921568627451
+2557812,"an estimated 90,750 hectares",ARTICLE VBN CD NNS,an,estimated,"90,750",hectares,7,0.556781045751634
+2558977,a half dozen others,ARTICLE JJ FEW NNS,a,half,dozen,others,7,0.5625
+2585851,"an estimated 3,000 women",ARTICLE VBN CD NNS,An,estimated,"3,000",women,7,0.568218954248366
+3075164,an estimated 432 species,ARTICLE VBN CD NNS,An,estimated,432,species,7,0.565359477124183
+3456831,an additional ten hectares,ARTICLE JJ CD NNS,an,additional,ten,hectares,7,0.556781045751634
+3456837,an additional ten hectares,ARTICLE JJ CD NNS,an,additional,ten,hectares,7,0.556781045751634
+3456975,a further erm sixteen hectares,ARTICLE JJ UH CD NNS,a,further erm,sixteen,hectares,7,0.556781045751634
+3459717,an appropriate hundred and twenty two hectares,ARTICLE JJ CD CC CD CD NNS,an,appropriate,hundred and twenty two,hectares,7,0.556781045751634
+4155255,"an estimated 1,000,000 species",ARTICLE VBN CD NNS,an,estimated,"1,000,000",species,7,0.565359477124183
+4431535,a good many boys,ARTICLE JJ FEW NNS,a,good,many,boys,7,0.548202614379085
+4971272,"an estimated 438,000 species",ARTICLE VBN CD NNS,an,estimated,"438,000",species,7,0.565359477124183
+5360032,a good many others,ARTICLE JJ FEW NNS,a,good,many,others,7,0.5625
+5597873,a long four women,ARTICLE JJ CD NNS,a,long,four,women,7,0.568218954248366
+5840838,a whole 3 episodes,ARTICLE JJ CD NNS,A,whole,3,episodes,7,0.553921568627451
+6074647,a whole lot more boys,ARTICLE JJ NN FEW NNS,a,whole lot,more,boys,7,0.548202614379085
+6204844,a further one hundred and sixty hectares,ARTICLE JJ CD CD CC CD NNS,a,further,one hundred and sixty,hectares,7,0.556781045751634
+6548651,a broken arm two boys,ARTICLE VBN NN CD NNS,a,broken arm,two,boys,7,0.548202614379085
+6583182,a great many others,ARTICLE JJ FEW NNS,a,great,many,others,7,0.5625
+7127639,a great many women,ARTICLE JJ FEW NNS,a,great,many,women,7,0.568218954248366
+8571513,a bearded man and two women,ARTICLE JJ NN CC CD NNS,a,bearded man and,two,women,7,0.568218954248366
+8707798,an inept pilot and two officers,ARTICLE JJ NN CC CD NNS,an,inept pilot and,two,officers,7,0.559640522875817
+9594469,an old man and two boys,ARTICLE JJ NN CC CD NNS,An,old man and,two,boys,7,0.548202614379085
+9594470,an old man and two boys,ARTICLE JJ NN CC CD NNS,An,old man and,two,boys,7,0.548202614379085
+10716926,a great many others,ARTICLE JJ FEW NNS,a,great,many,others,7,0.5625
+10783327,a great many officers,ARTICLE JJ FEW NNS,A,great,many,officers,7,0.559640522875817
+34347,a great many persons,ARTICLE JJ FEW NNS,a,great,many,persons,6,0.5804738562091504
+70295,a great many persons,ARTICLE JJ FEW NNS,a,great,many,persons,6,0.5804738562091504
+622773,a difficult question sentence answer sentence question sentence length three marks,ARTICLE JJ NN NN NN NN NN NN NN CD NNS,a,difficult question sentence answer sentence question sentence length,three,marks,6,0.5755718954248366
+713538,a possible ten marks,ARTICLE JJ CD NNS,a,possible,ten,marks,6,0.5755718954248366
+732571,a great many members,ARTICLE JJ FEW NNS,A,great,many,members,6,0.5780228758169934
+918182,an impressive 30 appearances,ARTICLE JJ CD NNS,an,impressive,30,appearances,6,0.5706699346405228
+1061807,a mere 11 kilometres,ARTICLE JJ CD NNS,a,mere,11,kilometres,6,0.5731209150326797
+1249753,a further 21 appearances,ARTICLE JJ CD NNS,a,further,21,appearances,6,0.5706699346405228
+1583842,a further 9 members,ARTICLE JJ CD NNS,A,further,9,members,6,0.5780228758169934
+1601049,a little village 15 kilometres,ARTICLE JJ NN CD NNS,a,little village,15,kilometres,6,0.5731209150326797
+1634021,a further six appearances,ARTICLE JJ CD NNS,a,further,six,appearances,6,0.5706699346405228
+1954207,a further three appearances,ARTICLE JJ CD NNS,a,further,three,appearances,6,0.5706699346405228
+2109726,a further 59 appearances,ARTICLE JJ CD NNS,a,further,59,appearances,6,0.5706699346405228
+2398891,a palestinian village 13 kilometres,ARTICLE JJ NN CD NNS,a,palestinian village,13,kilometres,6,0.5731209150326797
+2399747,an estimated 55 persons,ARTICLE VBN CD NNS,an,estimated,55,persons,6,0.5804738562091504
+2405776,an estimated 182 persons,ARTICLE VBN CD NNS,an,estimated,182,persons,6,0.5804738562091504
+2406722,an estimated 193 persons,ARTICLE VBN CD NNS,an,estimated,193,persons,6,0.5804738562091504
+2597831,an extra three marks,ARTICLE JJ CD NNS,an,extra,three,marks,6,0.5755718954248366
+2611696,an underground laboratory ten kilometres,ARTICLE JJ NN CD NNS,an,underground laboratory,ten,kilometres,6,0.5731209150326797
+2643277,a good few persons,ARTICLE JJ FEW NNS,a,good,few,persons,6,0.5804738562091504
+2688110,a further 13 appearances,ARTICLE JJ CD NNS,a,further,13,appearances,6,0.5706699346405228
+2715936,an extra 22 marks,ARTICLE JJ CD NNS,an,extra,22,marks,6,0.5755718954248366
+2971706,a good many members,ARTICLE JJ FEW NNS,a,good,many,members,6,0.5780228758169934
+3980265,a small town nine kilometres,ARTICLE JJ NN CD NNS,a,small town,nine,kilometres,6,0.5731209150326797
+4317268,"a little bigger , five members","ARTICLE JJ JJR , CD NNS",a,"little bigger ,",five,members,6,0.5780228758169934
+5294235,"an estimated 100,000 marks",ARTICLE VBN CD NNS,an,estimated,"100,000",marks,6,0.5755718954248366
+5703760,an easy two marks,ARTICLE JJ CD NNS,an,easy,two,marks,6,0.5755718954248366
+5861761,a mere fifty seven members,ARTICLE JJ CD CD NNS,a,mere,fifty seven,members,6,0.5780228758169934
+6810085,a full 15 members,ARTICLE JJ CD NNS,a,full,15,members,6,0.5780228758169934
+6935025,"a square , 12,000 kilometres","ARTICLE JJ , CD NNS",a,"square ,","12,000",kilometres,6,0.5731209150326797
+159152,a cumulated 300 ects credits,ARTICLE VBN CD NN NNS,a,cumulated,300,ects credits,5,0.5825163398692811
+183594,a cumulated 300 ects credits,ARTICLE VBN CD NN NNS,a,cumulated,300,ects credits,5,0.5825163398692811
+334740,a cumulated 300 ects credits,ARTICLE VBN CD NN NNS,a,cumulated,300,ects credits,5,0.5825163398692811
+354384,a great many questions,ARTICLE JJ FEW NNS,a,great,many,questions,5,0.5968137254901961
+354995,an elongated oval form 12.5 km,ARTICLE JJ JJ NN CD NNS,an,elongated oval form,12.5,km,5,0.5906862745098039
+406685,a public service 2 nights,ARTICLE JJ NN CD NNS,a,public service,2,nights,5,0.5927287581699346
+424372,an even 300 wins,ARTICLE JJ CD NNS,an,even,300,wins,5,0.6008986928104575
+511111,a fine beast fourteen hands,ARTICLE JJ NN CD NNS,a,fine beast,fourteen,hands,5,0.5845588235294118
+837469,a marvelous like two nights,ARTICLE JJ UH CD NNS,a,marvelous like,two,nights,5,0.5927287581699346
+906527,a whole lot more questions,ARTICLE JJ NN FEW NNS,a,whole lot,more,questions,5,0.5968137254901961
+971044,a further three seats,ARTICLE JJ CD NNS,a,further,three,seats,5,0.5988562091503268
+1021799,a great many places,ARTICLE JJ FEW NNS,a,great,many,places,5,0.5947712418300654
+1096683,a modest 4 wins,ARTICLE JJ CD NNS,A,modest,4,wins,5,0.6008986928104575
+1243449,"an additional 4,000 seats",ARTICLE JJ CD NNS,an,additional,"4,000",seats,5,0.5988562091503268
+1336876,"a perfect record , 16 wins","ARTICLE JJ RECORD , CD NNS",a,"perfect record ,",16,wins,5,0.6008986928104575
+1557201,a little bit more hands,ARTICLE JJ NN FEW NNS,a,little bit,more,hands,5,0.5845588235294118
+1657079,a decimal point two places,ARTICLE JJ NN CD NNS,a,decimal point,two,places,5,0.5947712418300654
+1658032,a decimal point two places,ARTICLE JJ NN CD NNS,a,decimal point,two,places,5,0.5947712418300654
+1691778,a good few hands,ARTICLE JJ FEW NNS,a,good,few,hands,5,0.5845588235294118
+2212617,a mere 89 seats,ARTICLE JJ CD NNS,a,mere,89,seats,5,0.5988562091503268
+2223754,a further 7 km,ARTICLE JJ CD NNS,a,further,7,km,5,0.5906862745098039
+2760729,a school - record 22 wins,ARTICLE NN HYPH RECORD CD NNS,a,school - record,22,wins,5,0.6008986928104575
+2760870,a school - record 28 wins,ARTICLE NN HYPH RECORD CD NNS,a,school - record,28,wins,5,0.6008986928104575
+2984556,a great many questions,ARTICLE JJ FEW NNS,a,great,many,questions,5,0.5968137254901961
+3294087,a possible 107 seats,ARTICLE JJ CD NNS,a,possible,107,seats,5,0.5988562091503268
+3494502,a cumulated 300 ects credits,ARTICLE VBN CD NN NNS,a,cumulated,300,ects credits,5,0.5825163398692811
+4550464,an extra 2 km,ARTICLE JJ CD NNS,an,extra,2,km,5,0.5906862745098039
+4765780,a cumulated 300 ects credits,ARTICLE VBN CD NN NNS,a,cumulated,300,ects credits,5,0.5825163398692811
+5502664,a remote facility 19 km,ARTICLE JJ NN CD NNS,a,remote facility,19,km,5,0.5906862745098039
+5559104,an extra six seats,ARTICLE JJ CD NNS,an,extra,six,seats,5,0.5988562091503268
+5795304,a brilliant first two hands,ARTICLE JJ JJ CD NNS,a,brilliant first,two,hands,5,0.5845588235294118
+5832384,a remote forest site 130 km,ARTICLE JJ NN NN CD NNS,a,remote forest site,130,km,5,0.5906862745098039
+6554682,a good twenty five kilos,ARTICLE JJ CD CD NNS,a,good,twenty five,kilos,5,0.5886437908496732
+7063149,an extra 80 kilos,ARTICLE JJ CD NNS,An,extra,80,kilos,5,0.5886437908496732
+7063159,an extra 80 kilos,ARTICLE JJ CD NNS,An,extra,80,kilos,5,0.5886437908496732
+7066889,an extra 80 kilos,ARTICLE JJ CD NNS,An,extra,80,kilos,5,0.5886437908496732
+7066898,an extra 80 kilos,ARTICLE JJ CD NNS,An,extra,80,kilos,5,0.5886437908496732
+7611502,a half dozen places,ARTICLE JJ FEW NNS,a,half,dozen,places,5,0.5947712418300654
+7835747,an unfuckable wife and 4 kids,ARTICLE JJ NN CC CD NNS,an,unfuckable wife and,4,kids,5,0.5866013071895425
+8105995,a significant breakthrough two nights,ARTICLE JJ NN CD NNS,a,significant breakthrough,two,nights,5,0.5927287581699346
+8296536,a full - time job and three kids,ARTICLE JJ HYPH NN NN CC CD NNS,a,full - time job and,three,kids,5,0.5866013071895425
+8575942,a great many questions,ARTICLE JJ FEW NNS,a,great,many,questions,5,0.5968137254901961
+8903651,a good many questions,ARTICLE JJ FEW NNS,a,good,many,questions,5,0.5968137254901961
+9280687,a stable guy and two kids,ARTICLE JJ NN CC CD NNS,a,stable guy and,two,kids,5,0.5866013071895425
+9814951,a second language three nights,ARTICLE JJ NN CD NNS,a,second language,three,nights,5,0.5927287581699346
+9816248,a second language three nights,ARTICLE JJ NN CD NNS,a,second language,three,nights,5,0.5927287581699346
+9987719,a lousy marriage and two kids,ARTICLE JJ NN CC CD NNS,A,lousy marriage and,two,kids,5,0.5866013071895425
+9999593,a young lady and three kids,ARTICLE JJ NN CC CD NNS,a,young lady and,three,kids,5,0.5866013071895425
+10142808,a little more places,ARTICLE JJ FEW NNS,a,little,more,places,5,0.5947712418300654
+10906344,a little more hands,ARTICLE JJ FEW NNS,a,little,more,hands,5,0.5845588235294118
+14321,a further five victories,ARTICLE JJ CD NNS,A,further,five,victories,4,0.6433823529411765
+72747,a great many doors,ARTICLE JJ FEW NNS,a,great,many,doors,4,0.6139705882352942
+110319,"a further 250,000 copies",ARTICLE JJ CD NNS,a,further,"250,000",copies,4,0.6123366013071896
+110402,"a mere 25,000 copies",ARTICLE JJ CD NNS,a,mere,"25,000",copies,4,0.6123366013071896
+146886,a great many doors,ARTICLE JJ FEW NNS,a,great,many,doors,4,0.6139705882352942
+148447,an additional ten states,ARTICLE JJ CD NNS,an,additional,ten,states,4,0.6401143790849673
+156623,a great many birds,ARTICLE JJ FEW NNS,a,great,many,birds,4,0.6058006535947712
+165613,a great many pieces,ARTICLE JJ FEW NNS,a,great,many,pieces,4,0.633578431372549
+212846,a great many birds,ARTICLE JJ FEW NNS,A,great,many,birds,4,0.6058006535947712
+217172,a round dozen blocks,ARTICLE JJ FEW NNS,a,round,dozen,blocks,4,0.6074346405228758
+269489,an annualized 15 billion gallons,ARTICLE VBN CD CD NNS,an,annualized,15 billion,gallons,4,0.6188725490196079
+288176,an orange dwarf star 37 light years,ARTICLE JJ NN NN CD NN NNS,an,orange dwarf star,37,light years,4,0.6237745098039216
+360764,a colossal 5 stories,ARTICLE JJ CD NNS,a,colossal,5,stories,4,0.641748366013072
+401200,a whole candle and three or four pieces,ARTICLE JJ NN CC CD CC CD NNS,a,whole candle and,three or four,pieces,4,0.633578431372549
+414367,"an estimated 50,000 spectators",ARTICLE VBN CD NNS,an,estimated,"50,000",spectators,4,0.6384803921568627
+684417,a good many gallons,ARTICLE JJ FEW NNS,a,good,many,gallons,4,0.6188725490196079
+693440,a great many other things,ARTICLE JJ FEW JJ NNS,a,great,many,other things,4,0.6303104575163399
+733253,a large parent comet several centuries,ARTICLE JJ NN NN FEW NNS,a,large parent comet,several,centuries,4,0.610702614379085
+733392,a good many folks,ARTICLE JJ FEW NNS,a,good,many,folks,4,0.6172385620915033
+780300,a great many huge flies,ARTICLE JJ FEW JJ NNS,a,great,many,huge flies,4,0.6205065359477124
+781996,a great many huge flies,ARTICLE JJ FEW JJ NNS,a,great,many,huge flies,4,0.6205065359477124
+800215,an additional seven awards,ARTICLE JJ CD NNS,An,additional,seven,awards,4,0.6041666666666666
+852985,a great many other things,ARTICLE JJ FEW JJ NNS,a,great,many,other things,4,0.6303104575163399
+866580,a great many doors,ARTICLE JJ FEW NNS,a,great,many,doors,4,0.6139705882352942
+900754,a great many other things,ARTICLE JJ FEW JJ NNS,a,great,many,other things,4,0.6303104575163399
+918241,a superb 94 league appearances,ARTICLE JJ CD NN NNS,a,superb,94,league appearances,4,0.622140522875817
+924922,a great many huge flies,ARTICLE JJ FEW JJ NNS,a,great,many,huge flies,4,0.6205065359477124
+935959,a great many centuries,ARTICLE JJ FEW NNS,a,great,many,centuries,4,0.610702614379085
+962360,a good many words,ARTICLE JJ FEW NNS,a,good,many,words,4,0.6450163398692811
+1049746,an additional five awards,ARTICLE JJ CD NNS,an,additional,five,awards,4,0.6041666666666666
+1065671,a good few notes,ARTICLE JJ FEW NNS,a,good,few,notes,4,0.6286764705882353
+1078134,a good few notes,ARTICLE JJ FEW NNS,a,good,few,notes,4,0.6286764705882353
+1125271,an estimated 20 acres,ARTICLE VBN CD NNS,an,estimated,20,acres,4,0.6025326797385621
+1125302,an additional 300 acres,ARTICLE JJ CD NNS,an,additional,300,acres,4,0.6025326797385621
+1177119,a last few words,ARTICLE JJ FEW NNS,a,last,few,words,4,0.6450163398692811
+1177730,a further four victories,ARTICLE JJ CD NNS,a,further,four,victories,4,0.6433823529411765
+1177744,a further three victories,ARTICLE JJ CD NNS,a,further,three,victories,4,0.6433823529411765
+1184006,a further 13 victories,ARTICLE JJ CD NNS,a,further,13,victories,4,0.6433823529411765
+1290643,"a broad , low gradient glacier 8 nautical miles","ARTICLE JJ , JJ NN NN CD JJ NNS",a,"broad , low gradient glacier",8,nautical miles,4,0.6270424836601307
+1292682,a narrow deeply entrenched glacier 9 nautical miles,ARTICLE JJ RB VBN NN CD JJ NNS,a,narrow deeply entrenched glacier,9,nautical miles,4,0.6270424836601307
+1292963,"a low , snow - covered promontory 7 nautical miles","ARTICLE JJ , NN HYPH VBN NN CD JJ NNS",a,"low , snow - covered promontory",7,nautical miles,4,0.6270424836601307
+1293042,a small ice escarpment 7 nautical miles,ARTICLE JJ NN NN CD JJ NNS,a,small ice escarpment,7,nautical miles,4,0.6270424836601307
+1495013,a combined 52 league appearances,ARTICLE VBN CD NN NNS,a,combined,52,league appearances,4,0.622140522875817
+1517486,a combined six awards,ARTICLE VBN CD NNS,a,combined,six,awards,4,0.6041666666666666
+1530493,a giant gold statue several stories,ARTICLE JJ NN NN FEW NNS,a,giant gold statue,several,stories,4,0.641748366013072
+1620198,an additional three awards,ARTICLE JJ CD NNS,an,additional,three,awards,4,0.6041666666666666
+1735919,a great many doors,ARTICLE JJ FEW NNS,a,great,many,doors,4,0.6139705882352942
+1839593,a good many folks,ARTICLE JJ FEW NNS,a,good,many,folks,4,0.6172385620915033
+1845304,a further 62 league appearances,ARTICLE JJ CD NN NNS,a,further,62,league appearances,4,0.622140522875817
+2031841,a vast circular structure several stories,ARTICLE JJ JJ NN FEW NNS,a,vast circular structure,several,stories,4,0.641748366013072
+2206649,a red dwarf star 470 light years,ARTICLE JJ NN NN CD NN NNS,a,red dwarf star,470,light years,4,0.6237745098039216
+2266188,"a bad one , folks","ARTICLE JJ CD , NNS",a,bad,"one ,",folks,4,0.6172385620915033
+2339818,"an additional 18,000 copies",ARTICLE JJ CD NNS,an,additional,"18,000",copies,4,0.6123366013071896
+2372881,an extrasolar planet 22.18 light years,ARTICLE JJ NN CD NN NNS,an,extrasolar planet,22.18,light years,4,0.6237745098039216
+2424361,a bloody camcorder twelve hundred quid,ARTICLE JJ NN CD CD NNS,a,bloody camcorder,twelve hundred,quid,4,0.6352124183006536
+2457911,a great many centuries,ARTICLE JJ FEW NNS,a,great,many,centuries,4,0.610702614379085
+2496993,a further 24 league appearances,ARTICLE JJ CD NN NNS,a,further,24,league appearances,4,0.622140522875817
+2498008,a great many huge flies,ARTICLE JJ FEW JJ NNS,a,great,many,huge flies,4,0.6205065359477124
+2555577,an additional 27 states,ARTICLE JJ CD NNS,an,additional,27,states,4,0.6401143790849673
+2557958,an additional 26 states,ARTICLE JJ CD NNS,an,additional,26,states,4,0.6401143790849673
+2581399,"an estimated 60,000 spectators",ARTICLE VBN CD NNS,an,estimated,"60,000",spectators,4,0.6384803921568627
+2626501,a multiple star system 39.5 light years,ARTICLE JJ NN NN CD NN NNS,a,multiple star system,39.5,light years,4,0.6237745098039216
+2656775,an awful lot more cars,ARTICLE JJ NN FEW NNS,an,awful lot,more,cars,4,0.6090686274509803
+2781666,an additional 2000 copies,ARTICLE JJ CD NNS,an,additional,2000,copies,4,0.6123366013071896
+2841992,"an additional 2,894 acres",ARTICLE JJ CD NNS,an,additional,"2,894",acres,4,0.6025326797385621
+2950899,a great many other things,ARTICLE JJ FEW JJ NNS,a,great,many,other things,4,0.6303104575163399
+3444408,an estimated two hundred thousand birds,ARTICLE VBN CD CD CD NNS,An,estimated,two hundred thousand,birds,4,0.6058006535947712
+3545750,a good many lives,ARTICLE JJ FEW NNS,a,good,many,lives,4,0.6254084967320261
+3584246,a further three centuries,ARTICLE JJ CD NNS,a,further,three,centuries,4,0.610702614379085
+3868067,an short set and two songs,ARTICLE JJ NN CC CD NNS,an,short set and,two,songs,4,0.6368464052287581
+4063574,an official holiday seven states,ARTICLE JJ NN CD NNS,an,official holiday,seven,states,4,0.6401143790849673
+4111459,an extra 1.3 million cars,ARTICLE JJ CD CD NNS,an,extra,1.3 million,cars,4,0.6090686274509803
+4135646,"an estimated 80,000 spectators",ARTICLE VBN CD NNS,An,estimated,"80,000",spectators,4,0.6384803921568627
+4190764,a regular edition and 20 songs,ARTICLE JJ NN CC CD NNS,a,regular edition and,20,songs,4,0.6368464052287581
+4306860,an estimated 509 million songs,ARTICLE VBN CD CD NNS,an,estimated,509 million,songs,4,0.6368464052287581
+4403079,a further 72 cars,ARTICLE JJ CD NNS,a,further,72,cars,4,0.6090686274509803
+4403317,an estimated 1196 passengers,ARTICLE VBN CD NNS,an,estimated,1196,passengers,4,0.6319444444444444
+4666307,a particular few words,ARTICLE JJ FEW NNS,a,particular,few,words,4,0.6450163398692811
+4840564,a nice few quid,ARTICLE JJ FEW NNS,a,nice,few,quid,4,0.6352124183006536
+4872192,a single piece or several pieces,ARTICLE JJ NN CC FEW NNS,a,single piece or,several,pieces,4,0.633578431372549
+4926788,a large yellow brick house three blocks,ARTICLE JJ JJ NN NN CD NNS,a,large yellow brick house,three,blocks,4,0.6074346405228758
+4937071,a further three songs,ARTICLE JJ CD NNS,A,further,three,songs,4,0.6368464052287581
+5132842,"an estimated 100,000 lives",ARTICLE VBN CD NNS,An,estimated,"100,000",lives,4,0.6254084967320261
+5250667,"an estimated 80,000 spectators",ARTICLE VBN CD NNS,an,estimated,"80,000",spectators,4,0.6384803921568627
+5721018,an additional estimated four hundred cars,ARTICLE JJ VBN CD CD NNS,an,additional estimated,four hundred,cars,4,0.6090686274509803
+5722368,a further 34 birds,ARTICLE JJ CD NNS,a,further,34,birds,4,0.6058006535947712
+5861128,a good many folks,ARTICLE JJ FEW NNS,A,good,many,folks,4,0.6172385620915033
+6300988,a good many dramatic situations,ARTICLE JJ FEW JJ NNS,A,good,many,dramatic situations,4,0.6156045751633987
+6304956,a good many dramatic situations,ARTICLE JJ FEW JJ NNS,A,good,many,dramatic situations,4,0.6156045751633987
+6309554,a good many dramatic situations,ARTICLE JJ FEW JJ NNS,A,good,many,dramatic situations,4,0.6156045751633987
+6313764,a good many dramatic situations,ARTICLE JJ FEW JJ NNS,A,good,many,dramatic situations,4,0.6156045751633987
+6736969,an extra twenty quid,ARTICLE JJ CD NNS,an,extra,twenty,quid,4,0.6352124183006536
+7004185,a good many passengers,ARTICLE JJ FEW NNS,A,good,many,passengers,4,0.6319444444444444
+7263138,a final few words,ARTICLE JJ FEW NNS,a,final,few,words,4,0.6450163398692811
+7282458,a caused two pieces,ARTICLE VBN CD NNS,a,caused,two,pieces,4,0.633578431372549
+7477558,a great many stories,ARTICLE JJ FEW NNS,a,great,many,stories,4,0.641748366013072
+8117762,a large storage facility three blocks,ARTICLE JJ NN NN CD NNS,a,large storage facility,three,blocks,4,0.6074346405228758
+8181409,a private lake and several hundred acres,ARTICLE JJ NN CC FEW CD NNS,a,private lake and,several hundred,acres,4,0.6025326797385621
+8516424,a great many notes,ARTICLE JJ FEW NNS,a,great,many,notes,4,0.6286764705882353
+8518058,a great many notes,ARTICLE JJ FEW NNS,a,great,many,notes,4,0.6286764705882353
+8604470,a great many lives,ARTICLE JJ FEW NNS,a,great,many,lives,4,0.6254084967320261
+8777336,a reported 1 03 passengers,ARTICLE VBN CD CD NNS,a,reported,1 03,passengers,4,0.6319444444444444
+8778962,a reported 103 passengers,ARTICLE VBN CD NNS,a,reported,103,passengers,4,0.6319444444444444
+9657868,a staggering 100 billion gallons,ARTICLE JJ CD CD NNS,A,staggering,100 billion,gallons,4,0.6188725490196079
+9658803,a staggering 100 billion gallons,ARTICLE JJ CD CD NNS,A,staggering,100 billion,gallons,4,0.6188725490196079
+9907736,a high school three blocks,ARTICLE JJ NN CD NNS,a,high school,three,blocks,4,0.6074346405228758
+10476124,an extra 50 quid,ARTICLE JJ CD NNS,an,extra,50,quid,4,0.6352124183006536
+10634306,a great many lives,ARTICLE JJ FEW NNS,a,great,many,lives,4,0.6254084967320261
+40066,a career - high 15 strikeouts,ARTICLE NN HYPH JJ CD NNS,a,career - high,15,strikeouts,3,0.6719771241830066
+67870,a heavy heart and many sighs,ARTICLE JJ NN CC FEW NNS,a,heavy heart and,many,sighs,3,0.6695261437908496
+102023,a heavy heart and many sighs,ARTICLE JJ NN CC FEW NNS,a,heavy heart and,many,sighs,3,0.6695261437908496
+129123,a heavy heart and many sighs,ARTICLE JJ NN CC FEW NNS,a,heavy heart and,many,sighs,3,0.6695261437908496
+144425,a great many salaams,ARTICLE JJ FEW NNS,a,great,many,salaams,3,0.6658496732026143
+155933,a great many salaams,ARTICLE JJ FEW NNS,a,great,many,salaams,3,0.6658496732026143
+157113,a great many salaams,ARTICLE JJ FEW NNS,a,great,many,salaams,3,0.6658496732026143
+289262,a wizened little man and two ladies,ARTICLE JJ JJ NN CC CD NNS,A,wizened little man and,two,ladies,3,0.6584967320261438
+430484,a good many tears,ARTICLE JJ FEW NNS,a,good,many,tears,3,0.673202614379085
+679288,an estimated 660 000 deaths,ARTICLE VBN CD CD NNS,an,estimated,660 000,deaths,3,0.6523692810457516
+684595,a great many ways,ARTICLE JJ FEW NNS,a,great,many,ways,3,0.6805555555555556
+743145,a great many strange things,ARTICLE JJ FEW JJ NNS,a,great,many,strange things,3,0.670751633986928
+780468,a great many more deaths,ARTICLE JJ FEW FEW NNS,a,great,many more,deaths,3,0.6523692810457516
+866896,a possible 45 votes,ARTICLE JJ CD NNS,a,possible,45,votes,3,0.6793300653594772
+919766,a good many young men,ARTICLE JJ FEW JJ NNS,a,good,many,young men,3,0.681781045751634
+920178,a great many strange things,ARTICLE JJ FEW JJ NNS,a,great,many,strange things,3,0.670751633986928
+940606,a great many flowers,ARTICLE JJ FEW NNS,a,great,many,flowers,3,0.6548202614379085
+942739,a great many tears,ARTICLE JJ FEW NNS,a,great,many,tears,3,0.673202614379085
+957031,a great many ladies,ARTICLE JJ FEW NNS,a,great,many,ladies,3,0.6584967320261438
+965431,"an additional 3,400 commuters",ARTICLE JJ CD NNS,An,additional,"3,400",commuters,3,0.6486928104575164
+1110967,"an extra 1,500 francs",ARTICLE JJ CD NNS,an,extra,"1,500",francs,3,0.6560457516339869
+1111131,"an extra 2,000 francs",ARTICLE JJ CD NNS,an,extra,"2,000",francs,3,0.6560457516339869
+1125252,"an additional 27,000 customers",ARTICLE JJ CD NNS,an,additional,"27,000",customers,3,0.6511437908496732
+1257647,a small town 16 kilometers,ARTICLE JJ NN CD NNS,a,small town,16,kilometers,3,0.6572712418300654
+1287087,an additional 100 million tonnes,ARTICLE JJ CD CD NNS,an,additional,100 million,tonnes,3,0.6744281045751634
+1366495,"a reported 150,000 prisoners",ARTICLE VBN CD NNS,a,reported,"150,000",prisoners,3,0.6597222222222222
+1502688,a great many flowers,ARTICLE JJ FEW NNS,a,great,many,flowers,3,0.6548202614379085
+1540683,a career - high 237 strikeouts,ARTICLE NN HYPH JJ CD NNS,a,career - high,237,strikeouts,3,0.6719771241830066
+1568800,a scant three quarters,ARTICLE JJ CD NNS,a,scant,three,quarters,3,0.6609477124183006
+1731919,a great many ladies,ARTICLE JJ FEW NNS,a,great,many,ladies,3,0.6584967320261438
+1886901,a planned five volumes,ARTICLE VBN CD NNS,a,planned,five,volumes,3,0.6781045751633987
+2019810,a career - high 3 sacks,ARTICLE NN HYPH JJ CD NNS,a,career - high,3,sacks,3,0.6646241830065359
+2025590,a grander effort three decades,ARTICLE JJR NN CD NNS,a,grander effort,three,decades,3,0.6535947712418301
+2148355,a career - high three touchdowns,ARTICLE NN HYPH JJ CD NNS,a,career - high,three,touchdowns,3,0.6756535947712419
+2212824,a located circa 15 kilometers,ARTICLE VBN RB CD NNS,a,located circa,15,kilometers,3,0.6572712418300654
+2213033,"a mere 3,761 votes",ARTICLE JJ CD NNS,a,mere,"3,761",votes,3,0.6793300653594772
+2246691,a good many ways,ARTICLE JJ FEW NNS,a,good,many,ways,3,0.6805555555555556
+2389278,"an estimated 500,530 residents",ARTICLE VBN CD NNS,an,estimated,"500,530",residents,3,0.6633986928104575
+2428775,an extremely short three bars,ARTICLE RB JJ CD NNS,an,extremely short,three,bars,3,0.6462418300653595
+2458356,a further three countries,ARTICLE JJ CD NNS,a,further,three,countries,3,0.6499183006535948
+2470027,a great many flowers,ARTICLE JJ FEW NNS,a,great,many,flowers,3,0.6548202614379085
+2475675,a great many tears,ARTICLE JJ FEW NNS,a,great,many,tears,3,0.673202614379085
+2484396,a good many young men,ARTICLE JJ FEW JJ NNS,a,good,many,young men,3,0.681781045751634
+2485352,a great many strange things,ARTICLE JJ FEW JJ NNS,a,great,many,strange things,3,0.670751633986928
+2526452,a career - high 240 strikeouts,ARTICLE NN HYPH JJ CD NNS,a,career - high,240,strikeouts,3,0.6719771241830066
+2612084,a total 11 races,ARTICLE JJ CD NNS,a,total,11,races,3,0.6621732026143791
+2638168,a career - high 9 touchdowns,ARTICLE NN HYPH JJ CD NNS,a,career - high,9,touchdowns,3,0.6756535947712419
+2697858,a further 20 francs,ARTICLE JJ CD NNS,a,further,20,francs,3,0.6560457516339869
+2712641,a great many young men,ARTICLE JJ FEW JJ NNS,a,great,many,young men,3,0.681781045751634
+2744152,a career - high three touchdowns,ARTICLE NN HYPH JJ CD NNS,a,career - high,three,touchdowns,3,0.6756535947712419
+2747034,a personal best three sacks,ARTICLE JJ JJS CD NNS,a,personal best,three,sacks,3,0.6646241830065359
+2879622,an additional approximately 600 deaths,ARTICLE JJ RB CD NNS,An,additional approximately,600,deaths,3,0.6523692810457516
+3333566,"an estimated 100,000 commuters",ARTICLE VBN CD NNS,an,estimated,"100,000",commuters,3,0.6486928104575164
+3333614,"an estimated 100,000 commuters",ARTICLE VBN CD NNS,an,estimated,"100,000",commuters,3,0.6486928104575164
+3335006,a goody - four - shoes,ARTICLE JJ HYPH CD HYPH NNS,a,goody -,four -,shoes,3,0.6670751633986928
+3466267,"an estimated 957,600 residents",ARTICLE VBN CD NNS,an,estimated,"957,600",residents,3,0.6633986928104575
+3474253,an extra one two twelfths,ARTICLE JJ CD CD NNS,an,extra,one two,twelfths,3,0.6768790849673203
+3666724,an additional 3 volumes,ARTICLE JJ CD NNS,An,additional,3,volumes,3,0.6781045751633987
+3889136,a staggering 27 volumes,ARTICLE JJ CD NNS,a,staggering,27,volumes,3,0.6781045751633987
+3913537,a third and third three twelfths,ARTICLE JJ CC JJ CD NNS,A,third and third,three,twelfths,3,0.6768790849673203
+3913829,a hard one nine twelfths,ARTICLE JJ CD CD NNS,A,hard,one nine,twelfths,3,0.6768790849673203
+3960380,a cylindrical bar magnet three - quarters,ARTICLE JJ NN NN CD HYPH NNS,A,cylindrical bar magnet,three -,quarters,3,0.6609477124183006
+3983864,a record 21 races,ARTICLE RECORD CD NNS,a,record,21,races,3,0.6621732026143791
+4299641,a good two to three decades,ARTICLE JJ CD TO CD NNS,a,good,two to three,decades,3,0.6535947712418301
+4341097,an additional 8 million customers,ARTICLE JJ CD CD NNS,an,additional,8 million,customers,3,0.6511437908496732
+4413407,"an estimated 20,000 prisoners",ARTICLE VBN CD NNS,an,estimated,"20,000",prisoners,3,0.6597222222222222
+4488295,"an estimated 502,629 residents",ARTICLE VBN CD NNS,an,estimated,"502,629",residents,3,0.6633986928104575
+4713564,an overwhelming 283 votes,ARTICLE JJ CD NNS,an,overwhelming,283,votes,3,0.6793300653594772
+4744730,"an estimated 2,200 races",ARTICLE VBN CD NNS,an,estimated,"2,200",races,3,0.6621732026143791
+4806273,a further 20–24 cm,ARTICLE JJ CD NNS,a,further,20–24,cm,3,0.6474673202614379
+5286314,a very large vehicle thirty eight tonnes,ARTICLE RB JJ NN CD CD NNS,a,very large vehicle,thirty eight,tonnes,3,0.6744281045751634
+5324770,a record 102 tonnes,ARTICLE RECORD CD NNS,a,record,102,tonnes,3,0.6744281045751634
+5335278,a career - high 14.5 sacks,ARTICLE NN HYPH JJ CD NNS,a,career - high,14.5,sacks,3,0.6646241830065359
+5354520,a mere 20 cm,ARTICLE JJ CD NNS,a,mere,20,cm,3,0.6474673202614379
+5568468,a great many countries,ARTICLE JJ FEW NNS,A,great,many,countries,3,0.6499183006535948
+5638279,"an estimated 50,000 prisoners",ARTICLE VBN CD NNS,An,estimated,"50,000",prisoners,3,0.6597222222222222
+5664863,a softer sound and more bars,ARTICLE JJR NN CC FEW NNS,a,softer sound and,more,bars,3,0.6462418300653595
+5669020,a fair three - quarters,ARTICLE JJ CD HYPH NNS,a,fair,three -,quarters,3,0.6609477124183006
+6787248,a long and two shorts,ARTICLE JJ CC CD NNS,a,long and,two,shorts,3,0.6683006535947712
+6787250,a long and two shorts,ARTICLE JJ CC CD NNS,a,long and,two,shorts,3,0.6683006535947712
+6787271,a long and two shorts,ARTICLE JJ CC CD NNS,a,long and,two,shorts,3,0.6683006535947712
+6979331,a lucky - few countries,ARTICLE JJ HYPH FEW NNS,a,lucky -,few,countries,3,0.6499183006535948
+7330335,a great many ways,ARTICLE JJ FEW NNS,a,great,many,ways,3,0.6805555555555556
+7583634,a wooden helix 115 cm,ARTICLE JJ NN CD NNS,a,wooden helix,115,cm,3,0.6474673202614379
+8311299,a half dozen bars,ARTICLE JJ FEW NNS,A,half,dozen,bars,3,0.6462418300653595
+8331891,a goody two - shoes,ARTICLE JJ CD HYPH NNS,a,goody,two -,shoes,3,0.6670751633986928
+8865742,a goody two - shoes,ARTICLE JJ CD HYPH NNS,a,goody,two -,shoes,3,0.6670751633986928
+9853105,a whole lot more customers,ARTICLE JJ NN FEW NNS,a,whole lot,more,customers,3,0.6511437908496732
+11063534,a mere few decades,ARTICLE JJ FEW NNS,a,mere,few,decades,3,0.6535947712418301
+11128195,a powerful explosion several kilometers,ARTICLE JJ NN FEW NNS,a,powerful explosion,several,kilometers,3,0.6572712418300654
+25036,a further three schools,ARTICLE JJ CD NNS,a,further,three,schools,2,0.7479575163398693
+25474,a further three schools,ARTICLE JJ CD NNS,a,further,three,schools,2,0.7479575163398693
+29553,a great many good points,ARTICLE JJ FEW JJ NNS,a,great,many,good points,2,0.7054738562091504
+56462,a great many cunning tricks,ARTICLE JJ FEW JJ NNS,a,great,many,cunning tricks,2,0.6964869281045751
+58949,an old woman and three maidens,ARTICLE JJ NN CC CD NNS,an,old woman and,three,maidens,2,0.7242647058823529
+64435,a great many journeys,ARTICLE JJ FEW NNS,a,great,many,journeys,2,0.7152777777777778
+70282,a great many young children,ARTICLE JJ FEW JJ NNS,a,great,many,young children,2,0.7618464052287581
+71914,a good many other folks,ARTICLE JJ FEW JJ NNS,a,good,many,other folks,2,0.733251633986928
+97078,a great many cunning tricks,ARTICLE JJ FEW JJ NNS,a,great,many,cunning tricks,2,0.6964869281045751
+102464,an old woman and three maidens,ARTICLE JJ NN CC CD NNS,an,old woman and,three,maidens,2,0.7242647058823529
+105793,"a further 75,000 immigrants",ARTICLE JJR CD NNS,a,further,"75,000",immigrants,2,0.7111928104575164
+118242,a great many journeys,ARTICLE JJ FEW NNS,a,great,many,journeys,2,0.7152777777777778
+140385,a great many young children,ARTICLE JJ FEW JJ NNS,a,great,many,young children,2,0.7618464052287581
+148046,a great many rupees,ARTICLE JJ FEW NNS,a,great,many,rupees,2,0.747140522875817
+155767,a great many rupees,ARTICLE JJ FEW NNS,a,great,many,rupees,2,0.747140522875817
+169902,an average sixty - six immigrants,ARTICLE JJ CD HYPH CD NNS,an,average,sixty - six,immigrants,2,0.7111928104575164
+182028,a further ten frames,ARTICLE JJ CD NNS,a,further,ten,frames,2,0.7030228758169934
+186938,a mere nineteen lines,ARTICLE JJ CD NNS,a,mere,nineteen,lines,2,0.7201797385620915
+189145,"a new 10,000 m",ARTICLE JJ CD NNS,a,new,"10,000",m,2,0.7234477124183006
+214928,a great many more mice,ARTICLE JJ FEW FEW NNPS,a,great,many more,mice,2,0.7267156862745098
+233354,a great many windings,ARTICLE JJ FEW NNS,a,great,many,windings,2,0.7610294117647058
+335274,an estimated 100–240 black people,ARTICLE VBN CD JJ NNS,an,estimated,100–240,black people,2,0.6875
+379409,an initial 13 issues,ARTICLE JJ CD NNS,an,initial,13,issues,2,0.7128267973856209
+379511,an additional 22 issues,ARTICLE JJ CD NNS,an,additional,22,issues,2,0.7128267973856209
+388051,a great log twenty or thirty steps,ARTICLE JJ NN CD CC CD NNS,a,great log,twenty or thirty,steps,2,0.7512254901960784
+404724,an optional 48 bits,ARTICLE JJ CD NNS,an,optional,48,bits,2,0.6858660130718954
+436941,a record eight players,ARTICLE RECORD CD NNPS,a,record,eight,players,2,0.7373366013071896
+436950,a good many comforts,ARTICLE JJ FEW NNS,a,good,many,comforts,2,0.6956699346405228
+440735,a good many little gifts,ARTICLE JJ FEW JJ NNS,a,good,many,little gifts,2,0.7218137254901961
+441862,a good many bitter tears,ARTICLE JJ FEW JJ NNS,a,good,many,bitter tears,2,0.6866830065359477
+457058,a good many hard times,ARTICLE JJ FEW JJ NNS,a,good,many,hard times,2,0.7087418300653595
+457254,a total 21 films,ARTICLE JJ CD NNS,a,total,21,films,2,0.7022058823529411
+462122,"a fine picture or two , a stand of flowers","ARTICLE JJ NN CC CD , ARTICLE NN IN NNS",a,NA,"two ,",a stand of flowers,2,0.6825980392156863
+464743,a giant triangle and three squares,ARTICLE JJ NN CC CD NNS,a,giant triangle and,three,squares,2,0.7504084967320261
+467939,a good many hard knocks,ARTICLE JJ FEW JJ NNS,a,good,many,hard knocks,2,0.7079248366013072
+476521,a grim papa and three grimmer maiden aunts,ARTICLE JJ NN CC CD JJR NN NNS,a,grim papa and,three,grimmer maiden aunts,2,0.7062908496732027
+480233,a good many miracles,ARTICLE JJ FEW NNS,a,good,many,miracles,2,0.7283496732026143
+592465,a record 25 playoff games,ARTICLE RECORD CD NN NNS,a,record,25,playoff games,2,0.7381535947712419
+601658,a small plateau 1798 m,ARTICLE JJ NN CD NNS,a,small plateau,1798,m,2,0.7234477124183006
+674688,a record 67 doubles,ARTICLE RECORD CD NNS,a,record,67,doubles,2,0.698937908496732
+718048,a great many other folks,ARTICLE JJ FEW JJ NNS,a,great,many,other folks,2,0.733251633986928
+762439,a great many mistakes,ARTICLE JJ FEW NNS,a,great,many,mistakes,2,0.7299836601307189
+770255,a great many mistakes,ARTICLE JJ FEW NNS,a,great,many,mistakes,2,0.7299836601307189
+779012,a good many mild days,ARTICLE JJ FEW JJ NNS,a,good,many,mild days,2,0.7275326797385621
+816535,a good many fairies,ARTICLE JJ FEW NNS,a,good,many,fairies,2,0.7013888888888888
+829036,a good many fairies,ARTICLE JJ FEW NNS,a,good,many,fairies,2,0.7013888888888888
+860617,a round dozen reviews,ARTICLE JJ FEW NNS,a,round,dozen,reviews,2,0.7455065359477124
+864780,a great many windings,ARTICLE JJ FEW NNS,a,great,many,windings,2,0.7610294117647058
+904249,a great many voices,ARTICLE JJ FEW NNS,a,great,many,voices,2,0.7602124183006536
+919708,a great many brave deeds,ARTICLE JJ FEW JJ NNS,a,great,many,brave deeds,2,0.6899509803921569
+923817,a good many mild days,ARTICLE JJ FEW JJ NNS,a,good,many,mild days,2,0.7275326797385621
+926892,a great many strange adventures,ARTICLE JJ FEW JJ NNS,a,great,many,strange adventures,2,0.7520424836601307
+933162,a great many tender feelings,ARTICLE JJ FEW JJ NNS,a,great,many,tender feelings,2,0.7544934640522876
+935360,a great many giants,ARTICLE JJ FEW NNPS,a,great,many,giants,2,0.7046568627450981
+935809,a great many thousand pygmies,ARTICLE JJ FEW CD NNPS,a,great,many thousand,pygmies,2,0.7422385620915033
+937766,a vast many rows,ARTICLE JJ FEW NNS,a,vast,many,rows,2,0.7463235294117647
+937950,a great many trumpeters,ARTICLE JJ FEW NNS,a,great,many,trumpeters,2,0.7569444444444444
+938271,a great many hurricanes,ARTICLE JJ FEW NNS,a,great,many,hurricanes,2,0.7103758169934641
+941399,a vast many tender fears,ARTICLE JJ FEW JJ NNS,a,vast,many,tender fears,2,0.7536764705882353
+941811,a great many other accomplishments,ARTICLE JJ FEW JJ NNS,a,great,many,other accomplishments,2,0.7324346405228758
+941945,a great many little children,ARTICLE JJ FEW JJ NNS,a,great,many,little children,2,0.7209967320261438
+942569,a great many misfortunes,ARTICLE JJ FEW NNS,a,great,many,misfortunes,2,0.7291666666666666
+971240,a great many good points,ARTICLE JJ FEW JJ NNS,a,great,many,good points,2,0.7054738562091504
+977985,a - dozen little ones,ARTICLE JJ FEW JJ NNS,a,-,dozen,little ones,2,0.7226307189542484
+997177,a great many little ones,ARTICLE JJ FEW JJ NNS,a,great,many,little ones,2,0.7226307189542484
+1105876,"an estimated 5,000 jews",ARTICLE VBN CD NNPS,an,estimated,"5,000",jews,2,0.7144607843137255
+1106873,a massive 2.5 kilograms,ARTICLE JJ CD NNS,a,massive,2.5,kilograms,2,0.7169117647058824
+1225595,a further three lengths,ARTICLE JJ CD NNS,a,further,three,lengths,2,0.7185457516339869
+1252921,a good many comforts,ARTICLE JJ FEW NNS,a,good,many,comforts,2,0.6956699346405228
+1260656,a good many little gifts,ARTICLE JJ FEW JJ NNS,a,good,many,little gifts,2,0.7218137254901961
+1263094,a good many bitter tears,ARTICLE JJ FEW JJ NNS,a,good,many,bitter tears,2,0.6866830065359477
+1266036,an extra three laps,ARTICLE JJ CD NNS,an,extra,three,laps,2,0.7177287581699346
+1266185,a record 140 laps,ARTICLE RECORD CD NNS,a,record,140,laps,2,0.7177287581699346
+1271309,a single character or two characters,ARTICLE JJ NN CC CD NNS,a,single character or,two,characters,2,0.6940359477124183
+1289407,"an expected 18,831 dwellings",ARTICLE JJ CD NNS,an,expected,"18,831",dwellings,2,0.6997549019607843
+1297192,a good many hard times,ARTICLE JJ FEW JJ NNS,a,good,many,hard times,2,0.7087418300653595
+1307441,"a fine picture or two , a stand of flowers","ARTICLE JJ NN CC CD , ARTICLE NN IN NNS",a,NA,"two ,",a stand of flowers,2,0.6825980392156863
+1321965,a good many hard knocks,ARTICLE JJ FEW JJ NNS,a,good,many,hard knocks,2,0.7079248366013072
+1342394,a grim papa and three grimmer maiden aunts,ARTICLE JJ NN CC CD JJR NN NNS,a,grim papa and,three,grimmer maiden aunts,2,0.7062908496732027
+1351024,a good many miracles,ARTICLE JJ FEW NNS,a,good,many,miracles,2,0.7283496732026143
+1455166,"an estimated 4,560,000 viewers",ARTICLE VBN CD NNS,an,estimated,"4,560,000",viewers,2,0.7593954248366013
+1462528,an additional four primary schools,ARTICLE JJ CD JJ NNS,an,additional,four,primary schools,2,0.7406045751633987
+1523311,an additional 58 branches,ARTICLE JJ CD NNS,an,additional,58,branches,2,0.6891339869281046
+1609071,a club - low 726 penalty minutes,ARTICLE NN HYPH JJ CD NN NNS,a,club - low,726,penalty minutes,2,0.7365196078431373
+1609098,a league - high five players,ARTICLE NN HYPH JJ CD NNS,a,league - high,five,players,2,0.7373366013071896
+1657466,an estimated 49 thousand cases,ARTICLE VBN CD CD NNS,an,estimated,49 thousand,cases,2,0.6907679738562091
+1794386,an estimated 100 to 120 thousand jews,ARTICLE VBN CD TO CD CD NNPS,An,estimated,100 to 120 thousand,jews,2,0.7144607843137255
+1810492,a japanese professional three - cushion billiards,ARTICLE JJ JJ CD HYPH NN NNS,a,japanese professional,three -,cushion billiards,2,0.6973039215686274
+1837798,a great many letters,ARTICLE JJ FEW NNS,a,great,many,letters,2,0.7193627450980392
+1888480,an estimated 10.4 million viewers,ARTICLE VBN CD CD NNS,an,estimated,10.4 million,viewers,2,0.7593954248366013
+1912757,an additional 194 kg,ARTICLE JJ CD NNS,an,additional,194,kg,2,0.7160947712418301
+1912775,an additional 194 kg,ARTICLE JJ CD NNS,an,additional,194,kg,2,0.7160947712418301
+1931095,a good many notions,ARTICLE JJ FEW NNS,a,good,many,notions,2,0.7308006535947712
+2028820,"a further 1,000 vehicles",ARTICLE JJ CD NNS,a,further,"1,000",vehicles,2,0.758578431372549
+2079926,an estimated 360 casualties,ARTICLE VBN CD NNS,an,estimated,360,casualties,2,0.6915849673202614
+2114327,a career - high 5 receptions,ARTICLE NN HYPH JJ CD NNS,a,career - high,5,receptions,2,0.7438725490196079
+2114332,a career - high 26 receptions,ARTICLE NN HYPH JJ CD NNS,a,career - high,26,receptions,2,0.7438725490196079
+2115824,an estimated 10 casualties,ARTICLE VBN CD NNS,an,estimated,10,casualties,2,0.6915849673202614
+2262733,a good many more mice,ARTICLE JJ FEW FEW NNS,a,good,many more,mice,2,0.7267156862745098
+2293560,"a further 1,048 homes",ARTICLE JJR CD NNS,a,further,"1,048",homes,2,0.7095588235294118
+2395075,an estimated 25 million animals,ARTICLE VBN CD CD NNS,An,estimated,25 million,animals,2,0.6834150326797386
+2451476,a great many tender feelings,ARTICLE JJ FEW JJ NNS,a,great,many,tender feelings,2,0.7544934640522876
+2455980,a great many giants,ARTICLE JJ FEW NNPS,a,great,many,giants,2,0.7046568627450981
+2457414,a great many thousand pygmies,ARTICLE JJ FEW CD NNPS,a,great,many thousand,pygmies,2,0.7422385620915033
+2463027,a vast many rows,ARTICLE JJ FEW NNS,a,vast,many,rows,2,0.7463235294117647
+2463454,a great many trumpeters,ARTICLE JJ FEW NNS,a,great,many,trumpeters,2,0.7569444444444444
+2464408,a great many hurricanes,ARTICLE JJ FEW NNS,a,great,many,hurricanes,2,0.7103758169934641
+2472026,a vast many tender fears,ARTICLE JJ FEW JJ NNS,a,vast,many,tender fears,2,0.7536764705882353
+2473160,a great many other accomplishments,ARTICLE JJ FEW JJ NNS,a,great,many,other accomplishments,2,0.7324346405228758
+2473592,a great many little children,ARTICLE JJ FEW JJ NNS,a,great,many,little children,2,0.7209967320261438
+2475207,a great many misfortunes,ARTICLE JJ FEW NNS,a,great,many,misfortunes,2,0.7291666666666666
+2484206,a great many brave deeds,ARTICLE JJ FEW JJ NNS,a,great,many,brave deeds,2,0.6899509803921569
+2505814,a further two premierships,ARTICLE JJ CD NNS,a,further,two,premierships,2,0.7397875816993464
+2506596,a great many strange adventures,ARTICLE JJ FEW JJ NNS,a,great,many,strange adventures,2,0.7520424836601307
+2565623,a whopping 272 penalty minutes,ARTICLE JJ CD NN NNS,a,whopping,272,penalty minutes,2,0.7365196078431373
+2594980,a further three premierships,ARTICLE JJ CD NNS,a,further,three,premierships,2,0.7397875816993464
+2612324,a total 250 frames,ARTICLE JJ CD NNS,a,total,250,frames,2,0.7030228758169934
+2679776,a co - ed high school and two primary schools,ARTICLE JJ JJ JJ JJ NN CC CD JJ NNS,A,co - ed high school and,two,primary schools,2,0.7406045751633987
+2684207,an extra six hundred meetings,ARTICLE JJ CD CD NNS,an,extra,six hundred,meetings,2,0.7258986928104575
+2687188,an estimated 150 radio stations,ARTICLE VBN CD NN NNS,an,estimated,150,radio stations,2,0.7430555555555556
+2687200,an estimated 150 radio stations,ARTICLE VBN CD NN NNS,An,estimated,150,radio stations,2,0.7430555555555556
+2723702,a mere three hundred pages,ARTICLE JJ CD CD NNS,a,mere,three hundred,pages,2,0.7348856209150327
+2724315,a further six lengths,ARTICLE JJR CD NNS,a,further,six,lengths,2,0.7185457516339869
+2735720,a very tight formation several lines,ARTICLE RB JJ NN FEW NNS,a,very tight formation,several,lines,2,0.7201797385620915
+2814123,a further 20 engines,ARTICLE JJ CD NNS,a,further,20,engines,2,0.7005718954248366
+2814369,a full 20 engines,ARTICLE JJ CD NNS,A,full,20,engines,2,0.7005718954248366
+2872524,"an estimated 20,000 christians",ARTICLE VBN CD NNPS,an,estimated,"20,000",christians,2,0.6948529411764706
+2914788,"an approximate 25,000 homes",ARTICLE JJ CD NNS,an,approximate,"25,000",homes,2,0.7095588235294118
+2918434,"an estimated 45,000 vehicles",ARTICLE VBN CD NNS,an,estimated,"45,000",vehicles,2,0.758578431372549
+2921877,a normalized vector formula_82 and projection operators,ARTICLE VBN NN CD CC NN NNS,a,normalized vector,formula_82 and,projection operators,2,0.741421568627451
+2921894,a normalized vector formula_97 and projection operators,ARTICLE VBN NN CD CC NN NNS,a,normalized vector,formula_97 and,projection operators,2,0.741421568627451
+2982195,a great many voices,ARTICLE JJ FEW NNS,a,great,many,voices,2,0.7602124183006536
+3094636,a long time and two arms,ARTICLE JJ NN CC CD NNS,A,long time and,two,arms,2,0.6842320261437909
+3118943,a further two meetings,ARTICLE JJ CD NNS,a,further,two,meetings,2,0.7258986928104575
+3144205,an extra three characters,ARTICLE JJ CD NNS,an,extra,three,characters,2,0.6940359477124183
+3165923,a great many inventions,ARTICLE JJ FEW NNS,a,great,many,inventions,2,0.7120098039215687
+3196906,an estimated 37.7 million items,ARTICLE VBN CD CD NNS,an,estimated,37.7 million,items,2,0.7136437908496732
+3202863,a further 44 cases,ARTICLE JJ CD NNS,a,further,44,cases,2,0.6907679738562091
+3254862,an estimated 300 million gamers,ARTICLE VBN CD CD NNS,an,estimated,300 million,gamers,2,0.7038398692810458
+3254865,an estimated 300 million gamers,ARTICLE VBN CD CD NNS,an,estimated,300 million,gamers,2,0.7038398692810458
+3367506,a further 270 redundancies,ARTICLE JJR CD NNS,a,further,270,redundancies,2,0.7446895424836601
+3455711,a record 14 doubles,ARTICLE RECORD CD NNPS,a,record,14,doubles,2,0.698937908496732
+3622792,a whole 50 cents,ARTICLE JJ CD NNS,a,whole,50,cents,2,0.6924019607843137
+3634505,a moderate 84 beats,ARTICLE JJ CD NNS,a,moderate,84,beats,2,0.6850490196078431
+3702649,a good three and half hours,ARTICLE JJ CD CC NN NNS,a,good,three and,half hours,2,0.7071078431372549
+3860161,a record four occasions,ARTICLE RECORD CD NNS,a,record,four,occasions,2,0.7316176470588235
+3870956,"an estimated 3,446 black people",ARTICLE VBN CD JJ NNS,an,estimated,"3,446",black people,2,0.6875
+3882292,an additional four hundred and thirty dwellings,ARTICLE JJ CD CD CC CD NNS,an,additional,four hundred and thirty,dwellings,2,0.6997549019607843
+4045813,a total 55 reviews,ARTICLE JJ CD NNS,a,total,55,reviews,2,0.7455065359477124
+4145560,a pictorial several pages,ARTICLE JJ FEW NNS,a,pictorial,several,pages,2,0.7348856209150327
+4180329,a great many branches,ARTICLE JJ FEW NNS,a,great,many,branches,2,0.6891339869281046
+4206698,an estimated 7–12 million slaves,ARTICLE VBN CD CD NNS,an,estimated,7–12 million,slaves,2,0.7487745098039216
+4363761,a good many tourists,ARTICLE JJ FEW NNS,a,good,many,tourists,2,0.7553104575163399
+4372118,an unmatchable 21 three - cushion billiards,ARTICLE JJ CD CD HYPH NN NNS,an,unmatchable,21 three -,cushion billiards,2,0.6973039215686274
+4462895,an awful lot more trees,ARTICLE JJ NN FEW NNS,an,awful lot,more,trees,2,0.7561274509803921
+4638630,a great many dogs,ARTICLE JJ FEW NNS,A,great,many,dogs,2,0.6981209150326797
+4664298,an extra seven and half hours,ARTICLE JJ CD CC NN NNS,an,extra,seven and,half hours,2,0.7071078431372549
+4955878,a little further on two soldiers,ARTICLE JJ RB RB CD NNS,A,little further on,two,soldiers,2,0.7495915032679739
+5061483,an additional four films,ARTICLE JJ CD NNS,an,additional,four,films,2,0.7022058823529411
+5089743,a good many units,ARTICLE JJ FEW NNS,a,good,many,units,2,0.7577614379084967
+5135436,a potential seventy thousand patients,ARTICLE JJ CD CD NNS,a,potential,seventy thousand,patients,2,0.735702614379085
+5141093,a large orchestra level and 37 boxes,ARTICLE JJ NN NN CC CD NNS,a,large orchestra level and,37,boxes,2,0.6883169934640523
+5190019,a staggering six trillion letters,ARTICLE JJ CD CD NNS,a,staggering,six trillion,letters,2,0.7193627450980392
+5237213,an estimated 270 million kilograms,ARTICLE VBN CD CD NNS,An,estimated,270 million,kilograms,2,0.7169117647058824
+5247384,a great many inventions,ARTICLE JJ FEW NNS,a,great,many,inventions,2,0.7120098039215687
+5261894,an extra sixty- seven policemen,ARTICLE JJ CD CD NNS,an,extra,sixty- seven,policemen,2,0.7389705882352942
+5261911,a further sixty - eight policemen,ARTICLE JJ CD HYPH CD NNS,a,further,sixty - eight,policemen,2,0.7389705882352942
+5285443,a light blue skin and four arms,ARTICLE JJ JJ NN CC CD NNS,a,light blue skin and,four,arms,2,0.6842320261437909
+5310550,a moderate 86 beats,ARTICLE JJ CD NNS,a,moderate,86,beats,2,0.6850490196078431
+5375598,a handsome and sedate mansion two squares,ARTICLE JJ CC JJ NN CD NNS,a,handsome and sedate mansion,two,squares,2,0.7504084967320261
+5449892,a broad paved terrace three steps,ARTICLE JJ VBN NN CD NNS,A,broad paved terrace,three,steps,2,0.7512254901960784
+5468389,a further two units,ARTICLE JJ CD NNS,a,further,two,units,2,0.7577614379084967
+5540295,a good many notions,ARTICLE JJ FEW NNS,a,good,many,notions,2,0.7308006535947712
+5579057,"an estimated 2,500 slaves",ARTICLE VBN CD NNS,an,estimated,"2,500",slaves,2,0.7487745098039216
+5621441,a great many christians,ARTICLE JJ FEW NNPS,a,great,many,christians,2,0.6948529411764706
+5689943,a very touristic city and many tourists,ARTICLE RB JJ NN CC FEW NNS,a,very touristic city and,many,tourists,2,0.7553104575163399
+5833423,an additional 39 playoff games,ARTICLE JJ CD NN NNS,an,additional,39,playoff games,2,0.7381535947712419
+5898070,a learned behavior and few dogs,ARTICLE VBN NN CC FEW NNS,a,learned behavior and,few,dogs,2,0.6981209150326797
+6032536,a good many soldiers,ARTICLE JJ FEW NNS,a,good,many,soldiers,2,0.7495915032679739
+6396782,a redundant five items,ARTICLE JJ CD NNS,a,redundant,five,items,2,0.7136437908496732
+6585972,a further nine hundred redundancies,ARTICLE JJ CD CD NNS,a,further,nine hundred,redundancies,2,0.7446895424836601
+6622732,a lousy ten cents,ARTICLE JJ CD NNS,a,lousy,ten,cents,2,0.6924019607843137
+7221973,a central passage and three chambers,ARTICLE JJ NN CC CD NNS,a,central passage and,three,chambers,2,0.693218954248366
+7225644,a central passage and three chambers,ARTICLE JJ NN CC CD NNS,a,central passage and,three,chambers,2,0.693218954248366
+8162376,a key communication tool and many animals,ARTICLE JJ NN NN CC FEW NNS,a,key communication tool and,many,animals,2,0.6834150326797386
+8832614,a great present two mediums,ARTICLE JJ NN CD NNS,a,great present,two,mediums,2,0.7250816993464052
+8833014,a great present two mediums,ARTICLE JJ NN CD NNS,a,great present,two,mediums,2,0.7250816993464052
+9081747,a full er and more patients,ARTICLE JJ NN CC FEW NNS,a,full er and,more,patients,2,0.735702614379085
+9096012,a disappointing 50 ounces,ARTICLE JJ CD NNS,a,disappointing,50,ounces,2,0.7340686274509803
+9096216,a healthy 126 ounces,ARTICLE JJ CD NNS,a,healthy,126,ounces,2,0.7340686274509803
+10205546,a further 11 occasions,ARTICLE JJ CD NNS,a,further,11,occasions,2,0.7316176470588235
+10740330,another quick four bits,ARTICLE JJ CD NNS,another,quick,four,bits,2,0.6858660130718954
+11128208,a great shock wave many trees,ARTICLE JJ NN NN FEW NNS,a,great shock wave,many,trees,2,0.7561274509803921
+11242761,a good many boxes,ARTICLE JJ FEW NNS,A,good,many,boxes,2,0.6883169934640523
+11263340,a mere 20 taels,ARTICLE JJ CD NNS,a,mere,20,taels,2,0.752859477124183
+11265091,a mere 20 taels,ARTICLE JJ CD NNS,a,mere,20,taels,2,0.752859477124183
+38009,a small oil study and several drawings,ARTICLE JJ NN NN CC FEW NNS,a,small oil study and,several,drawings,1,0.8231209150326797
+45860,a final few moments,ARTICLE JJ FEW NNS,a,final,few,moments,1,0.8839869281045751
+54935,a professional basketball arena and many other sport facilities,ARTICLE JJ NN NN CC FEW JJ NN NNS,a,professional basketball arena and,many,other sport facilities,1,0.9044117647058824
+56273,"an old cap or two , a pair of boots","ARTICLE JJ NN CC CD , ARTICLE NN IN NNS",a,NA,"two ,",a pair of boots,1,0.7679738562091504
+58229,a special 100 naira,ARTICLE JJ CD NNS,a,special,100,naira,1,0.8884803921568627
+58320,an estimated 20 % of children,ARTICLE VBN CD NN IN NNS,An,estimated,20,% of children,1,0.7622549019607843
+60004,a good many difficult things,ARTICLE JJ FEW JJ NNS,a,good,many,difficult things,1,0.8198529411764706
+97924,a record 32 teams,ARTICLE RECORD CD NNS,a,record,32,teams,1,0.9722222222222222
+117952,a further three charges,ARTICLE JJ CD NNS,a,further,three,charges,1,0.7977941176470589
+121793,an extra two and a half hours,ARTICLE JJ CD CC ARTICLE NN NNS,a,NA,two and,a half hours,1,0.7659313725490197
+126657,"an additional 3,000 supporters",ARTICLE JJ CD NNS,an,additional,"3,000",supporters,1,0.9665032679738562
+129427,a great many little earth,ARTICLE JJ FEW JJ NNS,a,great,many,little earth,1,0.8729575163398693
+131301,a large head and two thick ears,ARTICLE JJ NN CC CD JJ NNS,a,large head and,two,thick ears,1,0.9738562091503268
+132365,a great deal more stamping of feet,ARTICLE JJ NN FEW NN IN NNS,a,great deal,more,stamping of feet,1,0.9603758169934641
+136087,a great many sparrows,ARTICLE JJ FEW NNS,a,great,many,sparrows,1,0.9550653594771242
+144287,a great many other weapons,ARTICLE JJ FEW JJ NNS,a,great,many,other weapons,1,0.9048202614379085
+144993,a great many rajas,ARTICLE JJ FEW NNPS,A,great,many,rajas,1,0.9236111111111112
+156403,a great many kings,ARTICLE JJ FEW NNPS,A,great,many,kings,1,0.8656045751633987
+156938,a great many sepoys,ARTICLE JJ FEW NNS,a,great,many,sepoys,1,0.9411764705882353
+169271,a great many slippers,ARTICLE JJ FEW NNS,a,great,many,slippers,1,0.9501633986928104
+183850,a future four lands,ARTICLE JJ CD NNPS,a,future,four,lands,1,0.8672385620915033
+189241,a standard three or four sheets,ARTICLE JJ CD CC CD NNS,a,standard,three or four,sheets,1,0.9448529411764706
+204737,a miniature sleigh and eight tiny reindeer,ARTICLE JJ NN CC CD JJ NNS,a,miniature sleigh and,eight,tiny reindeer,1,0.9754901960784313
+207905,a nationally known icon and many businesses,ARTICLE RB VBN NN CC FEW NNS,a,nationally known icon and,many,businesses,1,0.7912581699346405
+220064,a petty officer and four seamen,ARTICLE JJ NN CC CD NNS,a,petty officer and,four,seamen,1,0.9395424836601307
+220990,an estimated five million bricks,ARTICLE VBN CD CD NNS,an,estimated,five million,bricks,1,0.7879901960784313
+223653,a good many cross,ARTICLE JJ FEW NNS,a,good,many,cross,1,0.8104575163398693
+232264,"an estimated 600,000 daily passengers",ARTICLE VBN CD JJ NNS,an,estimated,"600,000",daily passengers,1,0.8125
+232367,"an estimated 500,000 riders",ARTICLE VBN CD NNS,an,estimated,"500,000",riders,1,0.9297385620915033
+234129,a great many hits,ARTICLE JJ FEW NNS,a,great,many,hits,1,0.8521241830065359
+261780,a great many brains,ARTICLE JJ FEW NNS,a,great,many,brains,1,0.7871732026143791
+265405,a great many pins,ARTICLE JJ FEW NNS,a,great,many,pins,1,0.9146241830065359
+269339,"an estimated 8,300 premature deaths",ARTICLE VBN CD JJ NNS,an,estimated,"8,300",premature deaths,1,0.9187091503267973
+269340,"an estimated 360,000 asthma attacks",ARTICLE VBN CD NN NNS,an,estimated,"360,000",asthma attacks,1,0.7773692810457516
+271759,"an estimated 250,000 shearwater burrows",ARTICLE VBN CD NN NNS,an,estimated,"250,000",shearwater burrows,1,0.9444444444444444
+275060,a constant sometimes eight colors,ARTICLE JJ RB CD NNS,a,constant sometimes,eight,colors,1,0.8018790849673203
+279427,"a sudden , three themes","ARTICLE JJ , CD NNS",a,"sudden ,",three,themes,1,0.9730392156862745
+289334,a great many wolves,ARTICLE JJ FEW NNS,a,great,many,wolves,1,0.9946895424836601
+303658,a heavy man and two big rocks,ARTICLE JJ NN CC CD JJ NNS,a,heavy man and,two,big rocks,1,0.7830882352941176
+313443,a little rowan tree and four alder bushes,ARTICLE JJ NN NN CC CD NN NNS,a,little rowan tree and,four,alder bushes,1,0.7704248366013072
+318938,a great many kangaroos,ARTICLE JJ FEW NNS,a,great,many,kangaroos,1,0.8643790849673203
+323410,a rich cultural heritage and many locations,ARTICLE JJ JJ NN CC FEW NNS,a,rich cultural heritage and,many,locations,1,0.8758169934640523
+326636,"an estimated 90,000 african slaves",ARTICLE VBN CD JJ NNS,an,estimated,"90,000",african slaves,1,0.7696078431372549
+328308,a further 878 army officers,ARTICLE JJR CD NN NNS,a,further,878,army officers,1,0.7761437908496732
+331869,a great many roses,ARTICLE JJ FEW NNS,a,great,many,roses,1,0.931781045751634
+332341,an estimated 523 japanese soldiers,ARTICLE VBN CD JJ NNS,an,estimated,523,japanese soldiers,1,0.8623366013071896
+347369,a further 15000 ha,ARTICLE JJ CD NNS,A,further,15000,ha,1,0.8496732026143791
+353288,a great many singular things,ARTICLE JJ FEW JJ NNS,a,great,many,singular things,1,0.9481209150326797
+354309,an estimated 81 million total viewers,ARTICLE VBN CD CD JJ NNS,An,estimated,81 million,total viewers,1,0.9771241830065359
+365566,a great many weavers,ARTICLE JJ FEW NNS,a,great,many,weavers,1,0.9910130718954249
+374969,a great many clouds,ARTICLE JJ FEW NNS,a,great,many,clouds,1,0.801062091503268
+388668,a great many skiffs,ARTICLE JJ FEW NNS,a,great,many,skiffs,1,0.948937908496732
+390650,a career - high 20 starts,ARTICLE NN HYPH JJ CD NNS,a,career - high,20,starts,1,0.9611928104575164
+405109,a great many desirable things,ARTICLE JJ FEW JJ NNS,a,great,many,desirable things,1,0.8169934640522876
+412972,a half dozen buildings,ARTICLE JJ FEW NNS,a,half,dozen,buildings,1,0.7896241830065359
+413441,a great many disagreeable things,ARTICLE JJ FEW JJ NNS,a,great,many,disagreeable things,1,0.8223039215686274
+424843,a record 11 straight postseason wins,ARTICLE RECORD CD JJ NN NNS,a,record,11,straight postseason wins,1,0.9640522875816994
+431147,a great many hungry days,ARTICLE JJ FEW JJ NNS,a,great,many,hungry days,1,0.8549836601307189
+433980,an annual world convention and four symposia,ARTICLE JJ NN NN CC CD NNS,an,annual world convention and,four,symposia,1,0.9685457516339869
+434755,a further three fifties,ARTICLE JJ CD NNS,a,further,three,fifties,1,0.8333333333333334
+435586,a great many shapes,ARTICLE JJ FEW NNS,a,great,many,shapes,1,0.943218954248366
+437232,an unprecedented five consecutive grand,ARTICLE JJ CD JJ NNPS,an,unprecedented,five,consecutive grand,1,0.8055555555555556
+444509,a great kingdom and three sons,ARTICLE JJ NN CC CD NNS,a,great kingdom and,three,sons,1,0.9530228758169934
+445951,a little body and two little hands,ARTICLE JJ NN CC CD JJ NNS,a,little body and,two,little hands,1,0.8733660130718954
+467322,a record 264 grade games,ARTICLE RECORD CD NN NNS,a,record,264,grade games,1,0.8468137254901961
+486266,a great many holidays,ARTICLE JJ FEW NNS,a,great,many,holidays,1,0.8525326797385621
+517682,a fair and beloved wife and several lovely children,ARTICLE JJ CC JJ NN CC FEW JJ NNS,a,fair and beloved wife and,several,lovely children,1,0.8770424836601307
+519587,a great many various stores,ARTICLE JJ FEW JJ NNS,a,great,many,various stores,1,0.9861111111111112
+519711,a record twelve national titles,ARTICLE RECORD CD JJ NNS,a,record,twelve,national titles,1,0.8901143790849673
+524206,a good many trials,ARTICLE JJ FEW NNS,a,good,many,trials,1,0.9808006535947712
+554282,a new control system and more levels,ARTICLE JJ NN NN CC FEW NNS,a,new control system and,more,levels,1,0.8713235294117647
+555150,a great many petroglyphs,ARTICLE JJ FEW NNS,a,great,many,petroglyphs,1,0.9125816993464052
+555805,a great many masters,ARTICLE JJ FEW NNS,a,great,many,masters,1,0.8794934640522876
+556885,a great many dead bodies,ARTICLE JJ FEW JJ NNS,a,great,many,dead bodies,1,0.8141339869281046
+573585,"a reported 6,000 apartments",ARTICLE VBN CD NNS,a,reported,"6,000",apartments,1,0.7728758169934641
+575112,an estimated 15 % of citizens,ARTICLE VBN CD NN IN NNS,An,estimated,15,% of citizens,1,0.7626633986928104
+584500,"an additional 1,000 sorties",ARTICLE JJ CD NNS,an,additional,"1,000",sorties,1,0.9538398692810458
+591689,a cheap hall bedroom and two art lessons,ARTICLE JJ NN NN CC CD NN NNS,a,cheap hall bedroom and,two,art lessons,1,0.7765522875816994
+592091,a great many facts,ARTICLE JJ FEW NNS,a,great,many,facts,1,0.8316993464052288
+601584,a great many local names,ARTICLE JJ FEW JJ NNS,A,great,many,local names,1,0.8754084967320261
+606747,a half - dozen roughs,ARTICLE JJ HYPH FEW NNS,A,half -,dozen,roughs,1,0.9321895424836601
+606899,a career - best 220 wickets,ARTICLE NN HYPH JJ CD NNS,a,career - best,220,wickets,1,0.9926470588235294
+609189,a half - dozen postal cards,ARTICLE JJ HYPH FEW JJ NNS,A,half -,dozen,postal cards,1,0.9178921568627451
+616060,a half - dozen sailors,ARTICLE JJ HYPH FEW NNS,A,half -,dozen,sailors,1,0.9362745098039216
+619017,"a collective 8,000 spots",ARTICLE JJ CD NNS,a,collective,"8,000",spots,1,0.9579248366013072
+626784,a half dozen ragged porters,ARTICLE JJ FEW JJ NNS,a,half,dozen,ragged porters,1,0.9227941176470589
+630595,an estimated 250 million phonograph records,ARTICLE VBN CD CD NN NNS,an,estimated,250 million,phonograph records,1,0.9133986928104575
+632815,a half - dozen armlets,ARTICLE JJ HYPH FEW NNS,a,half -,dozen,armlets,1,0.7753267973856209
+649647,a vast many smart beaux,ARTICLE JJ FEW JJ NNS,a,vast,many,smart beaux,1,0.951797385620915
+649710,a combined 20 league games,ARTICLE VBN CD NN NNS,a,combined,20,league games,1,0.869281045751634
+655855,an estimated 500 settlers,ARTICLE VBN CD NNS,An,estimated,500,settlers,1,0.9424019607843137
+659440,a great many conquests,ARTICLE JJ FEW NNS,a,great,many,conquests,1,0.8043300653594772
+661854,a further eight motor coaches,ARTICLE JJ CD NN NNS,a,further,eight,motor coaches,1,0.8852124183006536
+676623,a high school and several other institutions,ARTICLE JJ NN CC FEW JJ NNS,a,high school and,several,other institutions,1,0.9015522875816994
+685098,a good many snobs,ARTICLE JJ FEW NNS,a,good,many,snobs,1,0.9522058823529411
+713796,a great many arguments,ARTICLE JJ FEW NNS,a,great,many,arguments,1,0.7745098039215687
+719099,a good many fine gentlemen,ARTICLE JJ FEW JJ NNS,a,good,many,fine gentlemen,1,0.8345588235294118
+727922,a great many fox -,ARTICLE JJ FEW NN NNS,a,great,many,fox -,1,0.8386437908496732
+734988,a good few drinks,ARTICLE JJ FEW NNS,a,good,few,drinks,1,0.8235294117647058
+735836,a good many foxes,ARTICLE JJ FEW NNPS,a,good,many,foxes,1,0.8390522875816994
+753679,a very good forcep two or three punches,ARTICLE RB JJ NN CD CC CD NNS,a,very good forcep,two or three,punches,1,0.9223856209150327
+760028,a great many armed men,ARTICLE JJ FEW JJ NNS,a,great,many,armed men,1,0.7749183006535948
+760639,a good many jokes,ARTICLE JJ FEW NNS,a,good,many,jokes,1,0.863562091503268
+778592,a great many responsibilities,ARTICLE JJ FEW NNS,a,great,many,responsibilities,1,0.9276960784313726
+778896,a record eight consecutive stages,ARTICLE RECORD CD JJ NNS,a,record,eight,consecutive stages,1,0.8063725490196079
+780470,a great many nobles,ARTICLE JJ FEW NNS,a,great,many,nobles,1,0.8933823529411765
+794624,a great many adventurers,ARTICLE JJ FEW NNS,A,great,many,adventurers,1,0.7687908496732027
+803227,a great many good friends,ARTICLE JJ FEW JJ NNS,a,great,many,good friends,1,0.8459967320261438
+805611,a great many personal sacrifices,ARTICLE JJ FEW JJ NNS,a,great,many,personal sacrifices,1,0.9121732026143791
+808707,a great many fair ones,ARTICLE JJ FEW JJ NNS,A,great,many,fair ones,1,0.8321078431372549
+812215,a long gun and several swivel guns,ARTICLE JJ NN CC FEW JJ NNS,a,long gun and,several,swivel guns,1,0.9677287581699346
+815402,a good many bears,ARTICLE JJ FEW NNS,a,good,many,bears,1,0.7818627450980392
+824964,a great many creatures,ARTICLE JJ FEW NNS,a,great,many,creatures,1,0.8088235294117647
+825394,a good many other efforts,ARTICLE JJ FEW JJ NNS,a,good,many,other efforts,1,0.9011437908496732
+831688,a great many pets,ARTICLE JJ FEW NNS,a,great,many,pets,1,0.9129901960784313
+851342,a great many turkeys,ARTICLE JJ FEW NNPS,a,great,many,turkeys,1,0.9828431372549019
+852154,an extra 9 experiences,ARTICLE JJ CD NNS,an,extra,9,experiences,1,0.8296568627450981
+854752,an inner bridge and two outer bridges,ARTICLE JJ NN CC CD JJ NNS,an,inner bridge and,two,outer bridges,1,0.9052287581699346
+855167,a great many workmen,ARTICLE JJ FEW NNS,a,great,many,workmen,1,0.9955065359477124
+856239,a great many sick men,ARTICLE JJ FEW JJ NNS,a,great,many,sick men,1,0.9468954248366013
+864747,a direct current overhead power supply 600 volts,ARTICLE JJ JJ JJ NN NN CD NNS,a,direct current overhead power supply,600,volts,1,0.988562091503268
+868864,a large waggon and eight horses,ARTICLE JJ NN CC CD NNS,a,large waggon and,eight,horses,1,0.8529411764705882
+882136,a personal best 30 rebounds,ARTICLE JJ JJS CD NNS,a,personal best,30,rebounds,1,0.9252450980392157
+884736,"a little further out , two bear cubs","ARTICLE JJ RB RB , CD NN NNS",A,"little further out ,",two,bear cubs,1,0.7814542483660131
+905657,a great many curious ones,ARTICLE JJ FEW JJ NNS,a,great,many,curious ones,1,0.8116830065359477
+906022,a total 16 finals,ARTICLE JJ CD NNS,a,total,16,finals,1,0.8341503267973857
+906344,a little less sixteen candles,ARTICLE JJ JJR CD NNS,A,little less,sixteen,candles,1,0.7928921568627451
+912569,a popular top 40 outlet for years,ARTICLE JJ NN CD NN IN NNS,a,popular top,40,outlet for years,1,0.9056372549019608
+920576,a great many nymphs,ARTICLE JJ FEW NNPS,a,great,many,nymphs,1,0.8941993464052288
+931194,a great many playful leaps,ARTICLE JJ FEW JJ NNS,a,great,many,playful leaps,1,0.9162581699346405
+933324,an estimated 65 % of customers,ARTICLE VBN CD NN IN NNS,an,estimated,65,% of customers,1,0.7630718954248366
+934404,an audio cd and several dvds,ARTICLE JJ NN CC FEW NNS,an,audio cd and,several,dvds,1,0.8243464052287581
+936697,a particular few types,ARTICLE JJ FEW NNS,a,particular,few,types,1,0.9836601307189542
+940501,a great many beautiful shells,ARTICLE JJ FEW JJ NNS,a,great,many,beautiful shells,1,0.7822712418300654
+943976,an initial 150 specialty stores,ARTICLE JJ CD NN NNS,an,initial,150,specialty stores,1,0.9562908496732027
+957846,a great many baskets,ARTICLE JJ FEW NNS,a,great,many,baskets,1,0.7798202614379085
+962753,a combined 41 official reigns,ARTICLE VBN CD JJ NNS,a,combined,41,official reigns,1,0.8958333333333334
+962826,a great many empty bottles,ARTICLE JJ FEW JJ NNS,A,great,many,empty bottles,1,0.826797385620915
+964063,a good many trifling pieces,ARTICLE JJ FEW NN NNS,a,good,many,trifling pieces,1,0.9816176470588235
+965975,an additional eight strings,ARTICLE JJ CD NNS,an,additional,eight,strings,1,0.9652777777777778
+973136,a half dozen finishing cuts,ARTICLE JJ FEW JJ NNS,a,half,dozen,finishing cuts,1,0.8353758169934641
+1003403,"a potential 40,000 secondary jobs",ARTICLE JJ CD JJ NNS,a,potential,"40,000",secondary jobs,1,0.9399509803921569
+1003762,a superior geographical environment and many railways,ARTICLE JJ JJ NN CC FEW NNS,a,superior geographical environment and,many,railways,1,0.923202614379085
+1008623,a great many feelings,ARTICLE JJ FEW NNS,a,great,many,feelings,1,0.8325163398692811
+1014465,a vast cake and several pumpkin pies,ARTICLE JJ NN CC FEW NN NNS,a,vast cake and,several,pumpkin pies,1,0.9219771241830066
+1025773,an old father and two fryars,ARTICLE JJ NN CC CD NNS,an,old father and,two,fryars,1,0.8410947712418301
+1028306,a half - dozen pink thimble cakes,ARTICLE JJ HYPH FEW JJ NN NNS,a,half -,dozen,pink thimble cakes,1,0.9142156862745098
+1030929,a great many garments,ARTICLE JJ FEW NNS,a,great,many,garments,1,0.8415032679738562
+1034449,a large pine and several birches,ARTICLE JJ NN CC FEW NNS,a,large pine and,several,birches,1,0.7851307189542484
+1035750,a monumental facade and two floors,ARTICLE JJ NN CC CD NNS,a,monumental facade and,two,floors,1,0.8361928104575164
+1063867,a record 25 applicants,ARTICLE RECORD CD NNS,a,record,25,applicants,1,0.7736928104575164
+1070028,a little bit more communications,ARTICLE JJ NN FEW NNS,a,little bit,more,communications,1,0.8022875816993464
+1077122,"an estimated 10,000 illegal aliens",ARTICLE VBN CD JJ NNS,an,estimated,"10,000",illegal aliens,1,0.8553921568627451
+1083946,a further seven taxa,ARTICLE JJ CD NNS,A,further,seven,taxa,1,0.9718137254901961
+1085640,a season - high six solo tackles,ARTICLE NN HYPH JJ CD JJ NNS,a,season - high,six,solo tackles,1,0.9526143790849673
+1085675,a season - high two pass deflections,ARTICLE NN HYPH JJ CD NN NNS,a,season - high,two,pass deflections,1,0.9101307189542484
+1096680,an outstanding second half fightback and five unanswered tries,ARTICLE JJ JJ NN NN CC CD JJ NNS,an,outstanding second half fightback and,five,unanswered tries,1,0.9840686274509803
+1127481,a further six consecutive seasons,ARTICLE JJ CD JJ NNS,a,further,six,consecutive seasons,1,0.8059640522875817
+1139340,an estimated 90 german soldiers,ARTICLE VBN CD JJ NNS,an,estimated,90,german soldiers,1,0.8427287581699346
+1149912,a further 25 dependent translators,ARTICLE JJR CD JJ NNS,a,further,25,dependent translators,1,0.8165849673202614
+1155432,an extra four packets,ARTICLE JJ CD NNS,an,extra,four,packets,1,0.9076797385620915
+1166495,a broken leg and two or three bullets,ARTICLE VBN NN CC CD CC CD NNS,a,broken leg and,two or three,bullets,1,0.7900326797385621
+1180348,a grueling 10 - round points,ARTICLE JJ CD HYPH NN NNS,a,grueling,10 -,round points,1,0.9334150326797386
+1205026,a white blaze and three white feet,ARTICLE JJ NN CC CD JJ NNS,a,white blaze and,three,white feet,1,0.9918300653594772
+1210569,a career - high and franchise record 525 passing yards,ARTICLE NN HYPH NN CC NN RECORD CD NN NNS,a,career - high and franchise record,525,passing yards,1,0.9105392156862745
+1221481,a good many thoughts,ARTICLE JJ FEW NNS,A,good,many,thoughts,1,0.9746732026143791
+1223015,a further two and a half lengths,ARTICLE JJ CD CC ARTICLE NN NNS,a,NA,two and,a half lengths,1,0.7663398692810458
+1226354,a good many little scenes,ARTICLE JJ FEW JJ NNS,a,good,many,little scenes,1,0.8745915032679739
+1232712,a good many cries,ARTICLE JJ FEW NNS,a,good,many,cries,1,0.8092320261437909
+1256782,an american ship and three british ships,ARTICLE JJ NN CC CD JJ NNS,an,american ship and,three,british ships,1,0.7883986928104575
+1266128,a record 15 cautions,ARTICLE RECORD CD NNS,a,record,15,cautions,1,0.7953431372549019
+1279650,"an estimated 700,000 apple trees",ARTICLE VBN CD NN NNS,an,estimated,"700,000",apple trees,1,0.7732843137254902
+1292318,a total 1000 kw,ARTICLE JJ CD NNS,a,total,1000,kw,1,0.8668300653594772
+1310978,a symmetrical three bays,ARTICLE JJ CD NNS,a,symmetrical,three,bays,1,0.7806372549019608
+1364520,an estimated two thirds,ARTICLE VBN CD NNS,an,estimated,two,thirds,1,0.9742647058823529
+1365758,an armored brigade commander and two regimental commanders,ARTICLE JJ NN NN CC CD JJ NNS,an,armored brigade commander and,two,regimental commanders,1,0.926062091503268
+1385650,an estimated 80 % of schools,ARTICLE VBN CD NN IN NNS,An,estimated,80,% of schools,1,0.7638888888888888
+1391015,"an estimated 250,000 adherents",ARTICLE VBN CD NNS,an,estimated,"250,000",adherents,1,0.7683823529411765
+1404734,a good many fine ladies,ARTICLE JJ FEW JJ NNS,a,good,many,fine ladies,1,0.8349673202614379
+1415853,a half dozen educational conferences,ARTICLE JJ FEW JJ NNS,a,half,dozen,educational conferences,1,0.8255718954248366
+1426437,a simple two - axis,ARTICLE JJ CD HYPH NNS,a,simple,two -,axis,1,0.7781862745098039
+1428678,"a further 4,830 germans",ARTICLE JJ CD NNPS,a,further,"4,830",germans,1,0.8431372549019608
+1429064,a shared room or two separate rooms,ARTICLE VBN NN CC CD JJ NNS,a,shared room or,two,separate rooms,1,0.9407679738562091
+1437605,a further 35 partners,ARTICLE JJR CD NNS,a,further,35,partners,1,0.9093137254901961
+1449796,"an estimated 38,000 bushes",ARTICLE VBN CD NNS,an,estimated,"38,000",bushes,1,0.7908496732026143
+1452280,"an additional 53,300 cellular phones",ARTICLE JJ CD JJ NNS,an,additional,"53,300",cellular phones,1,0.7961601307189542
+1474066,a select few bioreporters,ARTICLE JJ FEW NNS,a,select,few,bioreporters,1,0.7847222222222222
+1489449,a half hundred enthusiastic youngsters,ARTICLE JJ CD JJ NNS,a,half,hundred,enthusiastic youngsters,1,0.8280228758169934
+1504424,an older brother and two younger sisters,ARTICLE JJR NN CC CD JJR NNS,an,older brother and,two,younger sisters,1,0.9991830065359477
+1510160,a minimum 40 trams,ARTICLE JJ CD NNS,a,minimum,40,trams,1,0.9799836601307189
+1524746,a good many reasons,ARTICLE JJ FEW NNS,a,good,many,reasons,1,0.9248366013071896
+1528352,a half dozen oarsmen,ARTICLE JJ FEW NNS,a,half,dozen,oarsmen,1,0.8946078431372549
+1537251,a final twenty two bands,ARTICLE JJ CD CD NNS,a,final,twenty two,bands,1,0.7794117647058824
+1551831,a good many more and worse disappointments,ARTICLE JJ FEW FEW CC JJR NNS,a,good,many more and,worse disappointments,1,0.9963235294117647
+1558223,a record 22 confirmed championship defenses,ARTICLE RECORD CD VBN NN NNS,a,record,22,confirmed championship defenses,1,0.803921568627451
+1572466,a chemical weapon- 1 t 's,ARTICLE JJ NN CD NN NNS,a,chemical weapon-,1,t 's,1,0.9693627450980392
+1575335,a mere five league wins,ARTICLE JJ CD NN NNS,a,mere,five,league wins,1,0.8696895424836601
+1577339,a good many plums,ARTICLE JJ FEW NNS,A,good,many,plums,1,0.9166666666666666
+1582467,"a naval fleet and 5,000 troops",ARTICLE JJ NN CC CD NNS,a,naval fleet and,"5,000",troops,1,0.9820261437908496
+1594815,a further several thousand planters,ARTICLE JJ FEW CD NNS,a,further,several thousand,planters,1,0.9158496732026143
+1606843,a long time and 299 hotel rooms,ARTICLE JJ NN CC CD NN NNS,a,long time and,299,hotel rooms,1,0.8533496732026143
+1613585,a planar structure and three - fold rotation axes,ARTICLE JJ NN CC CD HYPH JJ NN NNS,a,planar structure and,three -,fold rotation axes,1,0.8370098039215687
+1641968,a giant whirlpool and four continents,ARTICLE JJ NN CC CD NNS,a,giant whirlpool and,four,continents,1,0.8075980392156863
+1672494,a record seven hundred thousand brits,ARTICLE RECORD CD CD CD NNPS,a,record,seven hundred thousand,brits,1,0.7888071895424836
+1689362,a further two promotions,ARTICLE JJ CD NNS,a,further,two,promotions,1,0.9211601307189542
+1693730,a further seventeen million road users,ARTICLE JJR CD CD NN NNS,a,further,seventeen million,road users,1,0.9309640522875817
+1725851,a great many greenhouses,ARTICLE JJ FEW NNS,a,great,many,greenhouses,1,0.8488562091503268
+1728757,a great many parts,ARTICLE JJ FEW NNS,a,great,many,parts,1,0.9097222222222222
+1740595,a minimal 1.6 watts,ARTICLE JJ CD NNS,a,minimal,1.6,watts,1,0.9901960784313726
+1747748,a new and more cautious approach towards dangers,ARTICLE JJ CC FEW JJ NN IN NNS,a,new and,more,cautious approach towards dangers,1,0.795751633986928
+1809173,an added 37 cubic metres,ARTICLE VBN CD JJ NNS,an,added,37,cubic metres,1,0.8108660130718954
+1814168,a breached caldera and two small summit craters,ARTICLE VBN NN CC CD JJ NN NNS,a,breached caldera and,two,small summit craters,1,0.9505718954248366
+1814720,a great many mysterious hints,ARTICLE JJ FEW JJ NNS,a,great,many,mysterious hints,1,0.8880718954248366
+1818451,an estimated 800 jewish people,ARTICLE VBN CD JJ NNS,an,estimated,800,jewish people,1,0.8627450980392157
+1839792,an estimated 10 million brazilians,ARTICLE VBN CD CD NNPS,an,estimated,10 million,brazilians,1,0.7875816993464052
+1846580,an estimated 600 indigenous people,ARTICLE VBN CD JJ NNS,an,estimated,600,indigenous people,1,0.858251633986928
+1864284,an estimated 5.2 million speakers,ARTICLE VBN CD CD NNS,an,estimated,5.2 million,speakers,1,0.9554738562091504
+1869616,a half dozen forces,ARTICLE JJ FEW NNS,a,half,dozen,forces,1,0.8374183006535948
+1870280,an estimated 217 mosques,ARTICLE VBN CD NNS,an,estimated,217,mosques,1,0.8848039215686274
+1873866,an estimated 130 churches,ARTICLE VBN CD NNS,an,estimated,130,churches,1,0.7986111111111112
+1875470,"an estimated 33,000 sculptures",ARTICLE VBN CD NNS,an,estimated,"33,000",sculptures,1,0.9391339869281046
+1886034,a great many new discoveries,ARTICLE JJ FEW JJ NNS,a,great,many,new discoveries,1,0.891748366013072
+1897498,"a larger , more complex coat of arms","ARTICLE JJR , FEW JJ NN IN NNS",a,"larger ,",more,complex coat of arms,1,0.8035130718954249
+1899943,a new color so three x,ARTICLE JJ NN CC CD NNS,a,new color so,three,x,1,0.997140522875817
+1911041,an old chap but three tables,ARTICLE JJ NN CC CD NNS,an,old chap but,three,tables,1,0.9697712418300654
+1920253,a half - dozen city cousins,ARTICLE JJ HYPH FEW NN NNS,a,half -,dozen,city cousins,1,0.7990196078431373
+1952645,a record four consecutive finals,ARTICLE RECORD CD JJ NNS,a,record,four,consecutive finals,1,0.8051470588235294
+1956424,a half dozen coaches,ARTICLE JJ FEW NNS,a,half,dozen,coaches,1,0.8014705882352942
+1966371,an estimated 600 globulars,ARTICLE VBN CD NNS,an,estimated,600,globulars,1,0.8447712418300654
+1968148,a record fifteen starters,ARTICLE RECORD CD NNS,a,record,fifteen,starters,1,0.9607843137254902
+2029014,an additional 140 mrv,ARTICLE JJ CD NNS,an,additional,140,mrv,1,0.886437908496732
+2031887,an additional two shovels,ARTICLE JJ CD NNS,an,additional,two,shovels,1,0.9464869281045751
+2040946,a little bit more luxuries,ARTICLE JJ NN FEW NNS,a,little bit,more,luxuries,1,0.8774509803921569
+2064983,a single parent and two grandparents,ARTICLE JJ NN CC CD NNS,a,single parent and,two,grandparents,1,0.8476307189542484
+2065192,an automatic and two seven - round clips,ARTICLE JJ CC CD CD HYPH NN NNS,an,automatic and,two seven -,round clips,1,0.9325980392156863
+2065655,a record - high 185 underclassed draft prospects,ARTICLE RECORD HYPH JJ CD JJ NN NNS,a,record - high,185,underclassed draft prospects,1,0.9844771241830066
+2072101,a record 63 tournaments,ARTICLE RECORD CD NNS,a,record,63,tournaments,1,0.9775326797385621
+2073928,a record four consecutive times,ARTICLE RECORD CD JJ NNS,a,record,four,consecutive times,1,0.806781045751634
+2078326,a public road and several rural lanes,ARTICLE JJ NN CC FEW JJ NNS,a,public road and,several,rural lanes,1,0.9350490196078431
+2082082,a new artwork and three extra songs,ARTICLE JJ NN CC CD JJ NNS,a,new artwork and,three,extra songs,1,0.8304738562091504
+2083668,an additional 6000 scudi,ARTICLE JJ CD NNS,an,additional,6000,scudi,1,0.9387254901960784
+2104608,a further nine retrograde steps,ARTICLE JJ CD JJ NNS,a,further,nine,retrograde steps,1,0.928921568627451
+2112412,a further two spells,ARTICLE JJ CD NNS,a,further,two,spells,1,0.9571078431372549
+2114329,a career - high 55 receiving yards,ARTICLE NN HYPH JJ CD NN NNS,a,career - high,55,receiving yards,1,0.9256535947712419
+2131869,a central cupola and two rear dormers,ARTICLE JJ NN CC CD JJ NNS,a,central cupola and,two,rear dormers,1,0.9244281045751634
+2134340,a further two defeats,ARTICLE JJ CD NNS,a,further,two,defeats,1,0.8149509803921569
+2163799,a very very long twenty odd minutes,ARTICLE RB RB JJ CD JJ NNS,a,very very long,twenty,odd minutes,1,0.8950163398692811
+2164187,a mere 65 - koku,ARTICLE JJ CD HYPH NNS,a,mere,65 -,koku,1,0.8660130718954249
+2178479,a select few establishments,ARTICLE JJ FEW NNS,a,select,few,establishments,1,0.8288398692810458
+2180427,an additional six smaller searchlights,ARTICLE JJ CD JJR NNS,an,additional,six,smaller searchlights,1,0.9513888888888888
+2184699,a season - high four stops,ARTICLE NN HYPH JJ CD NNS,a,season - high,four,stops,1,0.9624183006535948
+2216557,a wild 5–4 metrostars,ARTICLE JJ CD NNPS,a,wild,5–4,metrostars,1,0.8819444444444444
+2238888,"a further 300,000 shares",ARTICLE JJR CD NNS,a,further,"300,000",shares,1,0.9436274509803921
+2242632,a celebrated rhododendron walk and six national plant collections,ARTICLE JJ NN NN CC CD JJ NN NNS,a,celebrated rhododendron walk and,six,national plant collections,1,0.8897058823529411
+2249565,an additional twenty venues,ARTICLE JJ CD NNS,an,additional,twenty,venues,1,0.9865196078431373
+2267678,a further 16 languages,ARTICLE JJ CD NNS,a,further,16,languages,1,0.8676470588235294
+2270187,a main passenger concourse and 19 bus stands,ARTICLE JJ NN NN CC CD NN NNS,a,main passenger concourse and,19,bus stands,1,0.7904411764705882
+2274374,a regular life and few needs,ARTICLE JJ NN CC FEW NNS,a,regular life and,few,needs,1,0.8909313725490197
+2278372,a great many toys,ARTICLE JJ FEW NNS,A,great,many,toys,1,0.9779411764705882
+2291804,"a further 50,000 inmates",ARTICLE JJ CD NNS,a,further,"50,000",inmates,1,0.8594771241830066
+2302859,a technical officer and three other personnel,ARTICLE JJ NN CC CD JJ NNS,a,technical officer and,three,other personnel,1,0.9027777777777778
+2307348,a further seven boats,ARTICLE JJ CD NNS,A,further,seven,boats,1,0.7859477124183006
+2331061,an additional 23 injured people,ARTICLE JJ CD VBN NNS,An,additional,23,injured people,1,0.8590686274509803
+2333714,a wild pursuit and several fruitless dashes,ARTICLE JJ NN CC FEW JJ NNS,a,wild pursuit and,several,fruitless dashes,1,0.8406862745098039
+2351694,an estimated 78.3 million americans,ARTICLE VBN CD CD NNPS,an,estimated,78.3 million,americans,1,0.7716503267973857
+2356142,a low 3.3 revolutions,ARTICLE JJ CD NNS,a,low,3.3,revolutions,1,0.9293300653594772
+2356448,"a separate , much more stringent set of regulations","ARTICLE JJ , RB FEW JJ NN IN NNS",a,"separate , much",more,stringent set of regulations,1,0.9648692810457516
+2361388,a further 55 apartment blocks,ARTICLE JJ CD NN NNS,a,further,55,apartment blocks,1,0.7724673202614379
+2366504,an unprecedented three consecutive covers,ARTICLE JJ CD JJ NNS,an,unprecedented,three,consecutive covers,1,0.8047385620915033
+2372952,"an estimated 2,700 black bears",ARTICLE VBN CD JJ NNS,an,estimated,"2,700",black bears,1,0.7855392156862745
+2377548,"an estimated 10,000 taiwanese",ARTICLE VBN CD NNPS,an,estimated,"10,000",taiwanese,1,0.9701797385620915
+2377902,an additional 72 smaller police posts,ARTICLE JJ CD JJR NN NNS,an,additional,72,smaller police posts,1,0.9509803921568627
+2399598,an estimated 300 druze,ARTICLE VBN CD NNPS,an,estimated,300,druze,1,0.823937908496732
+2403866,a great many nice things,ARTICLE JJ FEW JJ NNS,a,great,many,nice things,1,0.8925653594771242
+2406429,an estimated 80–200 civilian men,ARTICLE VBN CD JJ NNS,an,estimated,80–200,civilian men,1,0.7994281045751634
+2413806,a combined 16 national championships,ARTICLE VBN CD JJ NNS,a,combined,16,national championships,1,0.889297385620915
+2430303,a german assault battalion and ten heavy artillery battalions,ARTICLE JJ NN NN CC CD JJ NN NNS,a,german assault battalion and,ten,heavy artillery battalions,1,0.8513071895424836
+2440103,a great many hides,ARTICLE JJ FEW NNS,a,great,many,hides,1,0.8517156862745098
+2445174,a dependent variable and one or more explanatory variables,ARTICLE JJ NN CC CD CC FEW JJ NNS,a,dependent variable and,one or more,explanatory variables,1,0.8300653594771242
+2449003,an extremely precise three - dimensional map of stars,ARTICLE RB JJ CD HYPH JJ NN IN NNS,an,extremely precise,three -,dimensional map of stars,1,0.8214869281045751
+2479487,a faux marriage proposal and many other crimes,ARTICLE JJ NN NN CC FEW JJ NNS,a,faux marriage proposal and,many,other crimes,1,0.9003267973856209
+2511271,a great many more factors,ARTICLE JJ FEW FEW NNS,A,great,many more,factors,1,0.8312908496732027
+2514844,a combined 19 runs,ARTICLE VBN CD NNS,a,combined,19,runs,1,0.934640522875817
+2526688,a possible 27 innings,ARTICLE JJ CD NNS,a,possible,27,innings,1,0.8598856209150327
+2526703,a new career - high 17 batters,ARTICLE JJ NN HYPH JJ CD NNS,a,new career - high,17,batters,1,0.7802287581699346
+2530668,a great many kinds,ARTICLE JJ FEW NNS,a,great,many,kinds,1,0.8651960784313726
+2543268,a favorite drink and many german,ARTICLE JJ NN CC FEW NNPS,a,favorite drink and,many,german,1,0.8423202614379085
+2566954,a school - record five winning campaigns,ARTICLE NN HYPH RECORD CD NN NNS,a,school - record,five,winning campaigns,1,0.9938725490196079
+2567209,an additional two destroyers,ARTICLE JJ CD NNS,an,additional,two,destroyers,1,0.8174019607843137
+2582459,a classic two selves,ARTICLE JJ CD NNS,a,classic,two,selves,1,0.940359477124183
+2584980,a record 10 catches,ARTICLE RECORD CD NNS,a,record,10,catches,1,0.7949346405228758
+2586023,a modern village hall and two croquet pitches,ARTICLE JJ NN NN CC CD NN NNS,a,modern village hall and,two,croquet pitches,1,0.8100490196078431
+2607055,"an estimated 4,000 elephants",ARTICLE VBN CD NNS,an,estimated,"4,000",elephants,1,0.8263888888888888
+2617102,a fixed approximation ratio formula_99 and probabilities,ARTICLE VBN NN NN CD CC NNS,a,fixed approximation ratio,formula_99 and,probabilities,1,0.9203431372549019
+2618100,an additional 8 carriages,ARTICLE JJ CD NNS,an,additional,8,carriages,1,0.7941176470588235
+2636389,a good many foreign cars,ARTICLE JJ FEW JJ NNS,a,good,many,foreign cars,1,0.8378267973856209
+2638141,a career - high 115 rushing yards,ARTICLE NN HYPH JJ CD NN NNS,a,career - high,115,rushing yards,1,0.9354575163398693
+2638173,a career - high six special teams,ARTICLE NN HYPH JJ CD JJ NNS,a,career - high,six,special teams,1,0.9558823529411765
+2640912,a great many strange places,ARTICLE JJ FEW JJ NNS,a,great,many,strange places,1,0.9644607843137255
+2650427,a sure man fifty paces,ARTICLE JJ NN CD NNS,a,sure man,fifty,paces,1,0.9068627450980392
+2661317,"an estimated 250,000 resort visitsand",ARTICLE VBN CD NN NNS,an,estimated,"250,000",resort visitsand,1,0.9272875816993464
+2663956,a tiny two - track recordings,ARTICLE JJ CD HYPH NN NNS,a,tiny,two -,track recordings,1,0.9783496732026143
+2664595,"an estimated 182,000 canadians",ARTICLE VBN CD NNPS,an,estimated,"182,000",canadians,1,0.7920751633986928
+2675129,a record seven editions,ARTICLE RECORD CD NNS,a,record,seven,editions,1,0.8247549019607843
+2675929,a half - dozen good ones,ARTICLE JJ HYPH FEW JJ NNS,a,half -,dozen,good ones,1,0.8464052287581699
+2685489,a further 3 invitational places,ARTICLE JJ CD JJ NNS,a,further,3,invitational places,1,0.8602941176470589
+2698643,an astonishing 26 million shells,ARTICLE JJ CD CD NNS,an,astonishing,26 million,shells,1,0.9452614379084967
+2699241,an astonishing 340 million marks-,ARTICLE JJ CD CD NNS,an,astonishing,340 million,marks-,1,0.8782679738562091
+2703646,a solid runway and more hangars,ARTICLE JJ NN CC FEW NNPS,a,solid runway and,more,hangars,1,0.8504901960784313
+2719153,a further ten masks,ARTICLE JJ CD NNS,a,further,ten,masks,1,0.8790849673202614
+2734879,a - very - many -,ARTICLE JJ RB JJ FEW NNS,a,- very -,many,-,1,0.764297385620915
+2735040,a total area 43.2 square miles,ARTICLE JJ NN CD JJ NNS,a,total area,43.2,square miles,1,0.9591503267973857
+2750640,a relatively new concept and many more studies,ARTICLE RB JJ NN CC FEW FEW NNS,a,relatively new concept and,many more,studies,1,0.9656862745098039
+2771018,"a single , two - dimensional array of data","ARTICLE JJ , CD HYPH JJ NN IN NNS",a,"single ,",two -,dimensional array of data,1,0.821078431372549
+2772233,a school and league record 19 consecutive weeks,ARTICLE NN CC NN RECORD CD JJ NNS,a,school and league record,19,consecutive weeks,1,0.8071895424836601
+2801568,an initial 19 rivers,ARTICLE JJ CD NNS,an,initial,19,rivers,1,0.9305555555555556
+2801569,a further three wild river areas,ARTICLE JJ CD JJ NN NNS,a,further,three,wild river areas,1,0.9930555555555556
+2817693,a great many deliverances,ARTICLE JJ FEW NNS,a,great,many,deliverances,1,0.8157679738562091
+2841611,a good few thousands,ARTICLE JJ FEW NNS,a,good,few,thousands,1,0.9750816993464052
+2854058,a great many other questions,ARTICLE JJ FEW JJ NNS,a,great,many,other questions,1,0.9035947712418301
+2872714,an additional 200 cannons,ARTICLE JJ CD NNS,an,additional,200,cannons,1,0.7933006535947712
+2883916,a great many howlings,ARTICLE JJ FEW NNS,a,great,many,howlings,1,0.8545751633986928
+2903534,"an estimated 30,000 central",ARTICLE VBN CD NNPS,an,estimated,"30,000",central,1,0.7965686274509803
+2916162,a busy and well developed shopping district and several shopping malls,ARTICLE JJ CC RB VBN NN NN CC FEW NN NNS,a,busy and well developed shopping district and,several,shopping malls,1,0.946078431372549
+2916350,an estimated 86 billion neurons,ARTICLE VBN CD CD NNS,an,estimated,86 billion,neurons,1,0.8913398692810458
+2918996,a fast pace and many articles,ARTICLE JJ NN CC FEW NNS,a,fast pace and,many,articles,1,0.7769607843137255
+2948170,a great many little birds,ARTICLE JJ FEW JJ NNS,a,great,many,little birds,1,0.8725490196078431
+2950863,a further seven islands,ARTICLE JJ CD NNS,a,further,seven,islands,1,0.8619281045751634
+2983814,an additional thousand tanks,ARTICLE JJ CD NNS,an,additional,thousand,tanks,1,0.9714052287581699
+2985474,a resounding 83 % of people,ARTICLE JJ CD NN IN NNS,a,resounding,83,% of people,1,0.7634803921568627
+3010741,a great many other busybodies,ARTICLE JJ FEW JJ NNS,a,great,many,other busybodies,1,0.8999183006535948
+3016689,a great many little lives,ARTICLE JJ FEW JJ NNS,A,great,many,little lives,1,0.8737745098039216
+3046396,a nice house three chimneys,ARTICLE JJ NN CD NNS,a,nice house,three,chimneys,1,0.798202614379085
+3047940,a great many young people,ARTICLE JJ FEW JJ NNS,a,great,many,young people,1,0.9987745098039216
+3060350,a great many other boys,ARTICLE JJ FEW JJ NNS,a,great,many,other boys,1,0.8995098039215687
+3063444,a good many corners,ARTICLE JJ FEW NNS,a,good,many,corners,1,0.8080065359477124
+3076813,a great many other matters,ARTICLE JJ FEW JJ NNS,a,great,many,other matters,1,0.9019607843137255
+3091117,a great many travelers,ARTICLE JJ FEW NNS,a,great,many,travelers,1,0.9803921568627451
+3103584,"a millionth , six noughts","ARTICLE JJ , CD NNS",a,"millionth ,",six,noughts,1,0.8937908496732027
+3105847,an additional 349 migrant arrivals,ARTICLE JJ CD NN NNS,an,additional,349,migrant arrivals,1,0.8827614379084967
+3109991,a good rest and two square meals,ARTICLE JJ NN CC CD JJ NNS,a,good rest and,two,square meals,1,0.9587418300653595
+3110159,a great many other ducks,ARTICLE JJ FEW JJ NNPS,a,great,many,other ducks,1,0.9007352941176471
+3110793,a good many young ducks,ARTICLE JJ FEW JJ NNPS,a,good,many,young ducks,1,0.9979575163398693
+3130982,an extra few pints,ARTICLE JJ FEW NNS,an,extra,few,pints,1,0.9150326797385621
+3142775,an additional thirty two bytes,ARTICLE JJ CD CD NNS,an,additional,thirty two,bytes,1,0.7916666666666666
+3314066,a record 650 bills,ARTICLE RECORD CD NNS,a,record,650,bills,1,0.7839052287581699
+3315146,an american grade i stakes,ARTICLE JJ NN CD NNS,an,american grade,i,stakes,1,0.9599673202614379
+3350713,a further two series,ARTICLE JJ CD NNS,a,further,two,series,1,0.9415849673202614
+3371739,a long time   15 years,ARTICLE JJ NN CD CD NNS,a,long time,15 years,NA,1,1
+3394575,a unanimous 151 presbyteries,ARTICLE JJ CD NNS,a,unanimous,151,presbyteries,1,0.9191176470588235
+3422985,a sacred design and few rugs,ARTICLE JJ NN CC FEW NNS,a,sacred design and,few,rugs,1,0.9342320261437909
+3432737,a good many critics,ARTICLE JJ FEW NNS,a,good,many,critics,1,0.809640522875817
+3443257,"a mere seven , eight ones","ARTICLE JJ CD , CD NNS",a,mere,"seven , eight",ones,1,0.8962418300653595
+3452805,an estimated 400 danish nazis,ARTICLE VBN CD JJ NNPS,an,estimated,400,danish nazis,1,0.8137254901960784
+3470643,a further eighty four thousand square feet,ARTICLE JJR CD CD CD JJ NNS,a,further,eighty four thousand,square feet,1,0.9583333333333334
+3471028,a great many costs,ARTICLE JJ FEW NNS,a,great,many,costs,1,0.8084150326797386
+3482265,a white crescent and four five - pointed stars,ARTICLE JJ NN CC CD CD HYPH JJ NNS,a,white crescent and,four five -,pointed stars,1,0.9170751633986928
+3483247,a great many more variables,ARTICLE JJ FEW FEW NNS,a,great,many more,variables,1,0.985702614379085
+3508638,a total 5 edits,ARTICLE JJ CD NNS,a,total,5,edits,1,0.8251633986928104
+3527877,a half - dozen tribes,ARTICLE JJ HYPH FEW NNS,a,half -,dozen,tribes,1,0.9812091503267973
+3546185,an estimated 30 movies,ARTICLE VBN CD NNS,an,estimated,30,movies,1,0.8860294117647058
+3600721,a great many theories,ARTICLE JJ FEW NNS,A,great,many,theories,1,0.9734477124183006
+3609503,a great many writers,ARTICLE JJ FEW NNS,a,great,many,writers,1,0.9967320261437909
+3617569,a good four long ones,ARTICLE JJ CD JJ NNS,a,good,four,long ones,1,0.8762254901960784
+3639197,a vertical diameter and two rings,ARTICLE JJ NN CC CD NNS,a,vertical diameter and,two,rings,1,0.9301470588235294
+3640401,a good many unpleasant traits,ARTICLE JJ FEW JJ NNS,a,good,many,unpleasant traits,1,0.9848856209150327
+3643528,a record 74 winners,ARTICLE RECORD CD NNS,a,record,74,winners,1,0.9934640522875817
+3644866,a fair few stormy conversations,ARTICLE JJ FEW JJ NNS,a,fair,few,stormy conversations,1,0.9632352941176471
+3661246,an annual 3.5 million visitors,ARTICLE JJ CD CD NNS,an,annual,3.5 million,visitors,1,0.9877450980392157
+3692884,an estimated 120 tales,ARTICLE VBN CD NNS,an,estimated,120,tales,1,0.9709967320261438
+3697117,an estimated 800 mourners,ARTICLE VBN CD NNS,An,estimated,800,mourners,1,0.8856209150326797
+3731694,a good many walks,ARTICLE JJ FEW NNS,a,good,many,walks,1,0.9893790849673203
+3841026,an estimated 200 million albums,ARTICLE VBN CD CD NNS,an,estimated,200 million,albums,1,0.7700163398692811
+3847444,an estimated 125 million opioid pills,ARTICLE VBN CD CD NN NNS,an,estimated,125 million,opioid pills,1,0.8974673202614379
+3878047,a simpler grammar and many loanwords,ARTICLE JJR NN CC FEW NNS,a,simpler grammar and,many,loanwords,1,0.875
+3897449,a long history and many different dialects,ARTICLE JJ NN CC FEW JJ NNS,a,long history and,many,different dialects,1,0.8186274509803921
+3911745,a half million views,ARTICLE JJ CD NNS,a,half,million,views,1,0.9869281045751634
+3954568,a little bit more sophisticated problems,ARTICLE JJ NN FEW JJ NNS,a,little bit,more,sophisticated problems,1,0.9534313725490197
+3983863,a record 20 rounds,ARTICLE RECORD CD NNS,a,record,20,rounds,1,0.9338235294117647
+3996275,a great many australian plants,ARTICLE JJ FEW JJ NNS,A,great,many,australian plants,1,0.7777777777777778
+4004541,a great many different names,ARTICLE JJ FEW JJ NNS,a,great,many,different names,1,0.8190359477124183
+4010719,an international city and many companies,ARTICLE JJ NN CC FEW NNS,an,international city and,many,companies,1,0.8026960784313726
+4036159,a great deal more overhead in terms,ARTICLE JJ NN FEW NN IN NNS,a,great deal,more,overhead in terms,1,0.9060457516339869
+4056929,a good many irish members,ARTICLE JJ FEW JJ NNS,A,good,many,irish members,1,0.8611111111111112
+4061912,a good many irish novels,ARTICLE JJ FEW JJ NNS,A,good,many,irish novels,1,0.8615196078431373
+4064186,a great many american publishers,ARTICLE JJ FEW JJ NNS,A,great,many,american publishers,1,0.7712418300653595
+4075159,a goody two boobs,ARTICLE JJ CD NNS,a,goody,two,boobs,1,0.7863562091503268
+4082809,a pleasant rest and two restaurants,ARTICLE JJ NN CC CD NNS,a,pleasant rest and,two,restaurants,1,0.9281045751633987
+4095469,a good many specimens,ARTICLE JJ FEW NNS,A,good,many,specimens,1,0.9566993464052288
+4097099,a good few mushrooms,ARTICLE JJ FEW NNS,a,good,few,mushrooms,1,0.8876633986928104
+4103667,"an estimated 32,000 residences",ARTICLE VBN CD NNS,an,estimated,"32,000",residences,1,0.9268790849673203
+4104872,a literal meaning and one or more symbolic meanings,ARTICLE JJ NN CC CD CC FEW JJ NNS,a,literal meaning and,one or more,symbolic meanings,1,0.9681372549019608
+4126635,a mere twenty pe pence,ARTICLE JJ CD NN NNS,a,mere,twenty,pe pence,1,0.9113562091503268
+4170619,a further 12 nm,ARTICLE JJ CD NNS,a,further,12,nm,1,0.8929738562091504
+4186753,a half dozen natives,ARTICLE JJ FEW NNS,A,half,dozen,natives,1,0.8905228758169934
+4187347,a half dozen savage natives,ARTICLE JJ FEW JJ NNS,a,half,dozen,savage natives,1,0.9375
+4196241,a universal and shared spirit many souls,ARTICLE JJ CC JJ NN FEW NNS,a,universal and shared spirit,many,souls,1,0.954248366013072
+4197666,a great many chances,ARTICLE JJ FEW NNS,a,great,many,chances,1,0.7969771241830066
+4203351,a great many dangers,ARTICLE JJ FEW NNS,a,great,many,dangers,1,0.8133169934640523
+4213343,a great many difficulties,ARTICLE JJ FEW NNS,a,great,many,difficulties,1,0.8202614379084967
+4231390,a used pair three sizes,ARTICLE VBN NN CD NNS,a,used pair,three,sizes,1,0.9485294117647058
+4255453,an extra twelve tracks,ARTICLE JJ CD NNS,an,extra,twelve,tracks,1,0.9787581699346405
+4261129,"an estimated 8,500 infections",ARTICLE VBN CD NNS,an,estimated,"8,500",infections,1,0.8586601307189542
+4293895,a great many geographers,ARTICLE JJ FEW NNS,a,great,many,geographers,1,0.8419117647058824
+4301154,a perfect match—150 balls,ARTICLE JJ CD NNS,a,perfect,match—150,balls,1,0.7790032679738562
+4302140,an extra 70 swagbucks,ARTICLE JJ CD NNS,an,extra,70,swagbucks,1,0.9669117647058824
+4316301,"an estimated 5,205 households",ARTICLE VBN CD NNS,an,estimated,"5,205",households,1,0.8541666666666666
+4325932,an extensive canal system and several monumental temples,ARTICLE JJ NN NN CC FEW JJ NNS,an,extensive canal system and,several,monumental temples,1,0.8843954248366013
+4333525,a clever water drainage system and many stone sculptures,ARTICLE JJ NN NN NN CC FEW NN NNS,a,clever water drainage system and,many,stone sculptures,1,0.9620098039215687
+4341089,an additional 8 million subscribers,ARTICLE JJ CD CD NNS,an,additional,8 million,subscribers,1,0.9660947712418301
+4366094,a whopping 800 micrograms,ARTICLE JJ CD NNS,a,whopping,800,micrograms,1,0.8823529411764706
+4374539,a full - length body and two companions,ARTICLE JJ HYPH NN NN CC CD NNS,a,full - length body and,two,companions,1,0.8031045751633987
+4377436,a new 1000 yuan,ARTICLE JJ CD NNS,A,new,1000,yuan,1,0.9995915032679739
+4397021,a great many gods,ARTICLE JJ FEW NNS,a,great,many,gods,1,0.8451797385620915
+4400190,a big house and four rooms,ARTICLE JJ NN CC CD NNS,a,big house and,four,rooms,1,0.9313725490196079
+4409718,a merry one promises,ARTICLE JJ CD NNS,a,merry,one,promises,1,0.920751633986928
+4415263,an additional seven trains,ARTICLE JJ CD NNS,An,additional,seven,trains,1,0.9795751633986928
+4418804,a great many gestures,ARTICLE JJ FEW NNS,a,great,many,gestures,1,0.8435457516339869
+4438401,"a great , many round ones","ARTICLE JJ , FEW JJ NNS",a,"great ,",many,round ones,1,0.9330065359477124
+4469168,a dignitary shuttle and two protocol droids,ARTICLE JJ NN CC CD NN NNS,a,dignitary shuttle and,two,protocol droids,1,0.9215686274509803
+4522766,"an estimated 1,000 official entries",ARTICLE VBN CD JJ NNS,An,estimated,"1,000",official entries,1,0.8954248366013072
+4540046,a further 54 candidates,ARTICLE JJ CD NNS,a,further,54,candidates,1,0.7924836601307189
+4551606,a great many mathematical objects,ARTICLE JJ FEW JJ NNS,a,great,many,mathematical objects,1,0.8799019607843137
+4609825,a 13th - century chapel and two private castles,ARTICLE JJ HYPH NN NN CC CD JJ NNS,a,13th - century chapel and,two,private castles,1,0.9199346405228758
+4617142,an earlier time slot and nine new episodes,ARTICLE JJR NN NN CC CD JJ NNS,an,earlier time slot and,nine,new episodes,1,0.8921568627450981
+4627477,a further three and a half years,ARTICLE JJ CD CC ARTICLE NN NNS,a,NA,three and,a half years,1,0.7675653594771242
+4640438,a royal casino and two beach resorts,ARTICLE JJ NN CC CD NN NNS,a,royal casino and,two,beach resorts,1,0.7810457516339869
+4680902,"an estimated 80,000 total species",ARTICLE VBN CD JJ NNS,an,estimated,"80,000",total species,1,0.9767156862745098
+4699345,a great many other situations,ARTICLE JJ FEW JJ NNS,a,great,many,other situations,1,0.9040032679738562
+4703233,"an estimated 151,000 to 600,000 or more iraqis",ARTICLE VBN CD TO CD CC FEW NNPS,An,estimated,"151,000 to 600,000 or more",iraqis,1,0.860702614379085
+4714940,a further ten pence,ARTICLE JJ CD NNS,a,further,ten,pence,1,0.9117647058823529
+4715147,a grand total one million nine hundred and seventy eight thousand jobs,ARTICLE JJ NN CD CD CD CD CC CD CD CD NNS,a,grand total,one million nine hundred and seventy eight thousand,jobs,1,0.8631535947712419
+4723381,an estimated 450 million independents,ARTICLE VBN CD CD NNS,an,estimated,450 million,independents,1,0.8578431372549019
+4731448,a hard surface many painters,ARTICLE JJ NN FEW NNS,a,hard surface,many,painters,1,0.9084967320261438
+4737510,an estimated five million annual visitors,ARTICLE VBN CD CD JJ NNS,an,estimated,five million,annual visitors,1,0.7720588235294118
+4744250,an older sister and four brothers,ARTICLE JJR NN CC CD NNS,an,older sister and,four,brothers,1,0.7892156862745098
+4774131,a normal 6 - sided dice,ARTICLE JJ CD HYPH JJ NNS,a,normal,6 -,sided dice,1,0.9477124183006536
+4820245,a double limber and six mules,ARTICLE JJ NN CC CD NNS,A,double limber and,six,mules,1,0.8868464052287581
+4829000,an estimated 1 million filipinos,ARTICLE VBN CD CD NNPS,An,estimated,1 million,filipinos,1,0.8337418300653595
+4833858,a half dozen sharpened sticks,ARTICLE JJ FEW VBN NNS,a,half,dozen,sharpened sticks,1,0.9440359477124183
+4841099,a white crescent moon and five white stars,ARTICLE JJ JJ NN CC CD JJ NNS,a,white crescent moon and,five,white stars,1,0.9922385620915033
+4842016,a short story or several chapters,ARTICLE JJ NN CC FEW NNS,a,short story or,several,chapters,1,0.7973856209150327
+4854287,a botanical garden and three green houses,ARTICLE JJ NN CC CD JJ NNS,a,botanical garden and,three,green houses,1,0.8484477124183006
+4855704,an english quartermaster and four lascars,ARTICLE JJ NN CC CD NNPS,An,english quartermaster and,four,lascars,1,0.8680555555555556
+4890850,a serial port and two floppy disk drives,ARTICLE JJ NN CC CD JJ NN NNS,a,serial port and,two,floppy disk drives,1,0.8366013071895425
+4896489,an estimated 70 billion servings,ARTICLE VBN CD CD NNS,An,estimated,70 billion,servings,1,0.9419934640522876
+4898804,an extra five square yards,ARTICLE JJ CD JJ NNS,an,extra,five,square yards,1,0.9595588235294118
+4927863,a further four voieds,ARTICLE JJ CD NNS,a,further,four,voieds,1,0.9881535947712419
+4937665,a pressurized cabin and two decks,ARTICLE JJ NN CC CD NNS,a,pressurized cabin and,two,decks,1,0.8145424836601307
+4938847,a shattered knee and two toes,ARTICLE VBN NN CC CD NNS,a,shattered knee and,two,toes,1,0.9763071895424836
+4942169,"an additional 7,518 satellites",ARTICLE JJ CD NNS,an,additional,"7,518",satellites,1,0.9370915032679739
+4942265,an additional three resupply flights,ARTICLE JJ CD NN NNS,an,additional,three,resupply flights,1,0.9285130718954249
+4961365,a full 40 mm,ARTICLE JJ CD NNS,a,full,40,mm,1,0.883578431372549
+4970861,"an estimated 100,000 climbers",ARTICLE VBN CD NNS,an,estimated,"100,000",climbers,1,0.8006535947712419
+4990715,a red background and 3 armoured legs,ARTICLE JJ NN CC CD JJ NNS,a,red background and,3,armoured legs,1,0.7757352941176471
+4996663,a long table and two benches,ARTICLE JJ NN CC CD NNS,a,long table and,two,benches,1,0.7826797385620915
+5017651,"an extra 75,000 kroner",ARTICLE JJ CD NNS,an,extra,"75,000",kroner,1,0.866421568627451
+5058161,a similar meaning and many uses,ARTICLE JJ NN CC FEW NNS,a,similar meaning and,many,uses,1,0.9852941176470589
+5061669,a good many enemies,ARTICLE JJ FEW NNS,a,good,many,enemies,1,0.8272058823529411
+5099435,a half - dozen pains,ARTICLE JJ HYPH FEW NNS,a,half -,dozen,pains,1,0.9080882352941176
+5102356,a great many damage suits,ARTICLE JJ FEW NN NNS,a,great,many,damage suits,1,0.8129084967320261
+5171835,a half - million leads,ARTICLE JJ HYPH CD NNS,a,half -,million,leads,1,0.8688725490196079
+5176066,a german police officer and 5 terrorists,ARTICLE JJ NN NN CC CD NNS,A,german police officer and,5,terrorists,1,0.9726307189542484
+5188949,a little more lentils,ARTICLE JJ FEW NNS,a,little,more,lentils,1,0.8705065359477124
+5223522,a good many swedes,ARTICLE JJ FEW NNPS,a,good,many,swedes,1,0.9673202614379085
+5263746,a half - dozen other places,ARTICLE JJ HYPH FEW JJ NNS,a,half -,dozen,other places,1,0.9031862745098039
+5283908,a good ninety nine p,ARTICLE JJ CD CD NNS,a,good,ninety nine,p,1,0.9064542483660131
+5313857,an additional 20 warships,ARTICLE JJ CD NNS,an,additional,20,warships,1,0.9897875816993464
+5377414,"a trifling vase or two , pictures","ARTICLE JJ NN CC CD , NNS",a,trifling vase or,"two ,",pictures,1,0.9138071895424836
+5382827,a light breakfast and two hearty meals,ARTICLE JJ NN CC CD JJ NNS,a,light breakfast and,two,hearty meals,1,0.8508986928104575
+5435380,an additional 40 million readers,ARTICLE JJ CD CD NNS,an,additional,40 million,readers,1,0.9240196078431373
+5444042,"a large , square house two and a half stories","ARTICLE JJ , JJ NN CD CC ARTICLE NN NNS",a,NA,two and,a half stories,1,0.7671568627450981
+5545269,an astounding 30 billion apps,ARTICLE JJ CD CD NNS,an,astounding,30 billion,apps,1,0.7741013071895425
+5561677,a great many currants,ARTICLE JJ FEW NNS,a,great,many,currants,1,0.8120915032679739
+5566576,a great many vines,ARTICLE JJ FEW NNS,A,great,many,vines,1,0.9873366013071896
+5566682,an additional 50 liters,ARTICLE JJ CD NNS,an,additional,50,liters,1,0.8717320261437909
+5570697,a great many plans,ARTICLE JJ FEW NNS,a,great,many,plans,1,0.9154411764705882
+5570737,"a short , pointed tail and four flippers","ARTICLE JJ , JJ NN CC CD NNS",a,"short , pointed tail and",four,flippers,1,0.8357843137254902
+5641710,a further 30 orders,ARTICLE JJ CD NNS,a,further,30,orders,1,0.8982843137254902
+5654954,a good many opinions,ARTICLE JJ FEW NNS,A,good,many,opinions,1,0.8970588235294118
+5698509,a great many different sailboats,ARTICLE JJ FEW JJ NNS,a,great,many,different sailboats,1,0.8194444444444444
+5718492,a great many works,ARTICLE JJ FEW NNS,a,great,many,works,1,0.9959150326797386
+5803888,"an estimated 20,000 curies",ARTICLE VBN CD NNS,an,estimated,"20,000",curies,1,0.8112745098039216
+5933673,a european vase and two hundred gold pieces,ARTICLE JJ NN CC CD CD NN NNS,a,european vase and,two hundred,gold pieces,1,0.8455882352941176
+5977674,a little bit more metadata,ARTICLE JJ NN FEW NNS,a,little bit,more,metadata,1,0.8811274509803921
+5986086,"a smug , married couple , lots","ARTICLE JJ , JJ FEW , NNS",a,"smug , married","couple ,",lots,1,0.8766339869281046
+6039272,a good many score of miles,ARTICLE JJ FEW NN IN NNS,a,good,many,score of miles,1,0.9379084967320261
+6047707,an astonishing three - fourths,ARTICLE JJ CD HYPH NNS,an,astonishing,three -,fourths,1,0.8382352941176471
+6055433,an extra space or two spaces,ARTICLE JJ NN CC CD NNS,an,extra space or,two,spaces,1,0.9546568627450981
+6101622,a good many dies,ARTICLE JJ FEW NNS,a,good,many,dies,1,0.818218954248366
+6101681,a great many envelopes,ARTICLE JJ FEW NNS,A,great,many,envelopes,1,0.8284313725490197
+6136276,a good many girls,ARTICLE JJ FEW NNS,a,good,many,girls,1,0.8439542483660131
+6143843,"a little , few little notes","ARTICLE JJ , FEW JJ NNS",a,"little ,",few,little notes,1,0.8741830065359477
+6164283,an arab head ornament and several bracelets,ARTICLE JJ NN NN CC FEW NNS,an,arab head ornament and,several,bracelets,1,0.7867647058823529
+6202506,a balmy 65 degrees--,ARTICLE JJ CD NNS,a,balmy,65,degrees--,1,0.815359477124183
+6216580,a fresh pony and more cartridges,ARTICLE JJ NN CC FEW NNS,a,fresh pony and,more,cartridges,1,0.7945261437908496
+6321665,a great many bacteria,ARTICLE JJ FEW NNS,A,great,many,bacteria,1,0.7785947712418301
+6365996,an extra dozen eggs,ARTICLE JJ FEW NNS,an,extra,dozen,eggs,1,0.8259803921568627
+6413107,a young and charming wife and two pretty children,ARTICLE JJ CC JJ NN CC CD JJ NNS,a,young and charming wife and,two,pretty children,1,0.9195261437908496
+6428364,a great many imponderants,ARTICLE JJ FEW NNS,a,great,many,imponderants,1,0.8566176470588235
+6436633,a stern chain and two side chains,ARTICLE JJ NN CC CD NN NNS,a,stern chain and,two,side chains,1,0.9473039215686274
+6441370,a half - dozen witnesses,ARTICLE JJ HYPH FEW NNS,A,half -,dozen,witnesses,1,0.994281045751634
+6508460,a great many organizations,ARTICLE JJ FEW NNS,a,great,many,organizations,1,0.8986928104575164
+6511256,a little more tweaks,ARTICLE JJ FEW NNS,a,little,more,tweaks,1,0.983251633986928
+6579005,a single one two police,ARTICLE JJ CD CD NNS,a,single,one two,police,1,0.9174836601307189
+6583466,a good many clerks,ARTICLE JJ FEW NNS,a,good,many,clerks,1,0.8002450980392157
+6606800,a good livelihood and reputation and many other blessings,ARTICLE JJ NN CC NN CC FEW JJ NNS,a,good livelihood and reputation and,many,other blessings,1,0.8991013071895425
+6608980,a s er two slates,ARTICLE JJ UH CD NNS,a,s er,two,slates,1,0.9497549019607843
+6645141,a great many leagues,ARTICLE JJ FEW NNS,a,great,many,leagues,1,0.8700980392156863
+6654527,a little too many cards,ARTICLE JJ RB FEW NNS,a,little too,many,cards,1,0.7937091503267973
+6670693,"a fre , two free pizzas","ARTICLE JJ , CD JJ NNS",a,"fre ,",two,free pizzas,1,0.8398692810457516
+6724367,a single or many saints,ARTICLE JJ CC FEW NNS,a,single or,many,saints,1,0.9366830065359477
+6796973,"an estimated 6,000 machines",ARTICLE VBN CD NNS,an,estimated,"6,000",machines,1,0.877859477124183
+6828721,a smaller more skilled group of people,ARTICLE JJR FEW JJ NN IN NNS,a,smaller,more,skilled group of people,1,0.9493464052287581
+6843748,"a good six , seven diamonds","ARTICLE JJ CD , CD NNS",a,good,"six , seven",diamonds,1,0.8178104575163399
+6859032,a good many lessons,ARTICLE JJ FEW NNS,a,good,many,lessons,1,0.8709150326797386
+6909403,an older sister and 2 half -,ARTICLE JJR NN CC CD NN NNS,an,older sister and,2,half -,1,0.8500816993464052
+6914657,a great many troubles,ARTICLE JJ FEW NNS,a,great,many,troubles,1,0.9824346405228758
+6937080,a curved line and several straight lines,ARTICLE JJ NN CC FEW JJ NNS,a,curved line and,several,straight lines,1,0.9636437908496732
+7002999,a worn suit and seven or eight pawn tickets,ARTICLE JJ NN CC CD CC CD NN NNS,a,worn suit and,seven or eight,pawn tickets,1,0.9109477124183006
+7025678,a certain prefix and 15 digits,ARTICLE JJ NN CC CD NNS,a,certain prefix and,15,digits,1,0.8206699346405228
+7086644,an estimated 70 sextillion stars,ARTICLE VBN CD NN NNS,an,estimated,70,sextillion stars,1,0.9428104575163399
+7156522,"a whopping 5,000 operations",ARTICLE JJ CD NNS,a,whopping,"5,000",operations,1,0.8966503267973857
+7230641,a pitiful 28 kgs,ARTICLE JJ CD NNS,a,pitiful,28,kgs,1,0.8647875816993464
+7245978,a big three - dimensional mass of cells,ARTICLE JJ CD HYPH JJ NN IN NNS,a,big,three -,dimensional mass of cells,1,0.8218954248366013
+7273534,an extra nine storeys,ARTICLE JJ CD NNS,an,extra,nine,storeys,1,0.9628267973856209
+7274848,an american organization 50 ethiopians,ARTICLE JJ NN CD NNPS,an,american organization,50,ethiopians,1,0.829248366013072
+7278978,a record 20 titles,ARTICLE RECORD CD NNS,a,record,20,titles,1,0.9758986928104575
+7282723,a select few and systems,ARTICLE JJ FEW CC NNS,a,select,few and,systems,1,0.9689542483660131
+7283304,a little bit more house lights,ARTICLE JJ NN FEW NN NNS,a,little bit,more,house lights,1,0.8537581699346405
+7369708,a half - dozen methods,ARTICLE JJ HYPH FEW NNS,a,half -,dozen,methods,1,0.8815359477124183
+7401850,a noded two binary trees,ARTICLE VBN CD JJ NNS,a,noded,two,binary trees,1,0.7843137254901961
+7412019,an average 17 fields,ARTICLE JJ CD NNS,an,average,17,fields,1,0.8329248366013072
+7423035,"a mere 15,000 year humans",ARTICLE JJ CD NN NNS,a,mere,"15,000",year humans,1,0.9975490196078431
+7478539,a little bit more freedom for women,ARTICLE JJ NN FEW NN IN NNS,a,little bit,more,freedom for women,1,0.8402777777777778
+7484207,a horrible memory-- 406 grams,ARTICLE JJ NN CD NNS,a,horrible memory--,406,grams,1,0.8472222222222222
+7506279,a strange one incidental autopsy findings,ARTICLE JJ CD JJ NN NNS,a,strange,one,incidental autopsy findings,1,0.8574346405228758
+7507175,a half million workers,ARTICLE JJ CD NNS,a,half,million,workers,1,0.9950980392156863
+7519031,"a nother 100,000 mathematicians",ARTICLE JJ CD NNS,a,nother,"100,000",mathematicians,1,0.8803104575163399
+7608449,a record 1.5 million pre,ARTICLE RECORD CD CD NNS,a,record,1.5 million,pre,1,0.9183006535947712
+7619325,a little bit more remote areas,ARTICLE JJ NN FEW JJ NNS,a,little bit,more,remote areas,1,0.9264705882352942
+7633510,a total twenty fractions,ARTICLE JJ CD NNS,a,total,twenty,fractions,1,0.8394607843137255
+7692513,a great many billionaires,ARTICLE JJ FEW NNS,A,great,many,billionaires,1,0.7834967320261438
+7755747,a good few marriages,ARTICLE JJ FEW NNS,a,good,few,marriages,1,0.8786764705882353
+8096160,a certain few classics,ARTICLE JJ FEW NNS,a,certain,few,classics,1,0.7998366013071896
+8097791,an estimated 12 million opium addicts,ARTICLE VBN CD CD NN NNS,an,estimated,12 million,opium addicts,1,0.8978758169934641
+8166565,a great many talents,ARTICLE JJ FEW NNS,a,great,many,talents,1,0.9705882352941176
+8223824,a fair few munters,ARTICLE JJ FEW NNS,a,fair,few,munters,1,0.8872549019607843
+8700560,a select few demons,ARTICLE JJ FEW NNS,a,select,few,demons,1,0.8161764705882353
+8737442,"a great one , young friends","ARTICLE JJ CD , JJ NNS",a,great,"one ,",young friends,1,0.9983660130718954
+9000936,a vast area 3 grounds,ARTICLE JJ NN CD NNS,a,vast area,3,grounds,1,0.8492647058823529
+9006270,an additional 17 extracts,ARTICLE JJ CD NNS,an,additional,17,extracts,1,0.8308823529411765
+9007562,a central line kit and two pacing catheters,ARTICLE JJ NN NN CC CD NN NNS,a,central line kit and,two,pacing catheters,1,0.9072712418300654
+9067207,a half - dozen mines,ARTICLE JJ HYPH FEW NNS,a,half -,dozen,mines,1,0.8831699346405228
+9144994,an extra naan and two glasses,ARTICLE JJ NN CC CD NNS,an,extra naan and,two,glasses,1,0.8443627450980392
+9407786,a half - dozen particle cannons,ARTICLE JJ HYPH FEW NN NNS,a,half -,dozen,particle cannons,1,0.9089052287581699
+9468633,a great many laughs,ARTICLE JJ FEW NNS,a,great,many,laughs,1,0.8684640522875817
+9495273,a wild couple a days,ARTICLE JJ FEW ARTICLE NNS,a,NA,couple,a days,1,0.7651143790849673
+9659746,a staggering 375 billion litres,ARTICLE JJ CD CD NNS,A,staggering,375 billion,litres,1,0.872140522875817
+9829425,a half dozen stealth drones,ARTICLE JJ FEW JJ NNS,a,half,dozen,stealth drones,1,0.9616013071895425
+9982746,a huge turbocharger and 420 spikes,ARTICLE JJ NN CC CD NNS,a,huge turbocharger and,420,spikes,1,0.9575163398692811
+10130230,an estimated 600 journalists,ARTICLE VBN CD NNS,An,estimated,600,journalists,1,0.8639705882352942
+10158691,a half dozen vulgar alias ',ARTICLE JJ FEW JJ NN NNS,a,half,dozen,vulgar alias ',1,0.9889705882352942
+10249307,"a staggering 121,000 donations",ARTICLE JJ CD NNS,a,staggering,"121,000",donations,1,0.8227124183006536
+10325914,a long history and many names,ARTICLE JJ NN CC FEW NNS,a,long history and,many,names,1,0.8888888888888888
+10330135,an extra six shillings,ARTICLE JJ CD NNS,an,extra,six,shillings,1,0.9456699346405228
+10379362,a mere 400 or 500 ryo,ARTICLE JJ CD CC CD NNS,a,mere,400 or 500,ryo,1,0.9358660130718954
+10425726,"a great man 3,000 advisors",ARTICLE JJ NN CD NNS,a,great man,"3,000",advisors,1,0.7691993464052288
+10567796,a big nine inch nails,ARTICLE JJ CD NN NNS,a,big,nine,inch nails,1,0.8570261437908496
+10797806,a similar operation three trailers,ARTICLE JJ NN CD NNS,a,similar operation,three,trailers,1,0.9791666666666666
+10885443,a cheap 1 950s,ARTICLE JJ CD NNS,a,cheap,1,950s,1,0.7647058823529411
+10927108,an estimated seven million illegal immigrants,ARTICLE VBN CD CD JJ NNS,an,estimated,seven million,illegal immigrants,1,0.8558006535947712
+10989369,a real job many web sites,ARTICLE JJ NN FEW NN NNS,a,real job,many,web sites,1,0.991421568627451
+11055439,a further two enormous wind cycles,ARTICLE JJ CD JJ NN NNS,a,further,two,enormous wind cycles,1,0.8276143790849673
+11072734,a good bed and three meals,ARTICLE JJ NN CC CD NNS,a,good bed and,three,meals,1,0.880718954248366
+11096911,a nice house and three great kids,ARTICLE JJ NN CC CD JJ NNS,a,nice house and,three,great kids,1,0.8480392156862745
+11128317,a given planetary surface many more impacts,ARTICLE VBN JJ NN FEW FEW NNS,a,given planetary surface,many more,impacts,1,0.8562091503267973
