@@ -1,4 +1,4 @@
-idx,construction,pos,DT,ADJ,NUMERAL,NOUN,n,percent
+sentence_idx,construction,pos,DT,ADJ,NUMERAL,NOUN,n,percent
 132365,a great deal more stamping of feet,ARTICLE JJ NN FEW NN IN NNS,a,great deal,more,stamping of feet,34,0.5098039215686274
 554282,a new control system and more levels,ARTICLE JJ NN NN CC FEW NNS,a,new control system and,more,levels,34,0.5098039215686274
 771428,a whole lot more things,ARTICLE JJ NN FEW NNS,a,whole lot,more,things,34,0.5098039215686274

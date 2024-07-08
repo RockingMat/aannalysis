@@ -106,7 +106,8 @@ babylm_aanns %>%
 # prototypical ids
   
 lowercased_babylm_aanns <- babylm_aanns %>%
-  mutate_at(vars(construction, ADJ, NUMERAL, NOUN), .funs = str_to_lower)
+  mutate_at(vars(construction, ADJ, NUMERAL, NOUN), .funs = str_to_lower) %>%
+  rename(sentence_idx = idx)
   
 low_variability_aanns <- lowercased_babylm_aanns %>%
   count(ADJ, NUMERAL, NOUN, sort=TRUE) %>%
@@ -181,8 +182,6 @@ noun_high_variability <- lowercased_babylm_aanns %>%
   ) %>%
   filter(percent > 0.50)
 
-
-###----
 
 adj_high_variability_instances <- lowercased_babylm_aanns %>%
   inner_join(adj_high_variability)

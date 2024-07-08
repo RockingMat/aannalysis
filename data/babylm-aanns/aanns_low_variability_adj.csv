@@ -1,4 +1,4 @@
-idx,construction,pos,DT,ADJ,NUMERAL,NOUN,n,percent
+sentence_idx,construction,pos,DT,ADJ,NUMERAL,NOUN,n,percent
 28788,a great many friends,ARTICLE JJ FEW NNS,a,great,many,friends,355,0.14501633986928106
 29044,a great many people,ARTICLE JJ FEW NNS,a,great,many,people,355,0.14501633986928106
 29553,a great many good points,ARTICLE JJ FEW JJ NNS,a,great,many,good points,355,0.14501633986928106

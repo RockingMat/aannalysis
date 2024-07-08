@@ -1,4 +1,4 @@
-idx,construction,pos,DT,ADJ,NUMERAL,NOUN,n,percent
+sentence_idx,construction,pos,DT,ADJ,NUMERAL,NOUN,n,percent
 40111,a club - record 109 games,ARTICLE NN HYPH RECORD CD NNS,a,club - record,109,games,15,0.5110294117647058
 209357,a mere 360 metres,ARTICLE JJ CD NNS,a,mere,360,metres,15,0.5171568627450981
 209550,a mere 360 metres,ARTICLE JJ CD NNS,a,mere,360,metres,15,0.5171568627450981

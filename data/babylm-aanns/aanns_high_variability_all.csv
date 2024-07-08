@@ -1,4 +1,4 @@
-idx,construction,pos,DT,ADJ,NUMERAL,NOUN,n,percent
+sentence_idx,construction,pos,DT,ADJ,NUMERAL,NOUN,n,percent
 884,a smaller three to four people,ARTICLE JJR CD TO CD NNS,a,smaller,three to four,people,1,0.9219771241830066
 2481,a good few seasons,ARTICLE JJ FEW NNS,a,good,few,seasons,1,0.576797385620915
 12856,a further two men,ARTICLE JJ CD NNS,a,further,two,men,1,0.5575980392156863

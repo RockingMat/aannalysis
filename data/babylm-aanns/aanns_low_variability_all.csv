@@ -1,4 +1,4 @@
-idx,construction,pos,DT,ADJ,NUMERAL,NOUN,n,percent
+sentence_idx,construction,pos,DT,ADJ,NUMERAL,NOUN,n,percent
 12974,an english former professional snooker player and six - times,ARTICLE JJ JJ JJ NN NN CC CD HYPH NNS,an,english former professional snooker player and,six -,times,1,0.3790849673202614
 16576,an extra two to three people,ARTICLE JJ CD TO CD NNS,an,extra,two to three,people,1,0.4775326797385621
 18115,a full three days,ARTICLE JJ CD NNS,a,full,three,days,2,0.1642156862745098

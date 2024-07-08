@@ -1,4 +1,4 @@
-idx,construction,pos,DT,ADJ,NUMERAL,NOUN,n,percent
+sentence_idx,construction,pos,DT,ADJ,NUMERAL,NOUN,n,percent
 97924,a record 32 teams,ARTICLE RECORD CD NNS,a,record,32,teams,55,0.5126633986928104
 164678,a record 26 times,ARTICLE RECORD CD NNS,a,record,26,times,55,0.5126633986928104
 360882,a record seven times,ARTICLE RECORD CD NNS,a,record,seven,times,55,0.5126633986928104

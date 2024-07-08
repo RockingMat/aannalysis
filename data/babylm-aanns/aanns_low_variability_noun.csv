@@ -1,4 +1,4 @@
-idx,construction,pos,DT,ADJ,NUMERAL,NOUN,n,percent
+sentence_idx,construction,pos,DT,ADJ,NUMERAL,NOUN,n,percent
 25160,a mere 8 years,ARTICLE JJ CD NNS,a,mere,8,years,254,0.10375816993464053
 52634,a good many years,ARTICLE JJ FEW NNS,A,good,many,years,254,0.10375816993464053
 90331,a good few years,ARTICLE JJ FEW NNS,a,good,few,years,254,0.10375816993464053
