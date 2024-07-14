@@ -152,11 +152,48 @@
 #     --counterfactual_type removal \
 #     --excess_path data/babylm-analysis/indef_articles_with_pl_nouns.csv
 
+# python src/counterfactual_constructions.py \
+#     --output_path data/training_data/counterfactual_babylm_aann_dtanns.txt \
+#     --aann_path data/babylm-analysis/new_regex_aanns.csv \
+#     --counterfactual_type removal \
+#     --excess_path data/babylm-analysis/dtanns.csv
+
 python src/counterfactual_constructions.py \
-    --output_path data/training_data/counterfactual_babylm_aann_dtanns.txt \
-    --aann_path data/babylm-analysis/new_regex_aanns.csv \
-    --counterfactual_type removal \
-    --excess_path data/babylm-analysis/dtanns.csv
+    --output_path data/training_data/counterfactual_babylm_aann_high_variability_all.txt \
+    --aann_path data/babylm-aanns/aanns_high_variability_all.csv\
+    --counterfactual_type removal
 
+python src/counterfactual_constructions.py \
+    --output_path data/training_data/counterfactual_babylm_aann_low_variability_all.txt \
+    --aann_path data/babylm-aanns/aanns_low_variability_all.csv\
+    --counterfactual_type removal
 
+python src/counterfactual_constructions.py \
+    --output_path data/training_data/counterfactual_babylm_aann_high_variability_adj.txt \
+    --aann_path data/babylm-aanns/aanns_high_variability_adj.csv\
+    --counterfactual_type removal
 
+python src/counterfactual_constructions.py \
+    --output_path data/training_data/counterfactual_babylm_aann_low_variability_adj.txt \
+    --aann_path data/babylm-aanns/aanns_low_variability_adj.csv\
+    --counterfactual_type removal
+
+python src/counterfactual_constructions.py \
+    --output_path data/training_data/counterfactual_babylm_aann_high_variability_numeral.txt \
+    --aann_path data/babylm-aanns/aanns_high_variability_numeral.csv\
+    --counterfactual_type removal
+
+python src/counterfactual_constructions.py \
+    --output_path data/training_data/counterfactual_babylm_aann_low_variability_numeral.txt \
+    --aann_path data/babylm-aanns/aanns_low_variability_numeral.csv\
+    --counterfactual_type removal
+
+python src/counterfactual_constructions.py \
+    --output_path data/training_data/counterfactual_babylm_aann_high_variability_noun.txt \
+    --aann_path data/babylm-aanns/aanns_high_variability_adj.csv\
+    --counterfactual_type removal
+
+python src/counterfactual_constructions.py \
+    --output_path data/training_data/counterfactual_babylm_aann_low_variability_noun.txt \
+    --aann_path data/babylm-aanns/aanns_low_variability_noun.csv\
+    --counterfactual_type removal
