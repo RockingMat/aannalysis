@@ -37,8 +37,9 @@ declare -a lrs=(1e-4)
 # declare -a models=(counterfactual-babylm-old_union_new_regex_aanns_removal counterfactual-babylm-new_regex_aanns_removal)
 
 # declare -a models=(counterfactual_babylm_naans_new counterfactual_babylm_300_naans_new counterfactual_babylm_300_anans_new)
-declare -a models=(counterfactual_babylm_anans_new counterfactual_babylm_naans_new)
-declare -a lrs=(1e-4)
+# declare -a models=(counterfactual_babylm_anans_new counterfactual_babylm_naans_new)
+declare -a models=(counterfactual-babylm-new_regex_aanns_removal)
+declare -a lrs=(1e-3)
 # declare -a models=(counterfactual_babylm_naans_new-1e-3 counterfactual_babylm_300_naans_new-1e-3 counterfactual_babylm_300_anans_new-1e-3 counterfactual_babylm_anans_new-1e-3)
 
 for mode in ${modes[@]}
