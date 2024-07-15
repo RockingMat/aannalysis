@@ -4,7 +4,8 @@
 
 # declare -a models=(counterfactual-babylm-old_union_new_regex_aanns_removal.csv counterfactual-babylm-new_regex_aanns_removal.csv)
 # declare -a models=(counterfactual_babylm_naans_new counterfactual_babylm_300_naans_new counterfactual_babylm_300_anans_new)
-declare -a models=(counterfactual_babylm_anans_new)
+# declare -a models=(counterfactual_babylm_anans_new)
+declare -a models=(counterfactual_babylm_measure_nps_as_singular_new counterfactual_babylm_aann_dtanns counterfactual_babylm_indef_articles_with_pl_nouns_removal_new)
 # declare -a models=(counterfactual_babylm_naans_new-1e-3 counterfactual_babylm_300_naans_new-1e-3 counterfactual_babylm_300_anans_new-1e-3 counterfactual_babylm_anans_new-1e-3)
 
 for model in ${models[@]}

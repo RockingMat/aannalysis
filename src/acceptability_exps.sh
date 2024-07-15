@@ -6,7 +6,8 @@
 
 # python src/acceptability.py -m kanishka/smolm-autoreg-bpe-babylm-aann-counterfactual-naan-3e-3 -b 128 -a data/mahowald-naan
 
-declare -a modes=(aann anan naan)
+# declare -a modes=(aann anan naan)
+declare -a modes=(aann)
 # declare -a lrs=(1e-3 1e-4 3e-4)
 declare -a lrs=(1e-4)
 
@@ -38,9 +39,12 @@ declare -a lrs=(1e-4)
 
 # declare -a models=(counterfactual_babylm_naans_new counterfactual_babylm_300_naans_new counterfactual_babylm_300_anans_new)
 # declare -a models=(counterfactual_babylm_anans_new counterfactual_babylm_naans_new)
-declare -a models=(counterfactual-babylm-new_regex_aanns_removal)
+declare -a models=(counterfactual_babylm_measure_nps_as_singular_new)
 declare -a lrs=(1e-3)
 # declare -a models=(counterfactual_babylm_naans_new-1e-3 counterfactual_babylm_300_naans_new-1e-3 counterfactual_babylm_300_anans_new-1e-3 counterfactual_babylm_anans_new-1e-3)
+
+declare -a models=(counterfactual_babylm_aann_dtanns)
+declare -a lrs=(1e-4)
 
 for mode in ${modes[@]}
 do 
@@ -50,10 +54,11 @@ do
         do
             # echo kanishka/smolm-autoreg-bpe-${model}-${lr} -b 128 -a data/mahowald-${mode}
             # python src/acceptability.py -m kanishka/smolm-autoreg-bpe-${model}-${lr} -b 128 -a data/mahowald-${mode} --device cuda:2
+            python src/acceptability.py -m kanishka/smolm-autoreg-bpe-${model}-${lr} -b 128 -a data/mahowald-${mode}
 
-            python src/acceptability.py -m kanishka/smolm-autoreg-bpe-${model}-seed_1024-${lr} -b 128 -a data/mahowald-${mode}
+            # python src/acceptability.py -m kanishka/smolm-autoreg-bpe-${model}-seed_1024-${lr} -b 128 -a data/mahowald-${mode}
 
-            python src/acceptability.py -m kanishka/smolm-autoreg-bpe-${model}-seed_211-${lr} -b 128 -a data/mahowald-${mode}
+            # python src/acceptability.py -m kanishka/smolm-autoreg-bpe-${model}-seed_211-${lr} -b 128 -a data/mahowald-${mode}
         done
     done
 done
