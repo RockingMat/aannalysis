@@ -54,11 +54,21 @@
 
 # python src/unigrams.py --corpus data/training_data/counterfactual_babylm_anans_new.txt --output_dir models/unigrams --model kanishka/smolm-autoreg-bpe-counterfactual_babylm_anans_new-1e-3
 
-# kanishka/smolm-autoreg-bpe--seed_1024-1e-3
+# python src/unigrams.py --corpus data/training_data/counterfactual_babylm_aann_dtanns.txt --output_dir models/unigrams --model kanishka/smolm-autoreg-bpe-counterfactual_babylm_aann_dtanns-1e-4
 
-python src/unigrams.py --corpus data/training_data/counterfactual_babylm_aann_dtanns.txt --output_dir models/unigrams --model kanishka/smolm-autoreg-bpe-counterfactual_babylm_aann_dtanns-1e-4
+# python src/unigrams.py --corpus data/training_data/counterfactual_babylm_measure_nps_as_singular_new.txt --output_dir models/unigrams --model kanishka/smolm-autoreg-bpe-counterfactual_babylm_measure_nps_as_singular_new-1e-3
 
-python src/unigrams.py --corpus data/training_data/counterfactual_babylm_measure_nps_as_singular_new.txt --output_dir models/unigrams --model kanishka/smolm-autoreg-bpe-counterfactual_babylm_measure_nps_as_singular_new-1e-3
+# python src/unigrams.py --corpus data/training_data/counterfactual_babylm_indef_articles_with_pl_nouns_removal_new.txt --output_dir models/unigrams --model kanishka/smolm-autoreg-bpe-counterfactual_babylm_indef_articles_with_pl_nouns_removal_new-1e-3
 
-python src/unigrams.py --corpus data/training_data/counterfactual_babylm_indef_articles_with_pl_nouns_removal_new.txt --output_dir models/unigrams --model kanishka/smolm-autoreg-bpe-counterfactual_babylm_indef_articles_with_pl_nouns_removal_new-1e-3
+declare -a variability=(high low)
+declare -a types=(all numeral adj noun)
+
+for variability in ${variability[@]}
+do 
+    for type in ${types[@]}
+    do
+        python src/unigrams.py --corpus data/training_data/counterfactual_babylm_aann_${variability}_variability_${type}.txt --output_dir models/unigrams --model kanishka/smolm-autoreg-bpe-counterfactual_babylm_aann_${variability}_variability_${type}-1e-3 &
+    done
+done
+wait
 
