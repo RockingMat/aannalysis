@@ -124,7 +124,7 @@ high_variability_aanns <- lowercased_babylm_aanns %>%
   filter(percent > 0.50)
 
 low_variability_instances <- lowercased_babylm_aanns %>%
-  inner_join(prototypical_aanns)
+  inner_join(low_variability_aanns)
 
 low_variability_instances %>% 
   # write_csv("data/babylm-aanns/aanns_indef_all_prototypical_new.csv")
@@ -166,6 +166,46 @@ numeral_high_variability <- lowercased_babylm_aanns %>%
     percent = cumsum(n)/sum(n)
   ) %>%
   filter(percent > 0.50)
+
+bind_rows(
+  lowercased_babylm_aanns %>%
+    count(NUMERAL, sort=TRUE) %>% 
+    mutate(
+      percent = cumsum(n)/sum(n),
+      variability = case_when(
+        percent <= 0.5 ~ "low",
+        TRUE ~ "high"
+      )
+    ) %>%
+    mutate(value = NUMERAL, slot = "numeral") %>% 
+    select(-NUMERAL),
+  lowercased_babylm_aanns %>%
+    count(ADJ, sort=TRUE) %>%
+    mutate(
+      percent = cumsum(n)/sum(n),
+      variability = case_when(
+        percent <= 0.5 ~ "low",
+        TRUE ~ "high"
+      )
+    ) %>%
+    mutate(value = ADJ, slot = "adjective") %>% 
+    select(-ADJ),
+  lowercased_babylm_aanns %>%
+    count(NOUN, sort=TRUE) %>%
+    mutate(
+      percent = cumsum(n)/sum(n),
+      variability = case_when(
+        percent <= 0.5 ~ "low",
+        TRUE ~ "high"
+      )
+    ) %>%
+    mutate(value = NOUN, slot = "noun") %>% 
+    select(-NOUN)
+) %>%
+  ggplot(aes(log(n), color = variability, fill = variability)) +
+  geom_density() +
+  facet_wrap(~slot)
+
 
 
 noun_low_variability <- lowercased_babylm_aanns %>%
@@ -233,7 +273,7 @@ noun_low_variability_instances %>%
 
 
 p1 <- bind_rows(
-  prototypical_instances %>% 
+  low_variability_instances %>% 
     summarize(
       ADJ = n_distinct(ADJ),
       NUMERAL = n_distinct(NUMERAL),
@@ -243,7 +283,7 @@ p1 <- bind_rows(
     mutate(
       aann_type = "Low"
     ),
-  non_prototypical_instances %>% 
+  high_variability_instances %>% 
     summarize(
       ADJ = n_distinct(ADJ),
       NUMERAL = n_distinct(NUMERAL),
