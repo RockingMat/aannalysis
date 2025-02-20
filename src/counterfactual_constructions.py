@@ -302,7 +302,7 @@ if __name__ == "__main__":
         "--aann_path",
         type=str,
         help="path to file containing AANNs (and ids)",
-        default="data/babylm-aanns/aanns_indef_all.csv"
+        default="data/babylm-analysis/new_regex_aanns.csv"
     )
     parser.add_argument(
         "--aann_all_det_path",

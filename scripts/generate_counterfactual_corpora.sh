@@ -91,6 +91,21 @@
 #     --counterfactual_type removal
 
 python src/counterfactual_constructions.py \
+    --output_path data/training_data/counterfactual-babylm-new_regex_aanns_removal.txt \
+    --aann_path data/babylm-analysis/new_regex_aanns.csv \
+    --counterfactual_type removal 
+
+python src/counterfactual_constructions.py \
+    --output_path data/training_data/counterfactual_babylm_naans_new.txt \
+    --counterfactual_type naan \
+    --aann_path data/babylm-analysis/new_regex_aanns.csv
+
+python src/counterfactual_constructions.py \
+    --output_path data/training_data/counterfactual_babylm_anans_new.txt \
+    --counterfactual_type anan \
+    --aann_path data/babylm-analysis/new_regex_aanns.csv
+
+python src/counterfactual_constructions.py \
     --output_path data/training_data/counterfactual-babylm-random_removal.txt \
     --aann_path data/babylm-analysis/random_removal.csv \
     --ignore_path data/babylm-analysis/all_hypotheses.csv \
@@ -133,11 +148,6 @@ python src/counterfactual_constructions.py \
 #     --output_path data/training_data/counterfactual-babylm-old_union_new_regex_aanns_removal.txt \
 #     --aann_path data/babylm-analysis/old_union_new_regex_aanns.csv \
 #     --counterfactual_type removal 
-
-python src/counterfactual_constructions.py \
-    --output_path data/training_data/counterfactual-babylm-new_regex_aanns_removal.txt \
-    --aann_path data/babylm-analysis/new_regex_aanns.csv \
-    --counterfactual_type removal 
 
 python src/counterfactual_constructions.py \
     --output_path data/training_data/counterfactual_babylm_measure_nps_as_singular_new.txt \
