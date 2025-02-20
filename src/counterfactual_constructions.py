@@ -257,7 +257,8 @@ def main(args):
 
     print("Pushing to hub...")
     
-    VAL_FILE = "../rawdata/babylm_data/babylm_dev/babylm_dev.txt"
+    # VAL_FILE = "../rawdata/babylm_data/babylm_dev/babylm_dev.txt"
+    VAL_FILE="data/babylm/dev.sents"
 
     data_files = {}
     dataset_args = {}
@@ -279,7 +280,7 @@ if __name__ == "__main__":
         "--sentence_path",
         type=str,
         help="path to file containing sentences",
-        default="/home/km55359/rawdata/babylm_data/babylm_100M/sents/babylm_sents.txt"
+        default="data/babylm/train.sents"
     )
     parser.add_argument(
         "--output_path",

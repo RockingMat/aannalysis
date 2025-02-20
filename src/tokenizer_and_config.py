@@ -76,6 +76,8 @@ def main(args):
 
     if not mlm:
         eos_token = "<s>"
+    else: 
+        eos_token = "</s>"
 
     if bpe:
         tokenizer = tokenization.BPETokenizer(mask=mlm, eos_token=eos_token)

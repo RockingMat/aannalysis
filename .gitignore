@@ -1,4 +1,5 @@
 data/training_data/
+data/babylm/
 models/
 src/tmp_trainer/
 src/wandb/
