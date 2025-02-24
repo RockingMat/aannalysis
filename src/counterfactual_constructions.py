@@ -272,7 +272,7 @@ def main(args):
         **dataset_args,
     )
 
-    raw_datasets.push_to_hub(f"kanishka/{args.output_path.split('/')[-1].replace('.txt', '')}")
+    raw_datasets.push_to_hub(f"Rocking-Mat/{args.output_path.split('/')[-1].replace('.txt', '')}")
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()

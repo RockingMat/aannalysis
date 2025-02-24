@@ -12,7 +12,7 @@ rm -r $DIR/babylm_data
 
 # concatenate all files within each dir babylm_100M, babylm_dev, babylm_test
 
-cat $DIR/babylm_100M/* > $DIR/train_100M.txt
+cat $DIR/babylm_10M/* > $DIR/train_100M.txt
 cat $DIR/babylm_dev/* > $DIR/dev.txt
 cat $DIR/babylm_test/* > $DIR/test.txt
 
