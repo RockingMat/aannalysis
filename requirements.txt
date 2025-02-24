@@ -1,0 +1,11 @@
+datasets
+evaluate
+nltk
+numpy
+pandas
+scikit-learn
+spacy
+tokenizers
+torch
+tqdm
+transformers
